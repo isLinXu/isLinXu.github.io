@@ -1,7 +1,7 @@
 ---
 title: yolov5_efficient
 date: 2022-01-20 22:24:58
-tags:Object_Detection
+tags: Object_Detection
 ---
 
 # Yolov5_Efficient

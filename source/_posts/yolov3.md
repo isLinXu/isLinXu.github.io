@@ -1,7 +1,7 @@
 ---
 title: YOLOv3_Detect_Web
 date: 2022-01-20 22:09:50
-tags:Object_Detection
+tags: Object_Detection
 ---
 
 # YOLOv3_Detect_Web

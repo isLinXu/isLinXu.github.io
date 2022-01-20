@@ -1,7 +1,7 @@
 ---
 title: 使用MobileNetSSD进行对象检测
 date: 2022-01-20 22:33:09
-tags:Object_Detection
+tags: Object_Detection
 ---
 
 ## 使用MobileNetSSD进行对象检测
