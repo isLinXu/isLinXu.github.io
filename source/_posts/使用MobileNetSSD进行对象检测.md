@@ -1,7 +1,9 @@
 ---
 title: 使用MobileNetSSD进行对象检测
 date: 2022-01-20 22:33:09
+author: LinXu
 tags: Object_Detection
+categories: 算法模型
 ---
 
 ## 使用MobileNetSSD进行对象检测
@@ -91,7 +93,7 @@ python object_detection.py --image images/example_01.jpg --prototxt MobileNetSSD
 
 - 测试效果
 
-![](https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210802144117159-1049441785.png)
+![](使用MobileNetSSD进行对象检测/1571518-20210802144117159-1049441785.png)
 
 
 
@@ -205,7 +207,7 @@ python real_time_object_detection.py --prototxt MobileNetSSD_deploy.prototxt.txt
 ```
 
 - 测试效果：
-![](https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210802144914755-1582237448.png)
+![](使用MobileNetSSD进行对象检测/1571518-20210802144914755-1582237448.png)
 
 
 

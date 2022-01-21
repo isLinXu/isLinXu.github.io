@@ -1,7 +1,9 @@
 ---
 title: 通过kaggle-api下载数据集
 date: 2022-01-20 23:25:07
+author: LinXu
 tags: Kaggle
+categories: 算法竞赛
 ---
 
 ## Kaggle API使用教程
@@ -38,15 +40,15 @@ Beta 版 - Kaggle 保留修改当前提供的 API 功能的权利。
 
 - 点击右上角头像处，会弹出相关侧边栏设置，如下
 
-<img src="https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027105535901-405781655.png" style="zoom:67%;" />
+<img src="通过kaggle-api下载数据集/1571518-20211027105535901-405781655.png" style="zoom:67%;" />
 
 - 点击Your Profile，进入设置
 
-  ![](https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027105906204-15480096.png)
+  ![](通过kaggle-api下载数据集/1571518-20211027105906204-15480096.png)
 
 - 在上面的页面找到API对应的设置，点击Create New Token，这将触发下载包含您的 API 凭据的文件`kaggle.json`。对应的kagge.json如下
 
-  ![](https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027110505259-1558319378.png)
+  ![](通过kaggle-api下载数据集/1571518-20211027110505259-1558319378.png)
 
 kaggle配置
 本机安装kaggle api
@@ -365,7 +367,7 @@ kaggle datasets download zillow/zecon -f State_time_series.csv
 
 在对应数据集上找到API command，复制到剪切板
 
-![](https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027111605969-1361034724.png)
+![](通过kaggle-api下载数据集/1571518-20211027111605969-1361034724.png)
 
 如上面这个数据集的命令就是：
 
@@ -373,7 +375,7 @@ kaggle datasets download zillow/zecon -f State_time_series.csv
 kaggle datasets download -d cisautomotiveapi/large-car-dataset
 ```
 
-![](https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027113501374-515641469.png)
+![](通过kaggle-api下载数据集/1571518-20211027113501374-515641469.png)
 
 ##### 2.2.4 初始化元数据文件以创建数据集
 

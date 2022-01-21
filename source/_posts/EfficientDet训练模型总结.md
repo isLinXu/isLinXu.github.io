@@ -1,12 +1,12 @@
 ---
 title: EfficientDet训练模型总结
 date: 2022-01-20 23:25:54
+author: LinXu
 tags: 炼丹术
+categories: 算法模型
 ---
 
 ## EfficientDet训练模型学习总结
-
-
 
 ## 1.Introduction简介
 
@@ -18,15 +18,15 @@ pytorch用SOTA实时重新实现官方[EfficientDet](https://github.com/google/a
 
 这里是一个比较：
 
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107145805791-919840886.png)
+![](EfficientDet训练模型总结/1571518-20211107145805791-919840886.png)
 
 
 - 结果表现：
 
 |                                                              |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150127161-877118924.jpg) | ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150114556-1712376125.jpg) | ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150109564-2126745531.jpg) |
-| ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150202931-849803245.jpg) | ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150153680-1502926812.jpg) | ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150132022-942779202.jpg) |
+| ![](EfficientDet训练模型总结/1571518-20211107150127161-877118924.jpg) | ![](EfficientDet训练模型总结/1571518-20211107150114556-1712376125.jpg) | ![](EfficientDet训练模型总结/1571518-20211107150109564-2126745531.jpg) |
+| ![](EfficientDet训练模型总结/1571518-20211107150202931-849803245.jpg) | ![](EfficientDet训练模型总结/1571518-20211107150153680-1502926812.jpg) | ![sss](EfficientDet训练模型总结/1571518-20211107150132022-942779202.jpg) |
 |                                                              |                                                              |                                                              |
 
 
@@ -269,7 +269,7 @@ pip install pycocotools numpy==1.16.0 opencv-python tqdm tensorboard tensorboard
 
 这里以官方提供的自定义数据集为例，目录结构如下图：
 
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107153525820-892485254.png)
+![](EfficientDet训练模型总结/1571518-20211107153525820-892485254.png)
 
 ├── annotations
 │   ├── instances_train.json
@@ -298,8 +298,8 @@ pip install pycocotools numpy==1.16.0 opencv-python tqdm tensorboard tensorboard
 python train.py -c 0 -p birdview_vehicles --head_only True --lr 5e-3 --batch_size 32 --load_weights weights/efficientdet-d0.pth  --num_epochs 10 --save_interval 100
 #训练一开始损失会很大，不要惊慌，要有耐心，再等一会儿
 ```
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107155105263-1682277245.png)
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107155110998-1828640763.png)
+![](EfficientDet训练模型总结/1571518-20211107155105263-1682277245.png)
+![](EfficientDet训练模型总结/1571518-20211107155110998-1828640763.png)
 
 从最后的一次保存的模型文件开始训练，并且不只训练头部，还训练骨干与其他部分。
 
@@ -323,7 +323,7 @@ python coco_eval.py -c 0 -p birdview_vehicles -w "logs/birdview_vehicles/{weight
 python coco_eval.py -c 0 -p birdview_vehicles -w "logs/birdview_vehicles/efficientdet-d0_9_2770.pth"
 ```
 
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107155616894-814217117.png)
+![](EfficientDet训练模型总结/1571518-20211107155616894-814217117.png)
 
 
 
@@ -339,4 +339,4 @@ put weights here /path/to/your/weights/*.pth
 python detect.py
 ```
 
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107161229673-15805960.png)
+![](EfficientDet训练模型总结/1571518-20211107161229673-15805960.png)

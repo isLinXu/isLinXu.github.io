@@ -440,6 +440,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                算法模型
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -452,12 +461,32 @@
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-01-21
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.9k
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -477,7 +506,7 @@
 <p>EfficientNetV2 是一个新的卷积网络家族，与之前的模型相比，具有更快的训练速度和更好的参数效率。为了开发这一系列模型，我们结合使用训练感知神经架构搜索和缩放，共同优化训练速度和参数效率。这些模型是从富含新操作（例如 Fused-MBConv）的搜索空间中搜索的。</p>
 </blockquote>
 <p>这里是一个比较：</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107145805791-919840886.png"></p>
+<p><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107145805791-919840886.png"></p>
 <ul>
 <li>结果表现：</li>
 </ul>
@@ -490,14 +519,14 @@
 </tr>
 </thead>
 <tbody><tr>
-<td><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150127161-877118924.jpg"></td>
-<td><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150114556-1712376125.jpg"></td>
-<td><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150109564-2126745531.jpg"></td>
+<td><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107150127161-877118924.jpg"></td>
+<td><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107150114556-1712376125.jpg"></td>
+<td><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107150109564-2126745531.jpg"></td>
 </tr>
 <tr>
-<td><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150202931-849803245.jpg"></td>
-<td><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150153680-1502926812.jpg"></td>
-<td><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107150132022-942779202.jpg"></td>
+<td><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107150202931-849803245.jpg"></td>
+<td><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107150153680-1502926812.jpg"></td>
+<td><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107150132022-942779202.jpg" alt="sss"></td>
 </tr>
 <tr>
 <td></td>
@@ -640,7 +669,7 @@ mkdir data<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
     ├── train2017
     └── val2017<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="2-Demo演示测试"><a href="#2-Demo演示测试" class="headerlink" title="2. Demo演示测试"></a>2. Demo演示测试</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 安装需求
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="2-Demo演示测试"><a href="#2-Demo演示测试" class="headerlink" title="2. Demo演示测试"></a>2. Demo演示测试</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 安装需求
 pip install pycocotools numpy opencv-python tqdm tensorboard tensorboardX pyyaml webcolors 
 pip install torch&#x3D;&#x3D;1.4.0 
 pip install torchvision&#x3D;&#x3D;0.5.0 
@@ -761,14 +790,14 @@ python train.py -c 2 -p your_project_name --batch_size 8 --lr 1e-3 --debug True
 <h2 id="4-自定义数据集的训练教程"><a href="#4-自定义数据集的训练教程" class="headerlink" title="4.自定义数据集的训练教程"></a>4.自定义数据集的训练教程</h2><h3 id="4-1-安装环境要求"><a href="#4-1-安装环境要求" class="headerlink" title="4.1 安装环境要求"></a>4.1 安装环境要求</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip install pycocotools numpy&#x3D;&#x3D;1.16.0 opencv-python tqdm tensorboard tensorboardX pyyaml webcolors matplotlib<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="4-2-准备自定义数据集-预训练权重"><a href="#4-2-准备自定义数据集-预训练权重" class="headerlink" title="4.2 准备自定义数据集/预训练权重"></a>4.2 准备自定义数据集/预训练权重</h3><p>这里以官方提供的自定义数据集为例，目录结构如下图：</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107153525820-892485254.png"></p>
+<p><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107153525820-892485254.png"></p>
 <p>├── annotations<br>│   ├── instances_train.json<br>│   └── instances_val.json<br>├── train<br>│   ├── 0.jpg<br>│   ├── 1000.jpg<br>│   ├── 1001.jpg<br>……<br>└── val<br>    ├── 1111.jpg<br>    ├── 1112.jpg<br>    └── 1359.jpg</p>
 <p>其中，<code>annatations</code>是存放coco格式json数据的路径，<code>train</code>为训练集的图片路径，<code>val</code>为测试集的图片路径。<br>这里的文件夹与路径名称是与对应项目的.yml配置文件相匹配的，否则会出现读取不到数据的错误。</p>
 <h3 id="4-3-训练模型"><a href="#4-3-训练模型" class="headerlink" title="4.3 训练模型"></a>4.3 训练模型</h3><p>简单数据集，直接训练头部即可。</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 考虑到这是一个简单的数据集，训练头部就足够支持拟合了。
 python train.py -c 0 -p birdview_vehicles --head_only True --lr 5e-3 --batch_size 32 --load_weights weights&#x2F;efficientdet-d0.pth  --num_epochs 10 --save_interval 100
 #训练一开始损失会很大，不要惊慌，要有耐心，再等一会儿<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107155105263-1682277245.png"><br><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107155110998-1828640763.png"></p>
+<p><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107155105263-1682277245.png"><br><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107155110998-1828640763.png"></p>
 <p>从最后的一次保存的模型文件开始训练，并且不只训练头部，还训练骨干与其他部分。</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python train.py -c 0 -p birdview_vehicles --head_only False --lr 1e-3 --batch_size 16 --load_weights last  --num_epochs 16 --save_interval 100<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -781,14 +810,14 @@ python coco_eval.py -c 0 -p birdview_vehicles -w &quot;logs&#x2F;birdview_vehicl
 
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python coco_eval.py -c 0 -p birdview_vehicles -w &quot;logs&#x2F;birdview_vehicles&#x2F;efficientdet-d0_9_2770.pth&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107155616894-814217117.png"></p>
+<p><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107155616894-814217117.png"></p>
 <h3 id="4-5-可视化预测"><a href="#4-5-可视化预测" class="headerlink" title="4.5 可视化预测"></a>4.5 可视化预测</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">put images here datasets&#x2F;your_project_name&#x2F;val_set_name&#x2F;*.jpg
 put annotations here datasets&#x2F;your_project_name&#x2F;annotations&#x2F;instances_&#123;val_set_name&#125;.json
 put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python detect.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211107161229673-15805960.png"></p>
+<p><img src="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/1571518-20211107161229673-15805960.png"></p>
 
                 
             </div>
@@ -1054,8 +1083,12 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LinXu
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    算法模型
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1100,8 +1133,12 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LinXu
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" class="post-category">
+                                    算法竞赛
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1312,6 +1349,9 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">49.5k</span>
             
             
             

@@ -1,11 +1,13 @@
 ---
 title: yolov5_efficient
 date: 2022-01-20 22:24:58
+author: LinXu
 tags: Object_Detection
+categories: 算法模型
 ---
 
 # Yolov5_Efficient
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105103947692-337341194.png)
+![](yolov5-efficient/1571518-20211105103947692-337341194.png)
 
 Use yolov5 efficiently(高效地使用Yolo v5)
 ---
@@ -22,8 +24,8 @@ The repository is reconstructed and annotated based on UltralyTICS / YOLOV5, and
 
 | detect预测结果                                               | GrabCut分割结果                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105110409690-1455179243.png) | ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105110418858-940040936.png) |
-| ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105110426763-812179903.png) | ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105110435881-328445319.png) |
+| ![](yolov5-efficient/1571518-20211105110409690-1455179243.png) | ![](yolov5-efficient/1571518-20211105110418858-940040936.png) |
+| ![](yolov5-efficient/1571518-20211105110426763-812179903.png) | ![](yolov5-efficient/1571518-20211105110435881-328445319.png) |
 
 
 
@@ -35,7 +37,7 @@ The repository is reconstructed and annotated based on UltralyTICS / YOLOV5, and
 ### 2.2 Yolo center point line 中心点连线
 | demo1                                                        | demo2                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105110651730-834327083.png) | ![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105110705075-1370353606.png) |
+| ![](yolov5-efficient/1571518-20211105110651730-834327083.png) | ![](yolov5-efficient/1571518-20211105110705075-1370353606.png) |
 
 ### 2.3 autolabel半自动标注
 [demo video](https://www.bilibili.com/video/BV1ET4y1o7ZR/)
@@ -62,10 +64,10 @@ python yolov5_master/train.py --img 640 --batch 16 --epochs 3 --data coco128.yam
 ```shell
 python yolov5_master/main.py
 ```
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105111817968-708151746.png)
+![](yolov5-efficient/1571518-20211105111817968-708151746.png)
 
 #### 3.1.2 IDE方式：
-![](https://img2020.cnblogs.com/blog/1571518/202111/1571518-20211105112013475-1447251119.png)
+![](yolov5-efficient/1571518-20211105112013475-1447251119.png)
 
 ### 3.2 detect 推理预测
 

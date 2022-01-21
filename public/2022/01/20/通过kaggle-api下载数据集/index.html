@@ -442,6 +442,15 @@ Beta 版 - Kaggle 保留修改当前提供的 API 功能的权利。
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" class="post-category">
+                                算法竞赛
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -454,12 +463,32 @@ Beta 版 - Kaggle 保留修改当前提供的 API 功能的权利。
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-01-21
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.1k
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    22 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -488,24 +517,24 @@ Beta 版 - Kaggle 保留修改当前提供的 API 功能的权利。
 <ul>
 <li>点击右上角头像处，会弹出相关侧边栏设置，如下</li>
 </ul>
-<img src="https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027105535901-405781655.png" style="zoom:67%;" />
+<img src="/2022/01/20/%E9%80%9A%E8%BF%87kaggle-api%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20211027105535901-405781655.png" style="zoom:67%;">
 
 <ul>
 <li><p>点击Your Profile，进入设置</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027105906204-15480096.png"></p>
+<p><img src="/2022/01/20/%E9%80%9A%E8%BF%87kaggle-api%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20211027105906204-15480096.png"></p>
 </li>
 <li><p>在上面的页面找到API对应的设置，点击Create New Token，这将触发下载包含您的 API 凭据的文件<code>kaggle.json</code>。对应的kagge.json如下</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027110505259-1558319378.png"></p>
+<p><img src="/2022/01/20/%E9%80%9A%E8%BF%87kaggle-api%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20211027110505259-1558319378.png"></p>
 </li>
 </ul>
 <p>kaggle配置<br>本机安装kaggle api</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip <span class="token function">install</span> kaggle<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip install kaggle<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>将此文件放在该位置<code>~/.kaggle/kaggle.json</code></p>
 <p>若没有这个目录，则在根目录下创建.kaggle文件夹，再把kaggle.json放入</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> ~
-<span class="token function">mkdir</span> .kaggle
-<span class="token builtin class-name">cd</span> ~/.kaggle/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd ~
+mkdir .kaggle
+cd ~&#x2F;.kaggle&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>（在 Windows 上的该位置<code>C:\Users\&lt;Windows-username&gt;\.kaggle\kaggle.json</code>- 您可以检查确切位置，无驱动器，使用<code>echo %HOMEPATH%</code>）。您可以定义一个 shell 环境变量<code>KAGGLE_CONFIG_DIR</code>来将此位置更改为<code>$KAGGLE_CONFIG_DIR/kaggle.json</code>（在 Windows 上为<code>%KAGGLE_CONFIG_DIR%\kaggle.json</code>）。</p>
 <p>为了您的安全，请确保您计算机的其他用户对您的凭据没有读取权限。在基于 Unix 的系统上，您可以使用以下命令执行此操作：</p>
@@ -517,20 +546,20 @@ Beta 版 - Kaggle 保留修改当前提供的 API 功能的权利。
 
 <p>此外，您可以导出通常采用<code>$HOME/.kaggle/kaggle.json</code>“KAGGLE_”格式（注意大写）的任何其他配置值。<br>例如，如果文件具有变量“proxy”，您将导出<code>KAGGLE_PROXY</code> 并由客户端查看。</p>
 <h3 id="二、Kaggle-Command命令使用"><a href="#二、Kaggle-Command命令使用" class="headerlink" title="二、Kaggle Command命令使用"></a>二、Kaggle Command命令使用</h3><p>命令行工具支持以下命令：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle competitions <span class="token punctuation">&#123;</span>list, files, download, submit, submissions, leaderboard<span class="token punctuation">&#125;</span>
-kaggle datasets <span class="token punctuation">&#123;</span>list, files, download, create, version, init<span class="token punctuation">&#125;</span>
-kaggle kernels <span class="token punctuation">&#123;</span>list, init, push, pull, output, status<span class="token punctuation">&#125;</span>
-kaggle config <span class="token punctuation">&#123;</span>view, set, unset<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle competitions &#123;list, files, download, submit, submissions, leaderboard&#125;
+kaggle datasets &#123;list, files, download, create, version, init&#125;
+kaggle kernels &#123;list, init, push, pull, output, status&#125;
+kaggle config &#123;view, set, unset&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>有关使用这些命令中的每一个，请参阅下面的更多详细信息。</p>
 <h4 id="2-1-Competitions比赛"><a href="#2-1-Competitions比赛" class="headerlink" title="2.1 Competitions比赛"></a>2.1 Competitions比赛</h4><p>该 API 支持以下用于 Kaggle 比赛的命令。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions <span class="token punctuation">[</span>-h<span class="token punctuation">]</span>
-                           <span class="token punctuation">&#123;</span>list,files,download,submit,submissions,leaderboard<span class="token punctuation">&#125;</span>
-                           <span class="token punctuation">..</span>.
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions [-h]
+                           &#123;list,files,download,submit,submissions,leaderboard&#125;
+                           ...
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -h, --help            show this help message and exit
 commands:
-  <span class="token punctuation">&#123;</span>list,files,download,submit,submissions,leaderboard<span class="token punctuation">&#125;</span>
+  &#123;list,files,download,submit,submissions,leaderboard&#125;
     list                List available competitions
     files               List competition files
     download            Download competition files
@@ -538,244 +567,244 @@ commands:
     submissions         Show your competition submissions
     leaderboard         Get competition leaderboard information<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="2-1-1-列出比赛"><a href="#2-1-1-列出比赛" class="headerlink" title="2.1.1 列出比赛"></a>2.1.1 列出比赛</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>--group GROUP<span class="token punctuation">]</span> <span class="token punctuation">[</span>--category CATEGORY<span class="token punctuation">]</span> <span class="token punctuation">[</span>--sort-by SORT_BY<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PAGE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s SEARCH<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span>
+<h5 id="2-1-1-列出比赛"><a href="#2-1-1-列出比赛" class="headerlink" title="2.1.1 列出比赛"></a>2.1.1 列出比赛</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions list [-h] [--group GROUP] [--category CATEGORY] [--sort-by SORT_BY] [-p PAGE] [-s SEARCH] [-v]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  --group GROUP         Search <span class="token keyword">for</span> <span class="token for-or-select variable">competitions</span> <span class="token keyword">in</span> a specific group. Default is <span class="token string">'general'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'general'</span>, <span class="token string">'entered'</span>, and <span class="token string">'inClass'</span>
-  --category CATEGORY   Search <span class="token keyword">for</span> competitions of a specific category. Default is <span class="token string">'all'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'all'</span>, <span class="token string">'featured'</span>, <span class="token string">'research'</span>, <span class="token string">'recruitment'</span>, <span class="token string">'gettingStarted'</span>, <span class="token string">'masters'</span>, and <span class="token string">'playground'</span>
-  --sort-by SORT_BY     Sort list results. Default is <span class="token string">'latestDeadline'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'grouped'</span>, <span class="token string">'prize'</span>, <span class="token string">'earliestDeadline'</span>, <span class="token string">'latestDeadline'</span>, <span class="token string">'numberOfTeams'</span>, and <span class="token string">'recentlyCreated'</span>
-  -p PAGE, --page PAGE  Page number <span class="token keyword">for</span> results paging. Page size is <span class="token number">20</span> by default 
+  -h, --help            show this help message and exit
+  --group GROUP         Search for competitions in a specific group. Default is &#39;general&#39;. Valid options are &#39;general&#39;, &#39;entered&#39;, and &#39;inClass&#39;
+  --category CATEGORY   Search for competitions of a specific category. Default is &#39;all&#39;. Valid options are &#39;all&#39;, &#39;featured&#39;, &#39;research&#39;, &#39;recruitment&#39;, &#39;gettingStarted&#39;, &#39;masters&#39;, and &#39;playground&#39;
+  --sort-by SORT_BY     Sort list results. Default is &#39;latestDeadline&#39;. Valid options are &#39;grouped&#39;, &#39;prize&#39;, &#39;earliestDeadline&#39;, &#39;latestDeadline&#39;, &#39;numberOfTeams&#39;, and &#39;recentlyCreated&#39;
+  -p PAGE, --page PAGE  Page number for results paging. Page size is 20 by default 
   -s SEARCH, --search SEARCH
-                        Term<span class="token punctuation">(</span>s<span class="token punctuation">)</span> to search <span class="token keyword">for</span>
-  -v, --csv             Print results <span class="token keyword">in</span> CSV <span class="token function">format</span>
-                        <span class="token punctuation">(</span>if not <span class="token builtin class-name">set</span> print <span class="token keyword">in</span> table <span class="token function">format</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        Term(s) to search for
+  -v, --csv             Print results in CSV format
+                        (if not set print in table format)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例:</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle competitions list -s health<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle competitions list --category gettingStarted<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-1-2-列出比赛文件"><a href="#2-1-2-列出比赛文件" class="headerlink" title="2.1.2 列出比赛文件"></a>2.1.2 列出比赛文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions files <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-q<span class="token punctuation">]</span> <span class="token punctuation">[</span>competition<span class="token punctuation">]</span>
+<h5 id="2-1-2-列出比赛文件"><a href="#2-1-2-列出比赛文件" class="headerlink" title="2.1.2 列出比赛文件"></a>2.1.2 列出比赛文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions files [-h] [-v] [-q] [competition]
 
 optional arguments:
-  -h, --help   show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  competition  Competition URL suffix <span class="token punctuation">(</span>use <span class="token string">"kaggle competitions list"</span> to show options<span class="token punctuation">)</span>
-               If empty, the default competition will be used <span class="token punctuation">(</span>use <span class="token string">"kaggle config set competition"</span><span class="token punctuation">)</span>"
-  -v, --csv    Print results <span class="token keyword">in</span> CSV <span class="token function">format</span> <span class="token punctuation">(</span>if not <span class="token builtin class-name">set</span> print <span class="token keyword">in</span> table <span class="token function">format</span><span class="token punctuation">)</span>
-  -q, --quiet  Suppress printing information about the upload/download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -h, --help   show this help message and exit
+  competition  Competition URL suffix (use &quot;kaggle competitions list&quot; to show options)
+               If empty, the default competition will be used (use &quot;kaggle config set competition&quot;)&quot;
+  -v, --csv    Print results in CSV format (if not set print in table format)
+  -q, --quiet  Suppress printing information about the upload&#x2F;download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle competitions files favorita-grocery-sales-forecasting<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-1-3-下载比赛文件"><a href="#2-1-3-下载比赛文件" class="headerlink" title="2.1.3 下载比赛文件"></a>2.1.3 下载比赛文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions download <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-f FILE_NAME<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p <span class="token environment constant">PATH</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-w<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o<span class="token punctuation">]</span>
-                                    <span class="token punctuation">[</span>-q<span class="token punctuation">]</span>
-                                    <span class="token punctuation">[</span>competition<span class="token punctuation">]</span>
+<h5 id="2-1-3-下载比赛文件"><a href="#2-1-3-下载比赛文件" class="headerlink" title="2.1.3 下载比赛文件"></a>2.1.3 下载比赛文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions download [-h] [-f FILE_NAME] [-p PATH] [-w] [-o]
+                                    [-q]
+                                    [competition]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  competition           Competition URL suffix <span class="token punctuation">(</span>use <span class="token string">"kaggle competitions list"</span> to show options<span class="token punctuation">)</span>
-                        If empty, the default competition will be used <span class="token punctuation">(</span>use <span class="token string">"kaggle config set competition"</span><span class="token punctuation">)</span><span class="token string">"
+  -h, --help            show this help message and exit
+  competition           Competition URL suffix (use &quot;kaggle competitions list&quot; to show options)
+                        If empty, the default competition will be used (use &quot;kaggle config set competition&quot;)&quot;
   -f FILE_NAME, --file FILE_NAME
                         File name, all files downloaded if not provided
-                        (use "</span>kaggle competitions files -c <span class="token operator">&lt;</span>competition<span class="token operator">></span>" to show options<span class="token punctuation">)</span>
-  -p <span class="token environment constant">PATH</span>, --path <span class="token environment constant">PATH</span>  Folder where file<span class="token punctuation">(</span>s<span class="token punctuation">)</span> will be downloaded, defaults to current working directory
+                        (use &quot;kaggle competitions files -c &lt;competition&gt;&quot; to show options)
+  -p PATH, --path PATH  Folder where file(s) will be downloaded, defaults to current working directory
   -w, --wp              Download files to current working path
-  -o, --force           Skip check whether <span class="token builtin class-name">local</span> version of <span class="token function">file</span> is up to date, force <span class="token function">file</span> download
-  -q, --quiet           Suppress printing information about the upload/download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -o, --force           Skip check whether local version of file is up to date, force file download
+  -q, --quiet           Suppress printing information about the upload&#x2F;download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
 <pre class="line-numbers language-none"><code class="language-none">kaggle competitions download favorita-grocery-sales-forecasting
 kaggle competitions download favorita-grocery-sales-forecasting -f test.csv.7z<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>注意：您需要在 接受比赛规则<code>https://www.kaggle.com/c/&lt;competition-name&gt;/rules</code>。</p>
-<h5 id="2-1-4-提交比赛"><a href="#2-1-4-提交比赛" class="headerlink" title="2.1.4 提交比赛"></a>2.1.4 提交比赛</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions submit <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> -f FILE_NAME -m MESSAGE <span class="token punctuation">[</span>-q<span class="token punctuation">]</span>
-                                  <span class="token punctuation">[</span>competition<span class="token punctuation">]</span>
+<h5 id="2-1-4-提交比赛"><a href="#2-1-4-提交比赛" class="headerlink" title="2.1.4 提交比赛"></a>2.1.4 提交比赛</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions submit [-h] -f FILE_NAME -m MESSAGE [-q]
+                                  [competition]
 
 required arguments:
   -f FILE_NAME, --file FILE_NAME
-                        File <span class="token keyword">for</span> upload <span class="token punctuation">(</span>full path<span class="token punctuation">)</span>
+                        File for upload (full path)
   -m MESSAGE, --message MESSAGE
                         Message describing this submission
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  competition           Competition URL suffix <span class="token punctuation">(</span>use <span class="token string">"kaggle competitions list"</span> to show options<span class="token punctuation">)</span>
-                        If empty, the default competition will be used <span class="token punctuation">(</span>use <span class="token string">"kaggle config set competition"</span><span class="token punctuation">)</span>"
-  -q, --quiet           Suppress printing information about the upload/download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -h, --help            show this help message and exit
+  competition           Competition URL suffix (use &quot;kaggle competitions list&quot; to show options)
+                        If empty, the default competition will be used (use &quot;kaggle config set competition&quot;)&quot;
+  -q, --quiet           Suppress printing information about the upload&#x2F;download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
 <pre class="line-numbers language-none"><code class="language-none">kaggle competitions submit favorita-grocery-sales-forecasting -f sample_submission_favorita.csv.7z -m &quot;My submission message&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>注意：您需要在 接受比赛规则<code>https://www.kaggle.com/c/&lt;competition-name&gt;/rules</code>。</p>
-<h5 id="2-1-5-列出参赛作品"><a href="#2-1-5-列出参赛作品" class="headerlink" title="2.1.5 列出参赛作品"></a>2.1.5 列出参赛作品</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions submissions <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-q<span class="token punctuation">]</span> <span class="token punctuation">[</span>competition<span class="token punctuation">]</span>
+<h5 id="2-1-5-列出参赛作品"><a href="#2-1-5-列出参赛作品" class="headerlink" title="2.1.5 列出参赛作品"></a>2.1.5 列出参赛作品</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions submissions [-h] [-v] [-q] [competition]
 
 optional arguments:
-  -h, --help   show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  competition  Competition URL suffix <span class="token punctuation">(</span>use <span class="token string">"kaggle competitions list"</span> to show options<span class="token punctuation">)</span>
-               If empty, the default competition will be used <span class="token punctuation">(</span>use <span class="token string">"kaggle config set competition"</span><span class="token punctuation">)</span>"
-  -v, --csv    Print results <span class="token keyword">in</span> CSV <span class="token function">format</span> <span class="token punctuation">(</span>if not <span class="token builtin class-name">set</span> print <span class="token keyword">in</span> table <span class="token function">format</span><span class="token punctuation">)</span>
-  -q, --quiet  Suppress printing information about the upload/download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -h, --help   show this help message and exit
+  competition  Competition URL suffix (use &quot;kaggle competitions list&quot; to show options)
+               If empty, the default competition will be used (use &quot;kaggle config set competition&quot;)&quot;
+  -v, --csv    Print results in CSV format (if not set print in table format)
+  -q, --quiet  Suppress printing information about the upload&#x2F;download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：<br>kaggle competitions submissions favorita-grocery-sales-forecasting</p>
-<p>注意：您需要在 接受比赛规则<a target="_blank" rel="noopener" href="https://www.kaggle.com/c/">https://www.kaggle.com/c/</a><competition-name>/rules。</p>
-<h5 id="2-1-6-获取比赛排行榜"><a href="#2-1-6-获取比赛排行榜" class="headerlink" title="2.1.6 获取比赛排行榜"></a>2.1.6 获取比赛排行榜</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions leaderboard <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s<span class="token punctuation">]</span> <span class="token punctuation">[</span>-d<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p <span class="token environment constant">PATH</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>-q<span class="token punctuation">]</span>
-                                       <span class="token punctuation">[</span>competition<span class="token punctuation">]</span>
+<p>注意：您需要在 接受比赛规则<a target="_blank" rel="noopener" href="https://www.kaggle.com/c/">https://www.kaggle.com/c/</a><competition-name>/rules。</competition-name></p>
+<h5 id="2-1-6-获取比赛排行榜"><a href="#2-1-6-获取比赛排行榜" class="headerlink" title="2.1.6 获取比赛排行榜"></a>2.1.6 获取比赛排行榜</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle competitions leaderboard [-h] [-s] [-d] [-p PATH] [-v] [-q]
+                                       [competition]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  competition           Competition URL suffix <span class="token punctuation">(</span>use <span class="token string">"kaggle competitions list"</span> to show options<span class="token punctuation">)</span>
-                        If empty, the default competition will be used <span class="token punctuation">(</span>use <span class="token string">"kaggle config set competition"</span><span class="token punctuation">)</span>"
-  -s, --show            Show the <span class="token function">top</span> of the leaderboard
+  -h, --help            show this help message and exit
+  competition           Competition URL suffix (use &quot;kaggle competitions list&quot; to show options)
+                        If empty, the default competition will be used (use &quot;kaggle config set competition&quot;)&quot;
+  -s, --show            Show the top of the leaderboard
   -d, --download        Download entire leaderboard
-  -p <span class="token environment constant">PATH</span>, --path <span class="token environment constant">PATH</span>  Folder where file<span class="token punctuation">(</span>s<span class="token punctuation">)</span> will be downloaded, defaults to current working directory
-  -v, --csv             Print results <span class="token keyword">in</span> CSV <span class="token function">format</span> <span class="token punctuation">(</span>if not <span class="token builtin class-name">set</span> print <span class="token keyword">in</span> table <span class="token function">format</span><span class="token punctuation">)</span>
-  -q, --quiet           Suppress printing information about the upload/download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -p PATH, --path PATH  Folder where file(s) will be downloaded, defaults to current working directory
+  -v, --csv             Print results in CSV format (if not set print in table format)
+  -q, --quiet           Suppress printing information about the upload&#x2F;download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>例子：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle competitions leaderboard favorita-grocery-sales-forecasting -s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="2-2-数据集"><a href="#2-2-数据集" class="headerlink" title="2.2 数据集"></a>2.2 数据集</h4><p>API 支持以下用于 Kaggle 数据集的命令。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets <span class="token punctuation">[</span>-h<span class="token punctuation">]</span>
-                       <span class="token punctuation">&#123;</span>list,files,download,create,version,init,metadata,status<span class="token punctuation">&#125;</span> <span class="token punctuation">..</span>.
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets [-h]
+                       &#123;list,files,download,create,version,init,metadata,status&#125; ...
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -h, --help            show this help message and exit
 
 commands:
-  <span class="token punctuation">&#123;</span>list,files,download,create,version,init,metadata, status<span class="token punctuation">&#125;</span>
+  &#123;list,files,download,create,version,init,metadata, status&#125;
     list                List available datasets
     files               List dataset files
     download            Download dataset files
     create              Create a new dataset
     version             Create a new dataset version
-    init                Initialize metadata <span class="token function">file</span> <span class="token keyword">for</span> dataset creation
+    init                Initialize metadata file for dataset creation
     metadata            Download metadata about a dataset
-    status              Get the creation status <span class="token keyword">for</span> a dataset<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    status              Get the creation status for a dataset<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="2-2-1-列出数据集"><a href="#2-2-1-列出数据集" class="headerlink" title="2.2.1 列出数据集"></a>2.2.1 列出数据集</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>--sort-by SORT_BY<span class="token punctuation">]</span> <span class="token punctuation">[</span>--size SIZE<span class="token punctuation">]</span> <span class="token punctuation">[</span>--file-type FILE_TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>--license LICENSE_NAME<span class="token punctuation">]</span> <span class="token punctuation">[</span>--tags TaG_IDS<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s SEARCH<span class="token punctuation">]</span> <span class="token punctuation">[</span>-m<span class="token punctuation">]</span> <span class="token punctuation">[</span>--user <span class="token environment constant">USER</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PAGE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span>
+<h5 id="2-2-1-列出数据集"><a href="#2-2-1-列出数据集" class="headerlink" title="2.2.1 列出数据集"></a>2.2.1 列出数据集</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets list [-h] [--sort-by SORT_BY] [--size SIZE] [--file-type FILE_TYPE] [--license LICENSE_NAME] [--tags TaG_IDS] [-s SEARCH] [-m] [--user USER] [-p PAGE] [-v]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  --sort-by SORT_BY     Sort list results. Default is <span class="token string">'hottest'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'hottest'</span>, <span class="token string">'votes'</span>, <span class="token string">'updated'</span>, and <span class="token string">'active'</span>
-  --size SIZE           Search <span class="token keyword">for</span> datasets of a specific size. Default is <span class="token string">'all'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'all'</span>, <span class="token string">'small'</span>, <span class="token string">'medium'</span>, and <span class="token string">'large'</span>
-  --file-type FILE_TYPE Search <span class="token keyword">for</span> datasets with a specific <span class="token function">file</span> type. Default is <span class="token string">'all'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'all'</span>, <span class="token string">'csv'</span>, <span class="token string">'sqlite'</span>, <span class="token string">'json'</span>, and <span class="token string">'bigQuery'</span><span class="token builtin class-name">.</span> Please note that bigQuery datasets cannot be downloaded
+  -h, --help            show this help message and exit
+  --sort-by SORT_BY     Sort list results. Default is &#39;hottest&#39;. Valid options are &#39;hottest&#39;, &#39;votes&#39;, &#39;updated&#39;, and &#39;active&#39;
+  --size SIZE           Search for datasets of a specific size. Default is &#39;all&#39;. Valid options are &#39;all&#39;, &#39;small&#39;, &#39;medium&#39;, and &#39;large&#39;
+  --file-type FILE_TYPE Search for datasets with a specific file type. Default is &#39;all&#39;. Valid options are &#39;all&#39;, &#39;csv&#39;, &#39;sqlite&#39;, &#39;json&#39;, and &#39;bigQuery&#39;. Please note that bigQuery datasets cannot be downloaded
   --license LICENSE_NAME 
-                        Search <span class="token keyword">for</span> datasets with a specific license. Default is <span class="token string">'all'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'all'</span>, <span class="token string">'cc'</span>, <span class="token string">'gpl'</span>, <span class="token string">'odb'</span>, and <span class="token string">'other'</span>
-  --tags TAG_IDS        Search <span class="token keyword">for</span> datasets that have specific tags. Tag list should be comma separated                      
+                        Search for datasets with a specific license. Default is &#39;all&#39;. Valid options are &#39;all&#39;, &#39;cc&#39;, &#39;gpl&#39;, &#39;odb&#39;, and &#39;other&#39;
+  --tags TAG_IDS        Search for datasets that have specific tags. Tag list should be comma separated                      
   -s SEARCH, --search SEARCH
-                        Term<span class="token punctuation">(</span>s<span class="token punctuation">)</span> to search <span class="token keyword">for</span>
+                        Term(s) to search for
   -m, --mine            Display only my items
-  --user <span class="token environment constant">USER</span>           Find public datasets owned by a specific user or organization
-  -p PAGE, --page PAGE  Page number <span class="token keyword">for</span> results paging. Page size is <span class="token number">20</span> by default
-  -v, --csv             Print results <span class="token keyword">in</span> CSV <span class="token function">format</span> <span class="token punctuation">(</span>if not <span class="token builtin class-name">set</span> print <span class="token keyword">in</span> table <span class="token function">format</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  --user USER           Find public datasets owned by a specific user or organization
+  -p PAGE, --page PAGE  Page number for results paging. Page size is 20 by default
+  -v, --csv             Print results in CSV format (if not set print in table format)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets list -s demographics
 kaggle datasets list --sort-by votes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h5 id="2-2-2-列出数据集的文件"><a href="#2-2-2-列出数据集的文件" class="headerlink" title="2.2.2 列出数据集的文件"></a>2.2.2 列出数据集的文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets files <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span> <span class="token punctuation">[</span>dataset<span class="token punctuation">]</span>
+<h5 id="2-2-2-列出数据集的文件"><a href="#2-2-2-列出数据集的文件" class="headerlink" title="2.2.2 列出数据集的文件"></a>2.2.2 列出数据集的文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets files [-h] [-v] [dataset]
 
 optional arguments:
-  -h, --help  show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  dataset     Dataset URL suffix <span class="token keyword">in</span> <span class="token function">format</span> <span class="token operator">&lt;</span>owner<span class="token operator">></span>/<span class="token operator">&lt;</span>dataset-name<span class="token operator">></span> <span class="token punctuation">(</span>use <span class="token string">"kaggle datasets list"</span> to show options<span class="token punctuation">)</span>
-  -v, --csv   Print results <span class="token keyword">in</span> CSV <span class="token function">format</span> <span class="token punctuation">(</span>if not <span class="token builtin class-name">set</span> print <span class="token keyword">in</span> table <span class="token function">format</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -h, --help  show this help message and exit
+  dataset     Dataset URL suffix in format &lt;owner&gt;&#x2F;&lt;dataset-name&gt; (use &quot;kaggle datasets list&quot; to show options)
+  -v, --csv   Print results in CSV format (if not set print in table format)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets files zillow/zecon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets files zillow&#x2F;zecon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-2-3-下载数据集文件"><a href="#2-2-3-下载数据集文件" class="headerlink" title="2.2.3 下载数据集文件"></a>2.2.3 下载数据集文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets download <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-f FILE_NAME<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p <span class="token environment constant">PATH</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-w<span class="token punctuation">]</span> <span class="token punctuation">[</span>--unzip<span class="token punctuation">]</span>
-                                <span class="token punctuation">[</span>-o<span class="token punctuation">]</span> <span class="token punctuation">[</span>-q<span class="token punctuation">]</span>
-                                <span class="token punctuation">[</span>dataset<span class="token punctuation">]</span>
+<h5 id="2-2-3-下载数据集文件"><a href="#2-2-3-下载数据集文件" class="headerlink" title="2.2.3 下载数据集文件"></a>2.2.3 下载数据集文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets download [-h] [-f FILE_NAME] [-p PATH] [-w] [--unzip]
+                                [-o] [-q]
+                                [dataset]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  dataset               Dataset URL suffix <span class="token keyword">in</span> <span class="token function">format</span> <span class="token operator">&lt;</span>owner<span class="token operator">></span>/<span class="token operator">&lt;</span>dataset-name<span class="token operator">></span> <span class="token punctuation">(</span>use <span class="token string">"kaggle datasets list"</span> to show options<span class="token punctuation">)</span>
+  -h, --help            show this help message and exit
+  dataset               Dataset URL suffix in format &lt;owner&gt;&#x2F;&lt;dataset-name&gt; (use &quot;kaggle datasets list&quot; to show options)
   -f FILE_NAME, --file FILE_NAME
-                        File name, all files downloaded <span class="token keyword">if</span> not provided
-                        <span class="token punctuation">(</span>use <span class="token string">"kaggle datasets files -d &lt;dataset>"</span> to show options<span class="token punctuation">)</span>
-  -p <span class="token environment constant">PATH</span>, --path <span class="token environment constant">PATH</span>  Folder where file<span class="token punctuation">(</span>s<span class="token punctuation">)</span> will be downloaded, defaults to current working directory
+                        File name, all files downloaded if not provided
+                        (use &quot;kaggle datasets files -d &lt;dataset&gt;&quot; to show options)
+  -p PATH, --path PATH  Folder where file(s) will be downloaded, defaults to current working directory
   -w, --wp              Download files to current working path
-  --unzip               Unzip the downloaded file. Will delete the <span class="token function">zip</span> <span class="token function">file</span> when completed.
-  -o, --force           Skip check whether <span class="token builtin class-name">local</span> version of <span class="token function">file</span> is up to date, force <span class="token function">file</span> download
-  -q, --quiet           Suppress printing information about the upload/download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  --unzip               Unzip the downloaded file. Will delete the zip file when completed.
+  -o, --force           Skip check whether local version of file is up to date, force file download
+  -q, --quiet           Suppress printing information about the upload&#x2F;download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets download zillow/zecon
-kaggle datasets download zillow/zecon -f State_time_series.csv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets download zillow&#x2F;zecon
+kaggle datasets download zillow&#x2F;zecon -f State_time_series.csv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>请注意，无法下载 BigQuery 数据集。</p>
 <p>在对应数据集上找到API command，复制到剪切板</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027111605969-1361034724.png"></p>
+<p><img src="/2022/01/20/%E9%80%9A%E8%BF%87kaggle-api%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20211027111605969-1361034724.png"></p>
 <p>如上面这个数据集的命令就是：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets download -d cisautomotiveapi/large-car-dataset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets download -d cisautomotiveapi&#x2F;large-car-dataset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202110/1571518-20211027113501374-515641469.png"></p>
-<h5 id="2-2-4-初始化元数据文件以创建数据集"><a href="#2-2-4-初始化元数据文件以创建数据集" class="headerlink" title="2.2.4 初始化元数据文件以创建数据集"></a>2.2.4 初始化元数据文件以创建数据集</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets init <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p FOLDER<span class="token punctuation">]</span>
+<p><img src="/2022/01/20/%E9%80%9A%E8%BF%87kaggle-api%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20211027113501374-515641469.png"></p>
+<h5 id="2-2-4-初始化元数据文件以创建数据集"><a href="#2-2-4-初始化元数据文件以创建数据集" class="headerlink" title="2.2.4 初始化元数据文件以创建数据集"></a>2.2.4 初始化元数据文件以创建数据集</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets init [-h] [-p FOLDER]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -h, --help            show this help message and exit
   -p FOLDER, --path FOLDER
-                        Folder <span class="token keyword">for</span> upload, containing data files and a special dataset-metadata.json <span class="token function">file</span> <span class="token punctuation">(</span>https://github.com/Kaggle/kaggle-api/wiki/Dataset-Metadata<span class="token punctuation">)</span>. Defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        Folder for upload, containing data files and a special dataset-metadata.json file (https:&#x2F;&#x2F;github.com&#x2F;Kaggle&#x2F;kaggle-api&#x2F;wiki&#x2F;Dataset-Metadata). Defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets init -p /path/to/dataset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets init -p &#x2F;path&#x2F;to&#x2F;dataset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h5 id="2-2-5-创建新数据集"><a href="#2-2-5-创建新数据集" class="headerlink" title="2.2.5 创建新数据集"></a>2.2.5 创建新数据集</h5><p>如果要创建新的数据集，首先需要启动元数据文件。您可以通过<code>kaggle datasets init</code>如上所述运行来实现这一点。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets create <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p FOLDER<span class="token punctuation">]</span> <span class="token punctuation">[</span>-u<span class="token punctuation">]</span> <span class="token punctuation">[</span>-q<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t<span class="token punctuation">]</span> <span class="token punctuation">[</span>-r <span class="token punctuation">&#123;</span>skip,zip,tar<span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets create [-h] [-p FOLDER] [-u] [-q] [-t] [-r &#123;skip,zip,tar&#125;]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -h, --help            show this help message and exit
   -p FOLDER, --path FOLDER
-                        Folder <span class="token keyword">for</span> upload, containing data files and a special dataset-metadata.json <span class="token function">file</span> <span class="token punctuation">(</span>https://github.com/Kaggle/kaggle-api/wiki/Dataset-Metadata<span class="token punctuation">)</span>. Defaults to current working directory
-  -u, --public          Create publicly <span class="token punctuation">(</span>default is private<span class="token punctuation">)</span>
-  -q, --quiet           Suppress printing information about the upload/download progress
-  -t, --keep-tabular    Do not convert tabular files to CSV <span class="token punctuation">(</span>default is to convert<span class="token punctuation">)</span>
-  -r <span class="token punctuation">&#123;</span>skip,zip,tar<span class="token punctuation">&#125;</span>, --dir-mode <span class="token punctuation">&#123;</span>skip,zip,tar<span class="token punctuation">&#125;</span>
-                        What to <span class="token keyword">do</span> with directories: <span class="token string">"skip"</span> - ignore<span class="token punctuation">;</span> <span class="token string">"zip"</span> - compressed upload<span class="token punctuation">;</span> <span class="token string">"tar"</span> - uncompressed upload<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        Folder for upload, containing data files and a special dataset-metadata.json file (https:&#x2F;&#x2F;github.com&#x2F;Kaggle&#x2F;kaggle-api&#x2F;wiki&#x2F;Dataset-Metadata). Defaults to current working directory
+  -u, --public          Create publicly (default is private)
+  -q, --quiet           Suppress printing information about the upload&#x2F;download progress
+  -t, --keep-tabular    Do not convert tabular files to CSV (default is to convert)
+  -r &#123;skip,zip,tar&#125;, --dir-mode &#123;skip,zip,tar&#125;
+                        What to do with directories: &quot;skip&quot; - ignore; &quot;zip&quot; - compressed upload; &quot;tar&quot; - uncompressed upload<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets create -p /path/to/dataset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets create -p &#x2F;path&#x2F;to&#x2F;dataset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-2-6-创建新的数据集版本"><a href="#2-2-6-创建新的数据集版本" class="headerlink" title="2.2.6 创建新的数据集版本"></a>2.2.6 创建新的数据集版本</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets version <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> -m VERSION_NOTES <span class="token punctuation">[</span>-p FOLDER<span class="token punctuation">]</span> <span class="token punctuation">[</span>-q<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t<span class="token punctuation">]</span>
-                               <span class="token punctuation">[</span>-r <span class="token punctuation">&#123;</span>skip,zip,tar<span class="token punctuation">&#125;</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-d<span class="token punctuation">]</span>
+<h5 id="2-2-6-创建新的数据集版本"><a href="#2-2-6-创建新的数据集版本" class="headerlink" title="2.2.6 创建新的数据集版本"></a>2.2.6 创建新的数据集版本</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets version [-h] -m VERSION_NOTES [-p FOLDER] [-q] [-t]
+                               [-r &#123;skip,zip,tar&#125;] [-d]
 
 required arguments:
   -m VERSION_NOTES, --message VERSION_NOTES
                         Message describing the new version
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -h, --help            show this help message and exit
   -p FOLDER, --path FOLDER
-                        Folder <span class="token keyword">for</span> upload, containing data files and a special dataset-metadata.json <span class="token function">file</span> <span class="token punctuation">(</span>https://github.com/Kaggle/kaggle-api/wiki/Dataset-Metadata<span class="token punctuation">)</span>. Defaults to current working directory
-  -q, --quiet           Suppress printing information about the upload/download progress
-  -t, --keep-tabular    Do not convert tabular files to CSV <span class="token punctuation">(</span>default is to convert<span class="token punctuation">)</span>
-  -r <span class="token punctuation">&#123;</span>skip,zip,tar<span class="token punctuation">&#125;</span>, --dir-mode <span class="token punctuation">&#123;</span>skip,zip,tar<span class="token punctuation">&#125;</span>
-                        What to <span class="token keyword">do</span> with directories: <span class="token string">"skip"</span> - ignore<span class="token punctuation">;</span> <span class="token string">"zip"</span> - compressed upload<span class="token punctuation">;</span> <span class="token string">"tar"</span> - uncompressed upload
+                        Folder for upload, containing data files and a special dataset-metadata.json file (https:&#x2F;&#x2F;github.com&#x2F;Kaggle&#x2F;kaggle-api&#x2F;wiki&#x2F;Dataset-Metadata). Defaults to current working directory
+  -q, --quiet           Suppress printing information about the upload&#x2F;download progress
+  -t, --keep-tabular    Do not convert tabular files to CSV (default is to convert)
+  -r &#123;skip,zip,tar&#125;, --dir-mode &#123;skip,zip,tar&#125;
+                        What to do with directories: &quot;skip&quot; - ignore; &quot;zip&quot; - compressed upload; &quot;tar&quot; - uncompressed upload
   -d, --delete-old-versions
                         Delete old versions of this dataset<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets version -p /path/to/dataset -m <span class="token string">"Updated data"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets version -p &#x2F;path&#x2F;to&#x2F;dataset -m &quot;Updated data&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-2-7-下载现有数据集的元数据"><a href="#2-2-7-下载现有数据集的元数据" class="headerlink" title="2.2.7 下载现有数据集的元数据"></a>2.2.7 下载现有数据集的元数据</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets metadata <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p <span class="token environment constant">PATH</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>dataset<span class="token punctuation">]</span>
-
-optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  dataset               Dataset URL suffix <span class="token keyword">in</span> <span class="token function">format</span> <span class="token operator">&lt;</span>owner<span class="token operator">></span>/<span class="token operator">&lt;</span>dataset-name<span class="token operator">></span> <span class="token punctuation">(</span>use <span class="token string">"kaggle datasets list"</span> to show options<span class="token punctuation">)</span>
-  -p <span class="token environment constant">PATH</span>, --path <span class="token environment constant">PATH</span>  Location to download dataset metadata to. Defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets metadata -p /path/to/download zillow/zecon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h5 id="2-2-8-取数据集创建状态"><a href="#2-2-8-取数据集创建状态" class="headerlink" title="2.2.8 取数据集创建状态"></a>2.2.8 取数据集创建状态</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets status <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>dataset<span class="token punctuation">]</span>
+<h5 id="2-2-7-下载现有数据集的元数据"><a href="#2-2-7-下载现有数据集的元数据" class="headerlink" title="2.2.7 下载现有数据集的元数据"></a>2.2.7 下载现有数据集的元数据</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets metadata [-h] [-p PATH] [dataset]
 
 optional arguments:
-  -h, --help  show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  dataset     Dataset URL suffix <span class="token keyword">in</span> <span class="token function">format</span> <span class="token operator">&lt;</span>owner<span class="token operator">></span>/<span class="token operator">&lt;</span>dataset-name<span class="token operator">></span> <span class="token punctuation">(</span>use <span class="token string">"kaggle datasets list"</span> to show options<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -h, --help            show this help message and exit
+  dataset               Dataset URL suffix in format &lt;owner&gt;&#x2F;&lt;dataset-name&gt; (use &quot;kaggle datasets list&quot; to show options)
+  -p PATH, --path PATH  Location to download dataset metadata to. Defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets status zillow/zecon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets metadata -p &#x2F;path&#x2F;to&#x2F;download zillow&#x2F;zecon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="2-2-8-取数据集创建状态"><a href="#2-2-8-取数据集创建状态" class="headerlink" title="2.2.8 取数据集创建状态"></a>2.2.8 取数据集创建状态</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle datasets status [-h] [dataset]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  dataset     Dataset URL suffix in format &lt;owner&gt;&#x2F;&lt;dataset-name&gt; (use &quot;kaggle datasets list&quot; to show options)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用实例：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle datasets status zillow&#x2F;zecon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -794,46 +823,46 @@ commands:
     output              Get data output from the latest kernel run
     status              Display the status of the latest kernel run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="2-3-1-列出内核"><a href="#2-3-1-列出内核" class="headerlink" title="2.3.1 列出内核"></a>2.3.1 列出内核</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels list <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-m<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PAGE<span class="token punctuation">]</span> <span class="token punctuation">[</span>--page-size PAGE_SIZE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s SEARCH<span class="token punctuation">]</span> <span class="token punctuation">[</span>-v<span class="token punctuation">]</span>
-                           <span class="token punctuation">[</span>--parent PARENT<span class="token punctuation">]</span> <span class="token punctuation">[</span>--competition COMPETITION<span class="token punctuation">]</span>
-                           <span class="token punctuation">[</span>--dataset DATASET<span class="token punctuation">]</span>
-                           <span class="token punctuation">[</span>--user <span class="token environment constant">USER</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>--language <span class="token environment constant">LANGUAGE</span><span class="token punctuation">]</span>
-                           <span class="token punctuation">[</span>--kernel-type KERNEL_TYPE<span class="token punctuation">]</span>
-                           <span class="token punctuation">[</span>--output-type OUTPUT_TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>--sort-by SORT_BY<span class="token punctuation">]</span>
+<h5 id="2-3-1-列出内核"><a href="#2-3-1-列出内核" class="headerlink" title="2.3.1 列出内核"></a>2.3.1 列出内核</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels list [-h] [-m] [-p PAGE] [--page-size PAGE_SIZE] [-s SEARCH] [-v]
+                           [--parent PARENT] [--competition COMPETITION]
+                           [--dataset DATASET]
+                           [--user USER] [--language LANGUAGE]
+                           [--kernel-type KERNEL_TYPE]
+                           [--output-type OUTPUT_TYPE] [--sort-by SORT_BY]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -h, --help            show this help message and exit
   -m, --mine            Display only my items
-  -p PAGE, --page PAGE  Page number <span class="token keyword">for</span> results paging. Page size is <span class="token number">20</span> by default
-  --page-size PAGE_SIZE Number of items to show on a page. Default size is <span class="token number">20</span>, max is <span class="token number">100</span>
+  -p PAGE, --page PAGE  Page number for results paging. Page size is 20 by default
+  --page-size PAGE_SIZE Number of items to show on a page. Default size is 20, max is 100
   -s SEARCH, --search SEARCH
-                        Term<span class="token punctuation">(</span>s<span class="token punctuation">)</span> to search <span class="token keyword">for</span>
-  -v, --csv             Print results <span class="token keyword">in</span> CSV <span class="token function">format</span> <span class="token punctuation">(</span>if not <span class="token builtin class-name">set</span> print <span class="token keyword">in</span> table <span class="token function">format</span><span class="token punctuation">)</span>
+                        Term(s) to search for
+  -v, --csv             Print results in CSV format (if not set print in table format)
   --parent PARENT       Find children of the specified parent kernel
   --competition COMPETITION
-                        Find kernels <span class="token keyword">for</span> a given competition
-  --dataset DATASET     Find kernels <span class="token keyword">for</span> a given dataset
-  --user <span class="token environment constant">USER</span>           Find kernels created by a given user
-  --language <span class="token environment constant">LANGUAGE</span>   Specify the language the kernel is written in. Default is <span class="token string">'all'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'all'</span>, <span class="token string">'python'</span>, <span class="token string">'r'</span>, <span class="token string">'sqlite'</span>, and <span class="token string">'julia'</span>
+                        Find kernels for a given competition
+  --dataset DATASET     Find kernels for a given dataset
+  --user USER           Find kernels created by a given user
+  --language LANGUAGE   Specify the language the kernel is written in. Default is &#39;all&#39;. Valid options are &#39;all&#39;, &#39;python&#39;, &#39;r&#39;, &#39;sqlite&#39;, and &#39;julia&#39;
   --kernel-type KERNEL_TYPE
-                        Specify the <span class="token builtin class-name">type</span> of kernel. Default is <span class="token string">'all'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'all'</span>, <span class="token string">'script'</span>, and <span class="token string">'notebook'</span>
+                        Specify the type of kernel. Default is &#39;all&#39;. Valid options are &#39;all&#39;, &#39;script&#39;, and &#39;notebook&#39;
   --output-type OUTPUT_TYPE
-                        Search <span class="token keyword">for</span> specific kernel output types. Default is <span class="token string">'all'</span><span class="token builtin class-name">.</span> Valid options are <span class="token string">'all'</span>, <span class="token string">'visualizations'</span>, and <span class="token string">'data'</span>
-  --sort-by SORT_BY     Sort list results. Default is <span class="token string">'hotness'</span><span class="token builtin class-name">.</span>  Valid options are <span class="token string">'hotness'</span>, <span class="token string">'commentCount'</span>, <span class="token string">'dateCreated'</span>, <span class="token string">'dateRun'</span>, <span class="token string">'relevance'</span>, <span class="token string">'scoreAscending'</span>, <span class="token string">'scoreDescending'</span>, <span class="token string">'viewCount'</span>, and <span class="token string">'voteCount'</span><span class="token builtin class-name">.</span> <span class="token string">'relevance'</span> is only applicable <span class="token keyword">if</span> a search term is specified.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        Search for specific kernel output types. Default is &#39;all&#39;. Valid options are &#39;all&#39;, &#39;visualizations&#39;, and &#39;data&#39;
+  --sort-by SORT_BY     Sort list results. Default is &#39;hotness&#39;.  Valid options are &#39;hotness&#39;, &#39;commentCount&#39;, &#39;dateCreated&#39;, &#39;dateRun&#39;, &#39;relevance&#39;, &#39;scoreAscending&#39;, &#39;scoreDescending&#39;, &#39;viewCount&#39;, and &#39;voteCount&#39;. &#39;relevance&#39; is only applicable if a search term is specified.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels list -s titanic
 kaggle kernels list --language python<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h5 id="2-3-2-为内核初始化元数据文件"><a href="#2-3-2-为内核初始化元数据文件" class="headerlink" title="2.3.2 为内核初始化元数据文件"></a>2.3.2 为内核初始化元数据文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels init <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p FOLDER<span class="token punctuation">]</span>
+<h5 id="2-3-2-为内核初始化元数据文件"><a href="#2-3-2-为内核初始化元数据文件" class="headerlink" title="2.3.2 为内核初始化元数据文件"></a>2.3.2 为内核初始化元数据文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels init [-h] [-p FOLDER]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -h, --help            show this help message and exit
   -p FOLDER, --path FOLDER
-                        Folder <span class="token keyword">for</span> upload, containing data files and a special kernel-metadata.json <span class="token function">file</span> <span class="token punctuation">(</span>https://github.com/Kaggle/kaggle-api/wiki/Kernel-Metadata<span class="token punctuation">)</span>. Defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        Folder for upload, containing data files and a special kernel-metadata.json file (https:&#x2F;&#x2F;github.com&#x2F;Kaggle&#x2F;kaggle-api&#x2F;wiki&#x2F;Kernel-Metadata). Defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels init -p /path/to/kernel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels init -p &#x2F;path&#x2F;to&#x2F;kernel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h5 id="2-3-3-推送内核"><a href="#2-3-3-推送内核" class="headerlink" title="2.3.3 推送内核"></a>2.3.3 推送内核</h5><pre class="line-numbers language-none"><code class="language-none">usage: kaggle kernels push [-h] -p FOLDER
 
@@ -843,95 +872,95 @@ optional arguments:
                         Folder for upload, containing data files and a special kernel-metadata.json file (https:&#x2F;&#x2F;github.com&#x2F;Kaggle&#x2F;kaggle-api&#x2F;wiki&#x2F;Kernel-Metadata). Defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels push -p /path/to/kernel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels push -p &#x2F;path&#x2F;to&#x2F;kernel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-3-4-拉一个内核"><a href="#2-3-4-拉一个内核" class="headerlink" title="2.3.4 拉一个内核"></a>2.3.4 拉一个内核</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels pull <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p <span class="token environment constant">PATH</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-w<span class="token punctuation">]</span> <span class="token punctuation">[</span>-m<span class="token punctuation">]</span> <span class="token punctuation">[</span>kernel<span class="token punctuation">]</span>
+<h5 id="2-3-4-拉一个内核"><a href="#2-3-4-拉一个内核" class="headerlink" title="2.3.4 拉一个内核"></a>2.3.4 拉一个内核</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels pull [-h] [-p PATH] [-w] [-m] [kernel]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  kernel                Kernel URL suffix <span class="token keyword">in</span> <span class="token function">format</span> <span class="token operator">&lt;</span>owner<span class="token operator">></span>/<span class="token operator">&lt;</span>kernel-name<span class="token operator">></span> <span class="token punctuation">(</span>use <span class="token string">"kaggle kernels list"</span> to show options<span class="token punctuation">)</span>
-  -p <span class="token environment constant">PATH</span>, --path <span class="token environment constant">PATH</span>  Folder where file<span class="token punctuation">(</span>s<span class="token punctuation">)</span> will be downloaded, defaults to current working directory
+  -h, --help            show this help message and exit
+  kernel                Kernel URL suffix in format &lt;owner&gt;&#x2F;&lt;kernel-name&gt; (use &quot;kaggle kernels list&quot; to show options)
+  -p PATH, --path PATH  Folder where file(s) will be downloaded, defaults to current working directory
   -w, --wp              Download files to current working path
   -m, --metadata        Generate metadata when pulling kernel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels pull rtatman/list-of-5-day-challenges -p /path/to/dest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels pull rtatman&#x2F;list-of-5-day-challenges -p &#x2F;path&#x2F;to&#x2F;dest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-3-5-检索内核的输出"><a href="#2-3-5-检索内核的输出" class="headerlink" title="2.3.5 检索内核的输出"></a>2.3.5 检索内核的输出</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels output <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p <span class="token environment constant">PATH</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-w<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o<span class="token punctuation">]</span> <span class="token punctuation">[</span>-q<span class="token punctuation">]</span> <span class="token punctuation">[</span>kernel<span class="token punctuation">]</span>
+<h5 id="2-3-5-检索内核的输出"><a href="#2-3-5-检索内核的输出" class="headerlink" title="2.3.5 检索内核的输出"></a>2.3.5 检索内核的输出</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels output [-h] [-p PATH] [-w] [-o] [-q] [kernel]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  kernel                Kernel URL suffix <span class="token keyword">in</span> <span class="token function">format</span> <span class="token operator">&lt;</span>owner<span class="token operator">></span>/<span class="token operator">&lt;</span>kernel-name<span class="token operator">></span> <span class="token punctuation">(</span>use <span class="token string">"kaggle kernels list"</span> to show options<span class="token punctuation">)</span>
-  -p <span class="token environment constant">PATH</span>, --path <span class="token environment constant">PATH</span>  Folder where file<span class="token punctuation">(</span>s<span class="token punctuation">)</span> will be downloaded, defaults to current working directory
+  -h, --help            show this help message and exit
+  kernel                Kernel URL suffix in format &lt;owner&gt;&#x2F;&lt;kernel-name&gt; (use &quot;kaggle kernels list&quot; to show options)
+  -p PATH, --path PATH  Folder where file(s) will be downloaded, defaults to current working directory
   -w, --wp              Download files to current working path
-  -o, --force           Skip check whether <span class="token builtin class-name">local</span> version of <span class="token function">file</span> is up to date, force <span class="token function">file</span> download
-  -q, --quiet           Suppress printing information about the upload/download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -o, --force           Skip check whether local version of file is up to date, force file download
+  -q, --quiet           Suppress printing information about the upload&#x2F;download progress<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels output mrisdal/exploring-survival-on-the-titanic -p /path/to/dest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels output mrisdal&#x2F;exploring-survival-on-the-titanic -p &#x2F;path&#x2F;to&#x2F;dest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-4-6-获取最新内核运行的状态"><a href="#2-4-6-获取最新内核运行的状态" class="headerlink" title="2.4.6 获取最新内核运行的状态"></a>2.4.6 获取最新内核运行的状态</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels status <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>kernel<span class="token punctuation">]</span>
+<h5 id="2-4-6-获取最新内核运行的状态"><a href="#2-4-6-获取最新内核运行的状态" class="headerlink" title="2.4.6 获取最新内核运行的状态"></a>2.4.6 获取最新内核运行的状态</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle kernels status [-h] [kernel]
 
 optional arguments:
-  -h, --help  show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  kernel      Kernel URL suffix <span class="token keyword">in</span> <span class="token function">format</span> <span class="token operator">&lt;</span>owner<span class="token operator">></span>/<span class="token operator">&lt;</span>kernel-name<span class="token operator">></span> <span class="token punctuation">(</span>use <span class="token string">"kaggle kernels list"</span> to show options<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -h, --help  show this help message and exit
+  kernel      Kernel URL suffix in format &lt;owner&gt;&#x2F;&lt;kernel-name&gt; (use &quot;kaggle kernels list&quot; to show options)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels status mrisdal/exploring-survival-on-the-titanic<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle kernels status mrisdal&#x2F;exploring-survival-on-the-titanic<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
 <h4 id="2-4-Config配置"><a href="#2-4-Config配置" class="headerlink" title="2.4 Config配置"></a>2.4 Config配置</h4><p>API 支持以下命令进行配置。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">&#123;</span>view,set,unset<span class="token punctuation">&#125;</span> <span class="token punctuation">..</span>.
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config [-h] &#123;view,set,unset&#125; ...
 
 optional arguments:
-  -h, --help        show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -h, --help        show this help message and exit
 
 commands:
-  <span class="token punctuation">&#123;</span>view,set,unset<span class="token punctuation">&#125;</span>
+  &#123;view,set,unset&#125;
     view            View current config values
-    <span class="token builtin class-name">set</span>             Set a configuration value
-    <span class="token builtin class-name">unset</span>           Clear a configuration value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    set             Set a configuration value
+    unset           Clear a configuration value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="2-4-1-查看当前配置值"><a href="#2-4-1-查看当前配置值" class="headerlink" title="2.4.1 查看当前配置值"></a>2.4.1 查看当前配置值</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config path <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p <span class="token environment constant">PATH</span><span class="token punctuation">]</span>
+<h5 id="2-4-1-查看当前配置值"><a href="#2-4-1-查看当前配置值" class="headerlink" title="2.4.1 查看当前配置值"></a>2.4.1 查看当前配置值</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config path [-h] [-p PATH]
 
 optional arguments:
-  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-  -p <span class="token environment constant">PATH</span>, --path <span class="token environment constant">PATH</span>  folder where file<span class="token punctuation">(</span>s<span class="token punctuation">)</span> will be downloaded, defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  -h, --help            show this help message and exit
+  -p PATH, --path PATH  folder where file(s) will be downloaded, defaults to current working directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle config path -p C:<span class="token punctuation">\</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle config path -p C:\<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-4-2-查看当前配置值"><a href="#2-4-2-查看当前配置值" class="headerlink" title="2.4.2 查看当前配置值"></a>2.4.2 查看当前配置值</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config view <span class="token punctuation">[</span>-h<span class="token punctuation">]</span>
+<h5 id="2-4-2-查看当前配置值"><a href="#2-4-2-查看当前配置值" class="headerlink" title="2.4.2 查看当前配置值"></a>2.4.2 查看当前配置值</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config view [-h]
 
 optional arguments:
-  -h, --help  show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+  -h, --help  show this help message and exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle config view<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-4-3-设置配置值"><a href="#2-4-3-设置配置值" class="headerlink" title="2.4.3 设置配置值"></a>2.4.3 设置配置值</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config <span class="token builtin class-name">set</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> -n NAME -v VALUE
+<h5 id="2-4-3-设置配置值"><a href="#2-4-3-设置配置值" class="headerlink" title="2.4.3 设置配置值"></a>2.4.3 设置配置值</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config set [-h] -n NAME -v VALUE
 
 required arguments:
   -n NAME, --name NAME  Name of the configuration parameter
-                        <span class="token punctuation">(</span>one of competition, path, proxy<span class="token punctuation">)</span>
+                        (one of competition, path, proxy)
   -v VALUE, --value VALUE
                         Value of the configuration parameter, valid values depending on name
-                        - competition: Competition URL suffix <span class="token punctuation">(</span>use <span class="token string">"kaggle competitions list"</span> to show options<span class="token punctuation">)</span>
-                        - path: Folder where file<span class="token punctuation">(</span>s<span class="token punctuation">)</span> will be downloaded, defaults to current working directory
-                        - proxy: Proxy <span class="token keyword">for</span> HTTP requests<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        - competition: Competition URL suffix (use &quot;kaggle competitions list&quot; to show options)
+                        - path: Folder where file(s) will be downloaded, defaults to current working directory
+                        - proxy: Proxy for HTTP requests<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle config <span class="token builtin class-name">set</span> -n competition -v titanic<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle config set -n competition -v titanic<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="2-4-4-清除配置值"><a href="#2-4-4-清除配置值" class="headerlink" title="2.4.4 清除配置值"></a>2.4.4 清除配置值</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config <span class="token builtin class-name">unset</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> -n NAME
+<h5 id="2-4-4-清除配置值"><a href="#2-4-4-清除配置值" class="headerlink" title="2.4.4 清除配置值"></a>2.4.4 清除配置值</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">usage: kaggle config unset [-h] -n NAME
 
 required arguments:
   -n NAME, --name NAME  Name of the configuration parameter
-                        <span class="token punctuation">(</span>one of competition, path, proxy<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        (one of competition, path, proxy)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用实例：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle config <span class="token builtin class-name">unset</span> -n competition<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kaggle config unset -n competition<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -1196,8 +1225,12 @@ required arguments:
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LinXu
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    算法模型
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1241,8 +1274,12 @@ required arguments:
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LinXu
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    算法模型
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1453,6 +1490,9 @@ required arguments:
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">49.5k</span>
             
             
             

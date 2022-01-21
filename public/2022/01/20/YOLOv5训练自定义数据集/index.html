@@ -440,6 +440,15 @@ git">
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                算法模型
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -452,12 +461,32 @@ git">
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-01-21
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.2k
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -519,17 +548,17 @@ pip install -r requirements.txt<span aria-hidden="true" class="line-numbers-rows
 <li>框坐标必须采用<strong>标准化 xywh</strong>格式（从 0 - 1）。如果您的箱子以像素为单位，划分<code>x_center</code>并<code>width</code>通过图像宽度，<code>y_center</code>并<code>height</code>通过图像高度。</li>
 <li>类号是零索引的（从 0 开始）。</li>
 </ul>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105201993-1410184774.png"></p>
+<p><img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923105201993-1410184774.png"></p>
 <p>上图对应的标签文件包含2个人（class 0）和一条领带（class 27）：</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105227621-579287813.png"></p>
+<p><img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923105227621-579287813.png"></p>
 <h4 id="2-3-整理目录"><a href="#2-3-整理目录" class="headerlink" title="2.3 整理目录"></a>2.3 整理目录</h4><p>根据以下示例组织您的训练和验证图像和标签。YOLOv5 假设 <code>/coco128</code>在<code>/datasets</code>目录<strong>旁边</strong>的<code>/yolov5</code>目录中。<strong>YOLOv5</strong>通过将<code>/images/</code>每个图像路径中的最后一个实例替换为<code>/labels/</code>. 例如：</p>
 <pre class="line-numbers language-file" data-language="file"><code class="language-file">..&#x2F;datasets&#x2F;coco128&#x2F;images&#x2F;im0.jpg   #图像
 ..&#x2F;datasets&#x2F;coco128&#x2F;labels&#x2F;im0.txt   #标签<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>文件结构，如下图所示：</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105345948-636890929.png"></p>
+<p><img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923105345948-636890929.png"></p>
 <h4 id="2-4-选择模型型号"><a href="#2-4-选择模型型号" class="headerlink" title="2.4 选择模型型号"></a>2.4 选择模型型号</h4><p>选择一个预训练模型开始训练。这里我们选择<a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5/blob/master/models/yolov5s.yaml">YOLOv5s</a>，这是可用的最小和最快的模型。有关所有模型的完整比较，请参阅 README<a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5#pretrained-checkpoints">表</a>。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105602866-1013468094.png"></p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105615221-285667046.png"></p>
+<p><img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923105602866-1013468094.png"></p>
+<p><img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923105615221-285667046.png"></p>
 <h4 id="2-5-train训练"><a href="#2-5-train训练" class="headerlink" title="2.5 train训练"></a>2.5 train训练</h4><p>通过指定数据集、批量大小、图像大小以及预训练<code>--weights yolov5s.pt</code>（推荐）或随机初始化<code>--weights &#39;&#39; --cfg yolov5s.yaml</code>（不推荐），在 COCO128 上训练 YOLOv5s 模型。预训练权重是从<a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5/releases">最新的 YOLOv5 版本</a>自动下载的。</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 在COCO128 上训练
 YOLOv5s 3 epochs $ python train.py --img 640 --batch 16 --epochs 3 --data coco128.yaml --weights yolov5s.pt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -541,24 +570,24 @@ YOLOv5s 3 epochs $ python train.py --img 640 --batch 16 --epochs 3 --data coco12
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip install wandb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在训练过程期间，你将在<a target="_blank" rel="noopener" href="https://wandb.ai/site?utm_campaign=repo_yolo_traintutorial">https://wandb.ai</a>看到实时更新，并且您可以使用 W&amp;B 报告工具创建结果的<a target="_blank" rel="noopener" href="https://wandb.ai/glenn-jocher/yolov5_tutorial/reports/YOLOv5-COCO128-Tutorial-Results--VmlldzozMDI5OTY">详细报告</a>。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923114832118-72834769.png"></p>
+<p><img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923114832118-72834769.png"></p>
 <h3 id="四、本地日志"><a href="#四、本地日志" class="headerlink" title="四、本地日志"></a>四、本地日志</h3><p>所有的结果都在默认情况下记录<code>runs/train</code>，为每个新的培训作为创建一个新的实验目录<code>runs/train/exp2</code>，<code>runs/train/exp3</code>等查看火车和Val JPG文件看马赛克，标签，预测和增强效果。请注意，使用 Ultralytics <strong>Mosaic Dataloader</strong>进行训练（如下所示），它在训练期间将 4 个图像组合成 1 个马赛克。</p>
 <p><code>train_batch0.jpg</code> 显示训练批次 0 马赛克和标签：</p>
 <blockquote>
-<p>  <img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923115145262-1608192963.png"></p>
+<p>  <img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923115145262-1608192963.png"></p>
 </blockquote>
 <p><code>val_batch0_labels.jpg</code> 显示 val 批次 0 标签：</p>
 <blockquote>
-<p> <img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923115245233-2135381433.png"></p>
+<p> <img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923115245233-2135381433.png"></p>
 </blockquote>
 <p><code>val_batch0_pred.jpg</code>显示 val 批次 0<em>预测</em>：</p>
 <blockquote>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923115356355-1086532063.png"></p>
+<p><img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923115356355-1086532063.png"></p>
 </blockquote>
 <p>训练结果自动记录到<a target="_blank" rel="noopener" href="https://www.tensorflow.org/tensorboard">Tensorboard</a>和<a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5/pull/4148">CSV</a>中<code>results.csv</code>，<code>results.png</code>训练完成后绘制为（下图）。您还可以<code>results.csv</code>手动绘制任何文件：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">from utils.plots import plot_results 
 plot_results(&#39;path&#x2F;to&#x2F;results.csv&#39;)  # plot &#39;results.csv&#39; as &#39;results.png&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923115501205-136492916.png"></p>
+<p><img src="/2022/01/20/YOLOv5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86/1571518-20210923115501205-136492916.png"></p>
 
                 
             </div>
@@ -575,7 +604,7 @@ plot_results(&#39;path&#x2F;to&#x2F;results.csv&#39;)  # plot &#39;results.csv&#
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">LinXu</a>
+                    <a href="/about" rel="external nofollow noreferrer">赵奇</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -598,7 +627,7 @@ plot_results(&#39;path&#x2F;to&#x2F;results.csv&#39;)  # plot &#39;results.csv&#
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">LinXu</a>
+                    <a href="/about" target="_blank">赵奇</a>
                     !
                 </span>
             </div>
@@ -823,8 +852,12 @@ plot_results(&#39;path&#x2F;to&#x2F;results.csv&#39;)  # plot &#39;results.csv&#
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LinXu
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" class="post-category">
+                                    算法竞赛
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -868,8 +901,12 @@ plot_results(&#39;path&#x2F;to&#x2F;results.csv&#39;)  # plot &#39;results.csv&#
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LinXu
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    算法模型
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1080,6 +1117,9 @@ plot_results(&#39;path&#x2F;to&#x2F;results.csv&#39;)  # plot &#39;results.csv&#
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">49.5k</span>
             
             
             

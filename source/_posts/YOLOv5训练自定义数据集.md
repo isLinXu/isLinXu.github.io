@@ -1,7 +1,9 @@
 ---
 title: YOLOv5训练自定义数据集
 date: 2022-01-20 23:24:03
+author: 赵奇
 tags: 炼丹术
+categories: 算法模型
 ---
 
 ## YOLOv5训练自定义数据
@@ -61,11 +63,11 @@ names: [ 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', '
 - 框坐标必须采用**标准化 xywh**格式（从 0 - 1）。如果您的箱子以像素为单位，划分`x_center`并`width`通过图像宽度，`y_center`并`height`通过图像高度。
 - 类号是零索引的（从 0 开始）。
 
-![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105201993-1410184774.png)
+![](YOLOv5训练自定义数据集/1571518-20210923105201993-1410184774.png)
 
 上图对应的标签文件包含2个人（class 0）和一条领带（class 27）：
 
-![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105227621-579287813.png)
+![](YOLOv5训练自定义数据集/1571518-20210923105227621-579287813.png)
 
 #### 2.3 整理目录
 
@@ -77,15 +79,15 @@ names: [ 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', '
 ```
 文件结构，如下图所示：
 
-![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105345948-636890929.png)
+![](YOLOv5训练自定义数据集/1571518-20210923105345948-636890929.png)
 
 #### 2.4 选择模型型号
 
 选择一个预训练模型开始训练。这里我们选择[YOLOv5s](https://github.com/ultralytics/yolov5/blob/master/models/yolov5s.yaml)，这是可用的最小和最快的模型。有关所有模型的完整比较，请参阅 README[表](https://github.com/ultralytics/yolov5#pretrained-checkpoints)。
 
-![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105602866-1013468094.png)
+![](YOLOv5训练自定义数据集/1571518-20210923105602866-1013468094.png)
 
-![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923105615221-285667046.png)
+![](YOLOv5训练自定义数据集/1571518-20210923105615221-285667046.png)
 
 
 
@@ -118,7 +120,7 @@ pip install wandb
 
 在训练过程期间，你将在[https://wandb.ai](https://wandb.ai/site?utm_campaign=repo_yolo_traintutorial)看到实时更新，并且您可以使用 W&B 报告工具创建结果的[详细报告](https://wandb.ai/glenn-jocher/yolov5_tutorial/reports/YOLOv5-COCO128-Tutorial-Results--VmlldzozMDI5OTY)。
 
-![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923114832118-72834769.png)
+![](YOLOv5训练自定义数据集/1571518-20210923114832118-72834769.png)
 
 
 
@@ -128,15 +130,15 @@ pip install wandb
 
 `train_batch0.jpg` 显示训练批次 0 马赛克和标签：
 
->   ![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923115145262-1608192963.png)
+>   ![](YOLOv5训练自定义数据集/1571518-20210923115145262-1608192963.png)
 
 `val_batch0_labels.jpg` 显示 val 批次 0 标签：
 
->  ![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923115245233-2135381433.png)
+>  ![](YOLOv5训练自定义数据集/1571518-20210923115245233-2135381433.png)
 
 `val_batch0_pred.jpg`显示 val 批次 0*预测*：
 
-> ![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923115356355-1086532063.png)
+> ![](YOLOv5训练自定义数据集/1571518-20210923115356355-1086532063.png)
 
 训练结果自动记录到[Tensorboard](https://www.tensorflow.org/tensorboard)和[CSV](https://github.com/ultralytics/yolov5/pull/4148)中`results.csv`，`results.png`训练完成后绘制为（下图）。您还可以`results.csv`手动绘制任何文件：
 
@@ -144,4 +146,4 @@ pip install wandb
 from utils.plots import plot_results 
 plot_results('path/to/results.csv')  # plot 'results.csv' as 'results.png'
 ```
-![](https://img2020.cnblogs.com/blog/1571518/202109/1571518-20210923115501205-136492916.png)
+![](YOLOv5训练自定义数据集/1571518-20210923115501205-136492916.png)

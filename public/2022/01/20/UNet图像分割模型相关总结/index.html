@@ -439,6 +439,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                算法模型
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -451,12 +460,32 @@
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-01-21
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.9k
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    7 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -471,7 +500,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="UNet图像分割模型相关总结"><a href="#UNet图像分割模型相关总结" class="headerlink" title="UNet图像分割模型相关总结"></a>UNet图像分割模型相关总结</h2><h3 id="1-制作图像分割数据集"><a href="#1-制作图像分割数据集" class="headerlink" title="1.制作图像分割数据集"></a>1.制作图像分割数据集</h3><h4 id="1-1使用labelme进行标注"><a href="#1-1使用labelme进行标注" class="headerlink" title="1.1使用labelme进行标注"></a>1.1使用labelme进行标注</h4><p>(注：labelme与labelImg类似，都属于对图像数据集进行标注的软件。但不同的是，labelme更关心对象的边缘和轮廓细节，也即通过生成和训练图像对应的mask来实现图像分割的目的。这里的分割一般使用的是闭合多边形折线来进行标注，每张图片标注完成后，按下Ctrl+S来进行保存，此时存储的文件是与图片同名的.json格式文件。)</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210825112850305-60822427.png"></p>
+<p><img src="/2022/01/20/UNet%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/1571518-20210827152523534-1020421557.png"></p>
 <p>我们要得到的结果是mask，保存生成的.json文件还需要通过转换得到对应的mask图像。<br>(这里的转换有两种方式，一种是找到当前python环境下的labelme_json_to_dataset.py进行修改，二是直接在命令行中调用对应的接口labelme_json_to_dataset {file}生成mask，由于单命令行直接执行一个文件的生成，因此这里考虑编写对应的脚本，对当前目录下的.json进行批量处理。)</p>
 <h4 id="1-2生成mask文件"><a href="#1-2生成mask文件" class="headerlink" title="1.2生成mask文件"></a>1.2生成mask文件</h4><p>使用第二种方式，步骤如下：<br>1.新建.sh脚本文件</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">touch json2mask.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -493,7 +522,7 @@ do
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">bash json2mask.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>对.json文件进行转换生成之后，会得到对应名称的文件夹<br>如图所示</p>
-<img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827152523534-1020421557.png" style="zoom: 80%;" />
+<img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827152523534-1020421557.png">
 
 <p>查看文件夹，发现存在四个文件：<br><img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827152649325-1279716410.png"></p>
 <p>分别为以下：</p>
@@ -950,8 +979,12 @@ cv2<span class="token punctuation">.</span>imshow<span class="token punctuation"
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LinXu
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    算法模型
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -995,8 +1028,12 @@ cv2<span class="token punctuation">.</span>imshow<span class="token punctuation"
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LinXu
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    算法模型
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1207,6 +1244,9 @@ cv2<span class="token punctuation">.</span>imshow<span class="token punctuation"
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">49.5k</span>
             
             
             
