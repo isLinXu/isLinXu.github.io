@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Kaggle介绍</title>
+      <link href="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/"/>
+      <url>/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Kaggle竞赛介绍"><a href="#Kaggle竞赛介绍" class="headerlink" title="Kaggle竞赛介绍"></a>Kaggle竞赛介绍</h1><p><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123153721692-2108218298.jpg"></p><hr><h2 id="Kaggle简介"><a href="#Kaggle简介" class="headerlink" title="Kaggle简介"></a>Kaggle简介</h2><p><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123153835837-1513570413.jpg"></p><p>如果Github相当于是软件项目和工程的国际开源代码平台，<br>那么Kaggle就等同于是针对数据科学相关的国际集智与比赛平台。<br>一些大厂和研究机构等面临一些难题的时候，就会以类似的比赛形式众包出去发布在Kaggle。<br>用户会以个人或组队team的方式进行解决方案的挑战。</p><p>对于数据科学和人工智能平台，国内有阿里背书的TIANCHI天池竞赛、与CCF等合作的Datafountain以及DC竞赛、kesci等。<br>但从影响力和受众人群等方面来看，Kaggle面向全球且用户分布广泛众多，Kaggle作为一个比赛社区、比赛平台与国内的一些平台比赛有其独特的优势。</p><p><strong>推荐使用！Kaggle的几个理由</strong>：</p><ul><li>1.数据量和使用用户广泛</li><li>2.影响力大=&gt;拿奖项的含金量高，认可度高</li><li>3.数据集和解决方案多，有庞大的交流社区</li></ul><h3 id="Kaggle的几种常见赛题："><a href="#Kaggle的几种常见赛题：" class="headerlink" title="Kaggle的几种常见赛题："></a>Kaggle的几种常见赛题：</h3><p><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154730841-948366610.png"></p><ul><li><p><strong>01.Featured</strong></p><p>商业或科研难题，奖金一般较为丰厚<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154849556-936947805.png"></p></li><li><p><strong>02.Analytics</strong><br>主要针对数据分析与数据挖掘等任务<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123155153772-1877653863.png"></p></li><li><p><strong>03.Research</strong><br>科研和学术性较强的比赛，一般需要较强的领域和专业知识<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154935824-971773830.png"></p></li><li><p><strong>04.PlayGround</strong><br>提供一些简单的任务用于熟悉平台和比赛<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123155100269-1856444684.png"></p></li><li><p><strong>05.Getting Started</strong><br>提供一些简单的任务用于熟悉平台和必死爱<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123155039074-812900123.png"></p></li><li><p><strong>06.Community</strong><br>适用于任何人都可以举办的社区比赛<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123155534851-1784812919.png"></p></li></ul><p>核心的打比赛主要是前三种：Featured、Recruitment、Research.</p><p>从难度上来看的排序是这样的：06&lt;05&lt;04&lt;02&lt;01=03</p><h3 id="赛题分类2：根据比赛的提交方式进行分类"><a href="#赛题分类2：根据比赛的提交方式进行分类" class="headerlink" title="赛题分类2：根据比赛的提交方式进行分类"></a>赛题分类2：根据比赛的提交方式进行分类</h3><ul><li><p><strong>在线提交比赛</strong><br>多数比赛为避免人工打标或作弊的情况，为保证公平性，以在线提交方式为主。<br>一般以Notebook的方式进行提交，测试集对于参赛者是不可见的。<br>提交之后以评估分数进行排名分为A榜、B榜，<br>其中A榜是带有验证测试性质的，是支持实时更新的，可能会存在过拟合的情况。<br>一般最终结果为B榜为主，<br>但也会按一定比例参考A榜的数值进行最终成绩的统计。</p></li><li><p><strong>离线提交比赛</strong><br>离线给出数据集的相关预测和比赛评估参数，一般以CSV文件进行上传提交。</p></li></ul><h3 id="赛题分类3：根据比赛的任务进行分类"><a href="#赛题分类3：根据比赛的任务进行分类" class="headerlink" title="赛题分类3：根据比赛的任务进行分类"></a>赛题分类3：根据比赛的任务进行分类</h3><ul><li><strong>数据挖掘</strong><br>对于结构化的数据进行算法挖掘与信息提取</li><li>** 图像相关**：计算机视觉领域相关任务<br>例如图像分类、目标定位、目标检测、图像分割、实例分割等</li><li><strong>语音相关</strong>：语音信号处理相关<br>例如语音识别、声纹识别等</li><li><strong>自然语言</strong><br>自然语言处理、自然语言理解、自然语言分析等</li></ul><h3 id="称号和奖牌"><a href="#称号和奖牌" class="headerlink" title="称号和奖牌"></a>称号和奖牌</h3><p>在打比赛的过程当中，如果能够排上榜单，就会得到相应的奖牌和称号：<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154525174-1495667619.png"></p><p>其中奖牌分为：金牌、银牌、铜牌<br>而称号则按照经验值和积分等，依次排为：<br>User =&gt; Nov =&gt; Con =&gt; EX =&gt; M =&gt; GM</p><h3 id="初学者怎么用Kaggle"><a href="#初学者怎么用Kaggle" class="headerlink" title="初学者怎么用Kaggle"></a>初学者怎么用Kaggle</h3><ul><li><strong>Overview</strong>: 比赛方对这次比赛整体概况的介绍，主要需要解决什么样的问题以及难点是什么，<br>并且说明比赛的评估方式和提交的时间节点等信息。<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123153932008-2018434341.png"></li></ul><ul><li><p><strong>Data</strong>: 对数据进行基本的介绍，提供数据预览和下载的地址<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154015229-665276875.png"></p></li><li><p><strong>Code</strong>: 参赛者在比赛中开源分享出来的代码,一般以Notebook为主<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154221007-1071251655.png"></p></li><li><p><strong>Discussion</strong>：讨论交流社区<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154258677-989243007.png"></p></li><li><p><strong>Leaderboard</strong>: 排行榜：A榜|B榜<br>A榜表现!=B榜表现<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154331167-990290117.png"></p></li><li><p><strong>Rules</strong>: 比赛相关细则<br><img src="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/1571518-20220123154352118-587651214.png"></p></li><li><p><strong>Team</strong>: 参赛队伍</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法竞赛 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Kaggle </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>EfficientDet训练模型总结</title>
       <link href="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/"/>
       <url>/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/</url>

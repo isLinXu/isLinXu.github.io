@@ -119,3 +119,9 @@ permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
 
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    # src: custom_mathjax_source
+    config:
+      # MathJax config

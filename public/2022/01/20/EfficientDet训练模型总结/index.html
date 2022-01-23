@@ -31,7 +31,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -307,10 +309,23 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/33.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -1057,18 +1072,17 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/01/20/EfficientDet%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%80%BB%E7%BB%93/">
+                <a href="/2022/01/23/Kaggle%E4%BB%8B%E7%BB%8D/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="EfficientDet训练模型总结">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Kaggle介绍">
                         
-                        <span class="card-title">EfficientDet训练模型总结</span>
+                        <span class="card-title">Kaggle介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1078,27 +1092,26 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B/" class="post-category">
-                                    算法模型
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" class="post-category">
+                                    算法竞赛
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%82%BC%E4%B8%B9%E6%9C%AF/">
-                        <span class="chip bg-color">炼丹术</span>
+                    <a href="/tags/Kaggle/">
+                        <span class="chip bg-color">Kaggle</span>
                     </a>
                     
                 </div>
@@ -1116,7 +1129,7 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="通过kaggle-api下载数据集">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="通过kaggle-api下载数据集">
                         
                         <span class="card-title">通过kaggle-api下载数据集</span>
                     </div>
@@ -1351,7 +1364,7 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.5k</span>
+                        class="white-color">50.5k</span>
             
             
             
@@ -1389,7 +1402,15 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
 
 
 
+    <a href="https://www.facebook.com/xxx" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: https://www.facebook.com/xxx" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
 
+
+
+    <a href="https://twitter.com/xxx" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/xxx" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
 
 
 
@@ -1399,7 +1420,15 @@ put weights here &#x2F;path&#x2F;to&#x2F;your&#x2F;weights&#x2F;*.pth<span aria-
 
 
 
+    <a href="https://weibo.com/xxx" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/xxx" data-position="top" data-delay="50">
+        <i class="fab fa-weibo"></i>
+    </a>
 
+
+
+    <a href="https://www.zhihu.com/xxx" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/xxx" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
 
 
 

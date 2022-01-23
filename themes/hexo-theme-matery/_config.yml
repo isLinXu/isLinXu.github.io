@@ -109,8 +109,8 @@ video:
   thumbnails:
   height: # 如：400
   autoplay: false # 是否自动播放
-  theme: '#42b983'
-  loop: false # 是否循环播放
+  theme: '#00ff99' # 00ff99 #42b983(src)
+  loop: true # 是否循环播放
   preload: 'auto' # 预加载，可选值: 'none', 'metadata', 'auto'
   volume: 0.7
 
@@ -142,11 +142,11 @@ indexbtn:
 socialLink:
   github:  https://github.com/isLinXu
   email: 17746071609@163.com
-  facebook: # https://www.facebook.com/xxx
-  twitter: # https://twitter.com/xxx
+  facebook: https://www.facebook.com/xxx
+  twitter: https://twitter.com/xxx
   qq: 2267379130
-  weibo: # https://weibo.com/xxx
-  zhihu: # https://www.zhihu.com/xxx
+  weibo: https://weibo.com/xxx
+  zhihu: https://www.zhihu.com/xxx
   rss: true # true、false
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
@@ -186,8 +186,10 @@ copyright:
 # you also need to add `mathjax: true` to the Front-matter of the post that needs to be rendered.
 # 是否激活mathjax数学公式，这是全局配置，但文章仍然不会都开启mathjax渲染，
 # 考虑到mathjax加载比较耗时，你还需要在需要渲染的文章的Front-matter中再加上`mathjax: true`才行.
+# MathJax Support
 mathjax:
-  enable: false
+  enable: true
+  per_page: false
   cdn: https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 # Post word count, reading duration, site total word count.
@@ -291,9 +293,12 @@ mySkills:
 myGallery:
   enable: true
   data:
-    - /medias/featureimages/0.jpg
-    - /medias/featureimages/1.jpg
-    - /medias/featureimages/2.jpg
+    - /medias/featureimages/pic1.jpg
+    - /medias/featureimages/pic2.jpg
+    - /medias/featureimages/pic3.jpg
+    - /medias/featureimages/pic4.jpg
+    - /medias/featureimages/pic5.jpg
+    - /medias/featureimages/pic6.jpg
 
 # Whether to display post-calender in the `archive` page
 # 设置在归档页面中是否显示'文章日历'控件
@@ -418,7 +423,7 @@ twikoo:
 # 阅读文章的密码验证功能，如要使用此功能请激活该配置项，并在对应文章的Front-matter中写上'password'的键和加密后的密文即可.
 # 请注意：为了保证密码原文不会被泄露到网页中，文章的密码必须是通过'SHA256'加密的，这样就不会被破解.
 verifyPassword:
-  enable: false
+  enable: true
   promptMessage: 请输入访问本文章的密码
   errorMessage: 密码错误，将返回主页！
 
@@ -509,7 +514,6 @@ libs:
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages:
-- /medias/featureimages/0.jpg
 - /medias/featureimages/1.jpg
 - /medias/featureimages/2.jpg
 - /medias/featureimages/3.jpg
@@ -533,6 +537,34 @@ featureImages:
 - /medias/featureimages/21.jpg
 - /medias/featureimages/22.jpg
 - /medias/featureimages/23.jpg
+- /medias/featureimages/24.jpg
+- /medias/featureimages/25.jpg
+- /medias/featureimages/26.jpg
+- /medias/featureimages/27.jpg
+- /medias/featureimages/28.jpg
+- /medias/featureimages/29.jpg
+- /medias/featureimages/30.jpg
+- /medias/featureimages/31.jpg
+- /medias/featureimages/32.jpg
+- /medias/featureimages/33.jpg
+- /medias/featureimages/34.jpg
+- /medias/featureimages/35.jpg
+- /medias/featureimages/36.jpg
+- /medias/featureimages/37.jpg
+- /medias/featureimages/38.jpg
+- /medias/featureimages/39.jpg
+- /medias/featureimages/40.jpg
+- /medias/featureimages/41.jpg
+- /medias/featureimages/42.jpg
+- /medias/featureimages/43.jpg
+- /medias/featureimages/44.jpg
+- /medias/featureimages/45.jpg
+- /medias/featureimages/46.jpg
+- /medias/featureimages/47.jpg
+- /medias/featureimages/48.jpg
+- /medias/featureimages/49.jpg
+- /medias/featureimages/50.jpg
+
 
 # default configs that the default policy for every articles/posts
 # default 配置文章的默认转载规则
@@ -613,8 +645,8 @@ subtitle:
   typeSpeed: 100 # 打字速度
   backSpeed: 50 # 删除速度
   sub:
-    - 从来没有真正的绝境, 只有心灵的迷途
-    - Never really desperate, only the lost of the soul
+    - 求知若渴 虚心若愚
+    - Stay hungry，stay foolish！
 
 # 手机二级菜单.
 navMenu:
@@ -655,9 +687,9 @@ background:
 
 # 说说 https://artitalk.js.org/
 artitalk:
-  enable: false
-  appId: # xxxxx
-  appKey: # xxxxxx
+  enable: true
+  appId: q0mUzu9lID1mbz1DPuHnjiMB-MdYXbMMI
+  appKey: jw6NbrErH1F1Jmqg3Oeh1fVI
 
 # 哔哔功能配置
 # 登陆leancloud创建应用。进入应用后，点击创建 Class，将「 Class 名称」命名为 content
@@ -674,10 +706,10 @@ artitalk:
 # 关注公众号 "黑石哔哔"，发送: //bindCurrentUser:你的APPID,你的MASTERKEY,你的RESTAPI
 # 可用leancloud国际版，国际版api为 https://appid前八位.api.lncldglobal.com
 bbtime:
-  enable: false
-  appId: # 你的appId
-  appKey: # 你的appKey
-  serverURLs: # https://你的api
+  enable: true
+  appId: q0mUzu9lID1mbz1DPuHnjiMB-MdYXbMMI
+  appKey: jw6NbrErH1F1Jmqg3Oeh1fVI
+  serverURLs: https://q0mUzu9l.api.lncldglobal.com
 
 
 # 图表绘制插件
