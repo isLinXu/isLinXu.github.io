@@ -477,7 +477,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-21
+                    2022-01-26
                 </div>
                 
 
@@ -537,9 +537,9 @@ do
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">bash json2mask.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>对.json文件进行转换生成之后，会得到对应名称的文件夹<br>如图所示</p>
-<img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827152523534-1020421557.png">
+<img src="/2022/01/20/UNet%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/1571518-20210827152523534-1020421557.png">
 
-<p>查看文件夹，发现存在四个文件：<br><img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827152649325-1279716410.png"></p>
+<p>查看文件夹，发现存在四个文件：<br><img src="/2022/01/20/UNet%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/1571518-20210827152649325-1279716410.png"></p>
 <p>分别为以下：</p>
 <ul>
 <li>img.png，源文件图像</li>
@@ -639,8 +639,8 @@ do
     path <span class="token operator">=</span> <span class="token string">'/home/linxu/下载/flow_dataset/image/'</span>
     mask2binimg<span class="token punctuation">(</span>path<span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>运行结束后，会发现目录下多了两个文件夹，一个是imgs，用来存放原图；另外一个是masks，用来存放二值化标注图像。<br><img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827154341850-1236280524.png"><br>文件目录imgs下内容如下图所示：<br><img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827154421797-1096449726.png"><br>文件目录masks下内容如下图所示：<br><img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827154429235-1144234536.png"></p>
-<p>确认imgs与masks内容无误之后，将这两个文件夹拷贝到UNet模型源码目录下的data路径，如下图所示：<br><img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210827154819303-1073061395.png"><br>至此，数据集制作完毕并放置到指定训练路径下。</p>
+<p>运行结束后，会发现目录下多了两个文件夹，一个是imgs，用来存放原图；另外一个是masks，用来存放二值化标注图像。<br><img src="/2022/01/20/UNet%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/1571518-20210827154341850-1236280524.png"><br>文件目录imgs下内容如下图所示：<br><img src="/2022/01/20/UNet%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/1571518-20210827154421797-1096449726.png"><br>文件目录masks下内容如下图所示：<br><img src="/2022/01/20/UNet%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/1571518-20210827154429235-1144234536.png"></p>
+<p>确认imgs与masks内容无误之后，将这两个文件夹拷贝到UNet模型源码目录下的data路径，如下图所示：<br><img src="/2022/01/20/UNet%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/1571518-20210827154819303-1073061395.png"><br>至此，数据集制作完毕并放置到指定训练路径下。</p>
 <h3 id="2-Train训练"><a href="#2-Train训练" class="headerlink" title="2.Train训练"></a>2.Train训练</h3><p>制作完数据集之后，下一步就是对数据集进行训练</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python train.py -h<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -706,7 +706,7 @@ do
 
 
 <h4 id="3-3-融合预览"><a href="#3-3-融合预览" class="headerlink" title="3.3 融合预览"></a>3.3 融合预览</h4><p>为更加直观地感受分割后得到的结果，下面采用图像融合的方式进行预览<br>(说明：其中img1为图像原图，img2为预测的二值图像，image为两者根据一定比例融合之后得到的结果。)</p>
-<p><img src="https://img2020.cnblogs.com/blog/1571518/202108/1571518-20210828085642273-1274153587.png"></p>
+<p><img src="/2022/01/20/UNet%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/1571518-20210828085642273-1274153587.png"></p>
 <ul>
 <li>下面一并附上图像融合代码</li>
 </ul>
@@ -1071,6 +1071,43 @@ cv2<span class="token punctuation">.</span>imshow<span class="token punctuation"
 </div>
 
 
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: LinXu<br />'
+            + '文章作者: LinXu<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
@@ -1261,7 +1298,7 @@ cv2<span class="token punctuation">.</span>imshow<span class="token punctuation"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">50.5k</span>
+                        class="white-color">55.5k</span>
             
             
             
