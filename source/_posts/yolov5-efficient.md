@@ -3,7 +3,7 @@ title: yolov5_efficient
 date: 2022-01-20 22:24:58
 author: LinXu
 tags: Object_Detection
-categories: 算法模型
+categories: Model
 ---
 
 # Yolov5_Efficient

@@ -3,7 +3,7 @@ title: EfficientDet训练模型总结
 date: 2022-01-20 23:25:54
 author: LinXu
 tags: 炼丹术
-categories: 算法模型
+categories: Model
 ---
 
 ## EfficientDet训练模型学习总结

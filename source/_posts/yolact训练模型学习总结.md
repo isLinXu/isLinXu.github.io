@@ -3,7 +3,7 @@ title: yolact训练模型学习总结
 date: 2022-01-20 23:22:19
 author: LinXu
 tags: 炼丹术
-categories: 算法模型
+categories: Model
 ---
 
 # yolact训练模型学习总结

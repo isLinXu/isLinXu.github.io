@@ -2,6 +2,7 @@
 title: Deeplabsv3+训练总结
 date: 2022-01-26 16:24:04
 tags: 炼丹术
+categories: Model
 ---
 
 ## DeepLabv3+训练模型学习总结

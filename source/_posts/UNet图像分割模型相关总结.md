@@ -3,7 +3,7 @@ title: UNet图像分割模型相关总结
 date: 2022-01-20 22:35:53
 author: LinXu
 tags: 炼丹术
-categories: 算法模型
+categories: Model
 ---
 
 ## UNet图像分割模型相关总结
