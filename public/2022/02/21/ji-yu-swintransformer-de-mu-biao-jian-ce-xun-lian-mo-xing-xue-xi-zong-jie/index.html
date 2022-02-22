@@ -1,0 +1,1734 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SwinTranformer_Det, LinXu">
+    <meta name="description" content="基于SwinTransformer的目标检测训练模型学习总结
+一、简要介绍Swin Transformer是2021年提出的，是一种基于Transformer的一种深度学习网络结构，在目标检测、实例分割等计算机视觉任务上均取得了SOTA的性">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SwinTranformer_Det | LinXu</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">LinXu</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-users" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>About</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/cv">
+          
+          <i class="fas fa-files" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>cv</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Medias</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Musics</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Movies</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Books</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Galleries</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">LinXu</div>
+        <div class="logo-desc">
+            
+            广积粮 高筑墙 广称王
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-users" style="position: absolute;left:50px" ></i>
+			      
+		          <span>About</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/cv " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-files" style="position: absolute;left:50px" ></i>
+			      
+		          <span>cv</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Medias
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Musics</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Movies</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Books</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Galleries</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/isLinXu/isLinXu.github.io.git" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/isLinXu/isLinXu.github.io.git" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/38.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SwinTranformer_Det</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%82%BC%E4%B8%B9%E6%9C%AF/">
+                                <span class="chip bg-color">炼丹术</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Model/" class="post-category">
+                                Model
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-02-21
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-02-21
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="基于SwinTransformer的目标检测训练模型学习总结"><a href="#基于SwinTransformer的目标检测训练模型学习总结" class="headerlink" title="基于SwinTransformer的目标检测训练模型学习总结"></a>基于SwinTransformer的目标检测训练模型学习总结</h1><hr>
+<h2 id="一、简要介绍"><a href="#一、简要介绍" class="headerlink" title="一、简要介绍"></a>一、简要介绍</h2><p>Swin Transformer是2021年提出的，是一种基于Transformer的一种深度学习网络结构，在目标检测、实例分割等计算机视觉任务上均取得了SOTA的性能。同时这篇论文也获得了ICCV2021年的Best Paper。</p>
+<h3 id="1-1-Transformer的关键里程碑"><a href="#1-1-Transformer的关键里程碑" class="headerlink" title="1.1 Transformer的关键里程碑"></a>1.1 Transformer的关键里程碑</h3><p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210161725464-1470625546.png"></p>
+<ul>
+<li><strong>Tranformer</strong>: 在2017年6月，仅基于注意力机制的Transformer首次由谷歌提出，应用于NLP自然语言处理的任务上表现出了良好的性能。</li>
+<li><strong>BERT</strong>: 在2018年10月，预训练Transformer模型开始在NLP领域中占主导地位。</li>
+<li><strong>GPT-3</strong>: 在2020年5月，提出一个带有170亿参数的大型Transformer，向通用NLP模型迈出了一大步。</li>
+<li><strong>DETR</strong>:  在2020年5月，提出一个简单而有效的高层视觉框架，将目标检测视为一个直接集预测问题。</li>
+<li><strong>iGPT</strong>: 在2020年7月，针对NLP的模型也可以用于图像预训练。</li>
+<li><strong>VIT</strong>: 在2020年10月，纯Transformer架构适用于可视化识别</li>
+<li><strong>IPT</strong>: 在2020年12月，第一个结合多任务的低层视觉变换Transformer模型</li>
+<li><strong>VIT Variants</strong>： 在2021年，提出基于VIT模型的几种变体，例如DeiT、PVT、TNT、Swin。</li>
+</ul>
+<hr>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210161812539-389872081.png"></p>
+<p>Swin Transformer是由微软亚洲研究院提出的一种Transformer结构模型，它取得了多个计算机视觉任务和数据集上的SOTA性能，这些任务包括目标检测、实例分割和语义分割，图像分类。它可以用作计算机视觉的通用backbone。在NLP和CV两个领域之间的差异，例如视觉实体尺度的巨大差异以及与文字中的单词相比，图像中像素的高分辨率，带来了使Transformer从语言适应视觉方面的挑战。</p>
+<h3 id="1-2-Transformer的网络结构"><a href="#1-2-Transformer的网络结构" class="headerlink" title="1.2 Transformer的网络结构"></a>1.2 Transformer的网络结构</h3><p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210162050922-1231652849.png"></p>
+<p>和大多数seq2seq模型一样，transformer的结构也是由encoder和decoder组成。<br>实际上，Transformer是基于Encoder和Decoder的网络架构。最初是被用来解决NLP自然语言处理来提出的，主要是用来的处理seq2seq的任务，例如语言的翻译。它的主要特点是采用了Multi-Head Attention的注意力机制以及Encoder和Decoder之间的Cross相互的注意力机制。</p>
+<h3 id="1-3-Swin-Transformer的网络架构"><a href="#1-3-Swin-Transformer的网络架构" class="headerlink" title="1.3 Swin Transformer的网络架构"></a>1.3 Swin Transformer的网络架构</h3><p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210162121601-411564667.png"></p>
+<p>Swin Transformer的优势在于在ViT的基础上将<strong>hierarchy</strong>(层次性)、<strong>locality</strong>(局部性)、<strong>translation invariance</strong>(平移不变性)等先验引入Transformer网络结构设计从而能在视觉任务中取得更好的性能。</p>
+<p>下面分别从几个特性来介绍：</p>
+<ul>
+<li><p><strong>层次性</strong>：从上图可以看到，Image经过Patch Partition传入，经过多个stage，其中每个stage中分别对其进行Patch Mergeing和Swin Transformer Block的处理，在此过程中Size的大小不断减少，同时通道数不断地增加，这就是该结构体现的层次性。</p>
+</li>
+<li><p><strong>局部性</strong>：神经网络的前面几层应该只探索输入图像中的局部区域，而不过度在意图像中相隔较远区域的关系，这就是“局部性”原则。最终，可以聚合这些局部特征，以在整个图像级别进行预测。</p>
+</li>
+<li><p><strong>平移不变性</strong>：不管检测对象出现在图像中的哪个位置，神经网络的前面几层应该对相同的图像区域具有相似的反应，即为“平移不变性”。卷积神经网络具有平移不变性，而图网络不具有该性质，因此不能直接做卷积操作。平移不变性是一个很有用的性质，尤其是当我们关心某个特征<strong>是否出现</strong>而不关心它出现的具体位置时。简单地说，卷积+最大池化约等于平移不变性。</p>
+</li>
+</ul>
+<h3 id="1-4-核心创新点"><a href="#1-4-核心创新点" class="headerlink" title="1.4 核心创新点"></a>1.4 核心创新点</h3><p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210162232434-376099605.png"></p>
+<p>每个Swin Transformer模块都由两个Block组成。</p>
+<p>(1)自注意力的计算在局部的非重叠窗口内进行。<br>(2)在前后两层的Transformer模块中，非重叠窗口的配置相比前一层做了半个窗口的移位，使得上一层中不同窗户的信息进行了交换。</p>
+<hr>
+<h2 id="二、目标检测相关基础"><a href="#二、目标检测相关基础" class="headerlink" title="二、目标检测相关基础"></a>二、目标检测相关基础</h2><h3 id="2-1-目标检测任务理解与总结"><a href="#2-1-目标检测任务理解与总结" class="headerlink" title="2.1 目标检测任务理解与总结"></a>2.1 目标检测任务理解与总结</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/isLinXu/p/15893539.html">目标检测任务理解与总结</a></p>
+<h3 id="2-2-目标检测之常用数据集"><a href="#2-2-目标检测之常用数据集" class="headerlink" title="2.2 目标检测之常用数据集"></a>2.2 目标检测之常用数据集</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/isLinXu/p/15893506.html">目标检测之常用数据集</a></p>
+<h3 id="2-3-目标检测之性能指标"><a href="#2-3-目标检测之性能指标" class="headerlink" title="2.3 目标检测之性能指标"></a>2.3 目标检测之性能指标</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/isLinXu/p/15893489.html">目标检测之性能指标</a></p>
+<hr>
+<h2 id="三、Transformer的介绍及在CV领域内的应用"><a href="#三、Transformer的介绍及在CV领域内的应用" class="headerlink" title="三、Transformer的介绍及在CV领域内的应用"></a>三、Transformer的介绍及在CV领域内的应用</h2><p>解码器与编码器</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210162844379-199629236.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210162921607-176483924.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210163022263-1886794222.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210163108987-1746119168.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210163505453-375872420.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210165319524-1993358431.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210165339611-2051991970.png"></p>
+<p>Positional Encoding</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210165356427-1800991937.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210171934227-768569020.png"></p>
+<p>Decoder<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210182837840-1132583376.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210182902982-1229229011.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210182914285-289123855.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210182931664-1888912096.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210191719401-127928081.png"></p>
+<p>DETR<br>End to End Object Detection with Transformers<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210191812683-1919983590.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210191940817-1931228032.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220210192009448-314402354.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211101815077-1760211366.jpg"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211101853987-1261890538.png"></p>
+<h2 id="四、Swin-Transformer的原理"><a href="#四、Swin-Transformer的原理" class="headerlink" title="四、Swin Transformer的原理"></a>四、Swin Transformer的原理</h2><p>论文</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211102404861-1638762083.png"><br>Ze Liu Yutong Lin Yue Cao Han Hu Yixuan Wei Zheng Zhang Stephen Lin Baining Guo<br>Swin Transformer : Hierarchical Vision Transformer using Shifted Windows. ICCV 2021<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.14030">https://arxiv.org/abs/2103.14030</a></p>
+<p>SOTA<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211102434243-1041859823.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211102530289-1102382243.png"></p>
+<p>Problems of ViT<br>. Does not consider the difference between textual and visual signals<br>. Mainly for image classification</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211102909420-1770397249.png"></p>
+<p>Key tech innovation : locality by Shifted windows<br>• Non-overlapped windows (faster real speed than sliding windows)<br>• Windows are shifted in the next layer</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103106841-2069297650.png"></p>
+<p>Hierarchical feature maps<br>• Windows Multi-Head Self-Attention (W-MSA)<br>• Shifted Windows Multi-Head Self-Attention (SW-MSA)</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103153207-1928167935.png"></p>
+<p>1）自注意的计算在局部的非重叠窗口内进行。不同query会共享同样的key集合，从而对硬件友好<br>2）在前后两层的Transformer模块中，非重叠窗口的配置相比前一层做了半个窗口的移位，使得上一层中不<br>同窗口的信息进行了交换。</p>
+<p>Self-attention in non-overlapped windows<br>For efficient modeling, we propose to compute self attention within local windows.<br>The windows are arranged to evenly partition the image in a non-overlapping manner.<br>Supposing each window contains M × M patches, the computational complexity of a global<br>MSA module and a window based one on an image of h × w patches are :</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103231770-1344195193.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103647672-1998938594.png"></p>
+<p>The architecture of a Swin Transformer (Swin-T)<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103723480-917256578.png"></p>
+<p>Patch Merging<br>经过Patch Merging后，feature map的高和宽会减半，深度会加倍<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103820414-1456521674.png"></p>
+<p>Swin Transformer block<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103857370-849387511.png"></p>
+<p>Swin Transformer is built by replacing the standard multi-head<br>self attention (MSA) module in a Transformer block by a module<br>based on shifted windows, with other layers kept the same.<br>A Swin Transformer block consists of a shifted window based MSA<br>module, followed by a 2-layer MLP with GELU nonlinearity in<br>between.<br>A LayerNorm (LN) layer is applied before each MSA module and<br>each MLP, and a residual connection is applied after each module.</p>
+<p>Shifted window partitioning in successive blocks<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103916799-1005212465.png"></p>
+<p>Swin T(Tiny)，S(Small)，B(Base)，L(Large)<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211103956361-1294854273.png"><br>• win. sz. 7x7表示使用的窗口（Windows）的大小<br>• dim表示feature map的channel深度）<br>• head表示多头注意力模块中head的个数</p>
+<p>Architecture Variants</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211104127694-1279887825.png"></p>
+<p>where C is the channel number of the hidden layers in the first stage.<br>Architecture Variants<br>The window size is set to M = 7 by default. The query dimension of each<br>head is d = 32, and the expansion layer of each MLP is α = 4.</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211104146423-1069831464.png"></p>
+<p>Illustration of an efficient batch computation approach for self-attention in shifted window partitioning</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211104213844-333037308.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211104234515-1167429771.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211104443788-310599498.png"></p>
+<p>Experimental Designs<br>3 datasets to cover various recognition tasks of different granularities<br>• lmage-level lmageNet-1K classification (1.28M images; 1000 classes).<br>• Region-level coco object detection (115K images; 80 classes).<br>• Pixel-level ADE20K semantic segmentation (20K images; 150 classes)</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211104601939-965284686.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211105009208-1472070156.png"></p>
+<p>Results on COCO object detection and instance segmentation<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211105045787-1471956532.png"></p>
+<p>Results of semantic segmentation on the ADE20K val and test set<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211105116539-862749492.png"></p>
+<h2 id="五、Swin-Transformer的环境部署和训练相关"><a href="#五、Swin-Transformer的环境部署和训练相关" class="headerlink" title="五、Swin Transformer的环境部署和训练相关"></a>五、Swin Transformer的环境部署和训练相关</h2><h3 id="5-1-软件安装"><a href="#5-1-软件安装" class="headerlink" title="5.1 软件安装"></a>5.1 软件安装</h3><p>1） 安装Anaconda<br>Anaconda 是一个用于科学计算的 Python 发行版，支持 Linux, Mac, Windows, 包含了众多流行的科学<br>计算、数据分析的 Python 包。</p>
+<ol>
+<li><p>先去官方地址下载好对应的安装包<br>下载地址:<a target="_blank" rel="noopener" href="https://www.anaconda.com/download/#linux">https://www.anaconda.com/download/#linux</a></p>
+</li>
+<li><p>然后安装anaconda</p>
+</li>
+</ol>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">bash ~&#x2F;Downloads&#x2F;Anaconda3-2021.05-Linux-x86_64.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>  anaconda会自动将环境变量添加到PATH里面，如果后面你发现输入conda提示没有该命令，那么<br>  你需要执行命令 source <del>/.bashrc 更新环境变量，就可以正常使用了。<br>  如果发现这样还是没用，那么需要添加环境变量。<br>  编辑</del>/.bashrc 文件，在最后面加上  </p>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">export PATH&#x3D;&#x2F;home&#x2F;bai&#x2F;anaconda3&#x2F;bin:$PATH<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>  注意：路径应改为自己机器上的路径<br>  保存退出后执行： source ~/.bashrc<br>  再次输入 conda list 测试看看，应该没有问题。</p>
+<p>添加Aanaconda国内镜像配置<br>清华TUNA提供了 Anaconda 仓库的镜像，运行以下三个命令:</p>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;free&#x2F;
+conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;main&#x2F;
+conda config --set show_channel_urls yes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>  2） 安装pytorch<br>  首先创建一个anaconda虚拟环境，环境名字可自己确定，这里本人使用mypytorch作为环境名:</p>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n mypytorch python&#x3D;3.8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>   安装成功后激活mypytorch环境：</p>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda activate mypytorch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>  注意：10.2处应为cuda的安装版本号<br>  编辑~/.bashrc 文件，设置使用mypytorch环境下的python3.8</p>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">alias python&#x3D;&#39;&#x2F;home&#x2F;linxu&#x2F;anaconda3&#x2F;envs&#x2F;mypytorch&#x2F;bin&#x2F;python3.8&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>  注意：python路径应改为自己机器上的路径<br>  保存退出后执行： source ~/.bashrc<br>  该命令将自动回到base环境，再执行 conda activate mypytorch 到pytorch环境。</p>
+<h3 id="5-2-Swin-Transformer项目安装"><a href="#5-2-Swin-Transformer项目安装" class="headerlink" title="5.2 Swin Transformer项目安装"></a>5.2 Swin Transformer项目安装</h3><p>1） 安装mmcv<br>克隆mmcv项目到本地</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone -b v1.3.1 https:&#x2F;&#x2F;github.com&#x2F;open-mmlab&#x2F;mmcv.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd mmcv
+MMCV_WITH_OPS&#x3D;1 pip install -e .<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>检查</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p>2） 安装mmdetection<br>参考：<a target="_blank" rel="noopener" href="https://mmdetection.readthedocs.io/zh_CN/v2.19.1/get_started.html">https://mmdetection.readthedocs.io/zh_CN/v2.19.1/get_started.html</a></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone -b v2.11.0 https:&#x2F;&#x2F;github.com&#x2F;open-mmlab&#x2F;mmdetection.git
+cd mmdetection
+pip install -r requirements&#x2F;build.txt
+pip install -v -e . # or &quot;python setup.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<ol start="3">
+<li>安装apex</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone https:&#x2F;&#x2F;github.com&#x2F;NVIDIA&#x2F;apex<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd apex<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python setup.py install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意：cuda的版本应和cudatoolkit一致</p>
+<p>4）安装Swin-Transformer-Object-Detection</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone https:&#x2F;&#x2F;github.com&#x2F;SwinTransformer&#x2F;Swin-Transformer-ObjectDetection.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>执行</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd Swin-Transformer-Object-Detection
+python setup.py develop <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>下载预训练权重文件<br>下载mask_rcnn_swin_tiny_patch4_window7_1x.pth权重文件，并放置在Swin-Transformer-ObjectDetection文件夹下</p>
+<p>百度网盘下载链接：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">链接：https://pan.baidu.com/s/1cO3ln3fokP3cazveC-bjuw 
+提取码：uzzk <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>测试命令：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python demo&#x2F;image_demo.py demo&#x2F;demo.jpg 
+configs&#x2F;swin&#x2F;mask_rcnn_swin_tiny_patch4_window7_mstrain_480-800_adamw_1x_coco.py 
+mask_rcnn_swin_tiny_patch4_window7_1x.pth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221161406131-1868308853.jpg"></p>
+<h3 id="5-3-标注自己的数据集"><a href="#5-3-标注自己的数据集" class="headerlink" title="5.3.标注自己的数据集"></a>5.3.标注自己的数据集</h3><ol>
+<li>安装图像标注工具labelImg<br>克隆labelImg</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone https:&#x2F;&#x2F;github.com&#x2F;tzutalin&#x2F;labelImg.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>使用Anaconda安装<br>到labelImg路径下执行命令</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda install pyqt&#x3D;5
+pip install lxml
+pyrcc5 -o libs&#x2F;resources.py resources.qrc
+python labelImg.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>添加自定义类别<br>修改文件labelImg/data/predefined_classes.txt</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ball
+messi
+trophy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>3）使用labelImg进行图像标注<br>用labelImg标注生成PASCAL VOC格式的xml标记文件。例如：<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211110447357-1157834920.png"><br>width =1000<br>height = 654<br>PASCAL VOC标记文件如下：</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220211110617429-745834298.png"></p>
+<h3 id="5-4-准备自己的数据集"><a href="#5-4-准备自己的数据集" class="headerlink" title="5.4 准备自己的数据集"></a>5.4 准备自己的数据集</h3><ol>
+<li>下载项目文件<br>从百度网盘下载<br>VOCdevkit_bm.zip (下载到并解压)<br>prepare_mydata.py<br>pascal_voc.py<br>testfiles.zip (下载到Swin-Transformer-Object-Detection目录下并解压)</li>
+</ol>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">链接：https://pan.baidu.com/s/1cO3ln3fokP3cazveC-bjuw 
+提取码：uzzk <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2）解压建立或自行建立数据集<br> 使用PASCAL VOC数据集的目录结构:<br> 建立文件夹层次为 VOCdevkit / VOC2007<br> VOC2007下面建立三个文件夹：Annotations，JPEGImages和ImageSets/Main<br>JPEGImages放所有的数据集图片；Annotations放所有的xml标记文件；ImageSets/Main下存放训练<br>集、验证集、测试集划分文件（目前为空）</p>
+<p>执行python脚本：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python prepare_mydata.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注意根据自己的数据集修改其中的classes=[“ball”,”messi”]</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221160711109-1162722623.png"></p>
+<p>ImageSets/Main目录下可以看到生成四个文件</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221160855808-178554785.png"></p>
+<ul>
+<li>train.txt给出了训练集图片文件的列表（不含文件名后缀）</li>
+<li>val.txt给出了验证集图片文件的列表</li>
+<li>test.txt给出了测试集图片文件的列表</li>
+<li>trainval.txt给出了训练集和验证集图片文件的列表</li>
+</ul>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221160351812-1085984169.png"></p>
+<p>4）PASCAL VOC数据格式转换成COCO数据格式<br>执行python脚本</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python pascal_voc.py VOCdevkit --out-dir mycoco --out-format coco<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意根据自己的数据集修改其中的voc_classes = [“ball”, “messi”]<br>然后，把转成的COCO数据格式的数据的目录结构准备成COCO目录结构格式。</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221160543785-1818576242.png"></p>
+<p>在Swin-Transformer-Object-Detection根目录下面，创建目录结构如下：</p>
+<pre class="line-numbers language-tree" data-language="tree"><code class="language-tree">└── data
+ ├── coco
+ 	├── annotations
+ 		├── instances_train2017.json
+ 		└── instances_val2017.json
+ 	├── train2017
+ 	└── val2017<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中：<br>train2017放置voc-images/train2017中的图片<br>val2017放置voc-images/val2017中的图片<br>voc07_train.json改名为instances_train2017.json<br>voc07_val.json改名为instances_val2017.json</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221160225351-1394774337.png"></p>
+<h3 id="5-5-修改配置文件"><a href="#5-5-修改配置文件" class="headerlink" title="5.5 修改配置文件"></a>5.5 修改配置文件</h3><h4 id="5-5-1-step1"><a href="#5-5-1-step1" class="headerlink" title="5.5.1 step1"></a>5.5.1 step1</h4><p>1） 修改changemaskrcnn.py中num_class并执行该脚本, 产生新的权重文件</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python changemaskrcnn.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221161808004-2104884261.png"></p>
+<h4 id="5-5-2-step2"><a href="#5-5-2-step2" class="headerlink" title="5.5.2 step2"></a>5.5.2 step2</h4><p>2）修改 <code>configs/_base_/models/mask_rcnn_swin_fpn.py</code> 中num_classes， 共两处</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221162317995-234270455.png"></p>
+<h4 id="5-5-3-step3"><a href="#5-5-3-step3" class="headerlink" title="5.5.3 step3"></a>5.5.3 step3</h4><p>3）修改 <code>configs/_base_/default_runtime.py</code> 中interval, load_from</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221162621446-1280058361.png"></p>
+<h4 id="5-5-4-step4"><a href="#5-5-4-step4" class="headerlink" title="5.5.4 step4"></a>5.5.4 step4</h4><p>4）修改 <code>configs/swin/mask_rcnn_swin_tiny_patch4_window7_mstrain_480-800_adamw_1x_coco.py</code> 中的 <code>_base_</code>,<code>max_epochs</code>, <code>lr</code></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221163511423-14259905.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221163400517-1059097252.png"></p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221163441270-986859479.png"></p>
+<h4 id="5-5-5-step5"><a href="#5-5-5-step5" class="headerlink" title="5.5.5 step5"></a>5.5.5 step5</h4><p>5） 修改 <code>configs/_base_/datasets/coco_detection.py</code> 中的<br>samples_per_gpu=2,<br>workers_per_gpu=2,</p>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221162928881-1731921953.png"></p>
+<h4 id="5-5-6-step6"><a href="#5-5-6-step6" class="headerlink" title="5.5.6 step6"></a>5.5.6 step6</h4><p>6）修改mmdet\datasets\coco.py中的CLASSES<br>另外，如果在训练时出现错误：IndexError: list index out of range<br>注释掉coco.py中_segm2json(self, results)函数中的以下语句 （268~271行）</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#if isinstance(segms[i]['counts'], bytes):</span>
+<span class="token comment">#   segms[i]['counts'] = segms[i]['counts'].decode()</span>
+<span class="token comment">#	data['segmentation'] = segms[i]</span>
+<span class="token comment">#	segm_json_results.append(data)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221163827563-602364166.png"></p>
+<h4 id="5-5-7-step7"><a href="#5-5-7-step7" class="headerlink" title="5.5.7 step7"></a>5.5.7 step7</h4><p>为了保持类别和类名一致，需要修改./mmdet/core/evaluation/class_names.py中的内容<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221172214704-169784419.png"></p>
+<p>同时还需要修改.\mmdet\datasets\coco.py中的内容<br><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221172233392-1299562339.png"></p>
+<p>最后为了避免第三方库受之前环境配置的影响，重新编译一遍源码。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python setup.py install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="5-6-训练自己的数据集"><a href="#5-6-训练自己的数据集" class="headerlink" title="5.6 训练自己的数据集"></a>5.6 训练自己的数据集</h3><ol>
+<li>训练命令<br>在Swin-Transformer-Object-Detection路径下执行：</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python tools&#x2F;train.py configs&#x2F;swin&#x2F;mask_rcnn_swin_tiny_patch4_window7_mstrain_480-800_adamw_1x_coco.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/1571518-20220221170031396-2137249070.png"></p>
+<ol start="2">
+<li>训练结果的查看<br>查看Swin-Transformer-Object-Detection/work_dirs目录下的文件</li>
+</ol>
+<h3 id="5-7-测试训练出的网络模型"><a href="#5-7-测试训练出的网络模型" class="headerlink" title="5.7 测试训练出的网络模型"></a>5.7 测试训练出的网络模型</h3><ol>
+<li>测试图片</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python demo&#x2F;image_demo.py testfiles&#x2F;img1.jpg 
+configs&#x2F;swin&#x2F;mask_rcnn_swin_tiny_patch4_window7_mstrain_480-800_adamw_1x_coco.py 
+work_dirs&#x2F;mask_rcnn_swin_tiny_patch4_window7_mstrain_480-
+800_adamw_1x_coco&#x2F;latest.pth --score-thr 0.5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>2）测试视频</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python demo&#x2F;video_demo.py testfiles&#x2F;messi.mp4 configs&#x2F;swin&#x2F;mask_rcnn_swin_tiny_patch4_window7_mstrain_480-800_adamw_1x_coco.py 
+work_dirs&#x2F;mask_rcnn_swin_tiny_patch4_window7_mstrain_480-
+800_adamw_1x_coco&#x2F;latest.pth --score-thr 0.5 --show<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>3）性能统计</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python tools<span class="token operator">/</span>test<span class="token punctuation">.</span>py configs<span class="token operator">/</span>swin<span class="token operator">/</span>mask_rcnn_swin_tiny_patch4_window7_mstrain_480<span class="token operator">-</span>
+800_adamw_1x_coco<span class="token punctuation">.</span>py work_dirs<span class="token operator">/</span>mask_rcnn_swin_tiny_patch4_window7_mstrain_480<span class="token operator">-</span>
+800_adamw_1x_coco<span class="token operator">/</span>latest<span class="token punctuation">.</span>pth <span class="token operator">-</span><span class="token operator">-</span><span class="token builtin">eval</span> bbox<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>4）日志分析</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python tools&#x2F;analysis_tools&#x2F;analyze_logs.py plot_curve 
+work_dirs&#x2F;mask_rcnn_swin_tiny_patch4_window7_mstrain_480-
+800_adamw_1x_coco&#x2F;20211225_030436.log.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">LinXu</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://islinxu.github.io/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/">https://islinxu.github.io/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">LinXu</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%82%BC%E4%B8%B9%E6%9C%AF/">
+                                    <span class="chip bg-color">炼丹术</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/02/21/ji-yu-swintransformer-de-mu-biao-jian-ce-xun-lian-mo-xing-xue-xi-zong-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/38.jpg" class="responsive-img" alt="SwinTranformer_Det">
+                        
+                        <span class="card-title">SwinTranformer_Det</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Model/" class="post-category">
+                                    Model
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%82%BC%E4%B8%B9%E6%9C%AF/">
+                        <span class="chip bg-color">炼丹术</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/02/16/ji-yu-coco-shu-ju-ji-yan-zheng-de-mu-biao-jian-ce-suan-fa-tian-ti-pai-xing-bang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="基于COCO数据集验证的目标检测算法天梯排行榜">
+                        
+                        <span class="card-title">基于COCO数据集验证的目标检测算法天梯排行榜</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            LinXu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Object-Detection/">
+                        <span class="chip bg-color">Object_Detection</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: LinXu<br />'
+            + '文章作者: LinXu<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/about" target="_blank">LinXu</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">85.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/isLinXu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:17746071609@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://www.facebook.com/xxx" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: https://www.facebook.com/xxx" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+
+
+    <a href="https://twitter.com/xxx" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/xxx" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2267379130" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2267379130" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/xxx" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/xxx" data-position="top" data-delay="50">
+        <i class="fab fa-weibo"></i>
+    </a>
+
+
+
+    <a href="https://www.zhihu.com/xxx" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/xxx" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
