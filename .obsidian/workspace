@@ -1,0 +1,93 @@
+{
+  "main": {
+    "id": "24a1893762f785f0",
+    "type": "split",
+    "children": [
+      {
+        "id": "346cd22ccb21f17b",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "source/_posts/常用数据集.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9c0c268a13ea35fc",
+    "type": "split",
+    "children": [
+      {
+        "id": "87882cc3be1d9519",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "013c21b6a617a9c0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "3c4c64fa0e7d24ea",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1dc69d42fd4c175a",
+    "type": "split",
+    "children": [
+      {
+        "id": "166adee7dc8330dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eed243578ec4cbd6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "source/_posts/常用数据集.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "346cd22ccb21f17b",
+  "lastOpenFiles": [
+    "source/_posts/常用数据集.md"
+  ]
+}
