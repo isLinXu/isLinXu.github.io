@@ -297,12 +297,15 @@ mySkills:
 myGallery:
   enable: true
   data:
-    - /medias/featureimages/pic1.jpg
-    - /medias/featureimages/pic2.jpg
-    - /medias/featureimages/pic3.jpg
-    - /medias/featureimages/pic4.jpg
-    - /medias/featureimages/pic5.jpg
-    - /medias/featureimages/pic6.jpg
+    #- /medias/featureimages/pic1.jpg
+    #- /medias/featureimages/pic2.jpg
+    #- /medias/featureimages/pic3.jpg
+    #- /medias/featureimages/pic4.jpg
+    #- /medias/featureimages/pic5.jpg
+    #- /medias/featureimages/pic6.jpg
+    - /medias/featureimages/matlab1.jpg
+    - /medias/featureimages/matlab2.jpg
+    - /medias/featureimages/matlab3.jpg
 
 # Whether to display post-calender in the `archive` page
 # 设置在归档页面中是否显示'文章日历'控件
