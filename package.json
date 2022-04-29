@@ -12,6 +12,7 @@
     "version": "5.4.0"
   },
   "dependencies": {
+    "cnpm": "^7.1.1",
     "hexo": "^5.0.0",
     "hexo-asset-image": "github:CodeFalling/hexo-asset-image",
     "hexo-deployer-git": "^3.0.0",
