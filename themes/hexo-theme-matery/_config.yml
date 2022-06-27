@@ -306,7 +306,10 @@ myGallery:
     - /medias/featureimages/matlab1.jpg
     - /medias/featureimages/matlab2.jpg
     - /medias/featureimages/matlab3.jpg
+    - /medias/featureimages/coursera1.jpg
+    - /medias/featureimages/coursera2.jpg
     - /medias/featureimages/baidu1.jpg
+    - /medias/featureimages/tianchi.jpg
 
 # Whether to display post-calender in the `archive` page
 # 设置在归档页面中是否显示'文章日历'控件
