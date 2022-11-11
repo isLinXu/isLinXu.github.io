@@ -38,7 +38,7 @@ export default function Home({ setSelectedIndex }: Props) {
       <Grid item xs={3}>
         <Stack direction={{ xs: "column", sm: "row-reverse" }} spacing={2}>
           <Box display="flex" sx={{ justifyContent: "center" }}>
-            <img src={logo} width="100px" alt="logo" />
+            <img src={logo} width="200px" alt="logo" />
           </Box>
           <Box>
             <Grid
@@ -52,16 +52,24 @@ export default function Home({ setSelectedIndex }: Props) {
               justifyContent={{ xs: "center", sm: "flex-start" }}
             >
               <Typography variant="subtitle1" gutterBottom>
-                Always difficult, always beautiful
+                <h4>AI & Computer Vision Researcher</h4>
+                <div>Machine Learning | Deep Learning | PyTorch | Tensorflow | Paddle</div>
+                Apache-Spark | SQL | Computer-Vision | 
+                Data-Pipelines | MLOps | 
+                
+                {/*Always difficult, always beautiful*/}
                 {/* Better an{' '}
                 <Box fontWeight="fontWeightMedium" display="inline">
-                  oops
+                  oop
                 </Box>{' '}
                 than a{' '}
                 <Box fontWeight="fontWeightMedium" display="inline">
                   what if
                 </Box> */}
               </Typography>
+               
+                
+
             </Grid>
             <Grid
               display="flex"
