@@ -16,7 +16,12 @@ import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import AppButtons from "./AppButtons";
 import MDContainer from "../components/MDContainer";
 import Home from "../pages/Home";
+import Notes from "../pages/Notes";
 import { pages } from "../pages/pages";
+
+
+
+
 import usePageTracking from "../hooks/usePageTracking";
 import { isBrowser } from "react-device-detect";
 
