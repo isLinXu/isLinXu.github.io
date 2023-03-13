@@ -37,6 +37,7 @@
 
 
 <!-- TABLE OF CONTENTS -->
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -81,6 +82,23 @@ The project is inspired by [Visual Studio Code](https://github.com/microsoft/vsc
 
 
 <!-- GETTING STARTED -->
+
+## Update
+
+```shell
+npm install
+```
+
+```shell
+npm start
+```
+
+```shell
+npm run build
+```
+
+
+
 ## Getting Started
 
 ### Installation
