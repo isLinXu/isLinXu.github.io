@@ -1,6 +1,10 @@
 # 📖 Overview
 
-<img src="../imgs/o_f5119c94.jpg" alt="o_f5119c94" style="zoom:25%;" />
+<img style="width: 20%" align="center" src="../imgs/o_f5119c94.jpg" />
+
+---
+
+## Aboutme
 
 ## Summary
 
@@ -11,8 +15,6 @@
 
 ## Skills
 
-### General Tech Stacks
-### Programming languages
 ## Certificates
 ## Accomplishments
 ## Languages

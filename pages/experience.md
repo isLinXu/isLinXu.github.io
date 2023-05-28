@@ -29,14 +29,6 @@ Before joining Tencent, I also worked/interned with Keeko Robot AI team and Stra
 </p>
 </p>
 
-<!-- <div align="center"> -->
-
-<!--  <p align="left"> <img src="https://github-profile-trophy.vercel.app/?username=isLinXu&theme=dark" alt="isLinXu"> </p> -->
-
-<p align="left"> <img src="https://github-readme-streak-stats.herokuapp.com/?user=isLinXu&theme=dark" alt="isLinXu" > </p>
-
-[![isLinXu's Github Activity Graph](https://github-readme-activity-graph.cyclic.app/graph?username=isLinXu&custom_title=isLinXu's%20GitHub%20Activity%20Graph&bg_color=000000&color=0079fa&line=2100fa&point=0079fa&area=true&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
-
 ---
 
 📫 How to reach me: 
