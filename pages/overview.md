@@ -18,7 +18,7 @@
 <a href="https://www.linkedin.com/in/xu-lin-3b78a5251/"> <img src="https://img.shields.io/badge/-CV-black?style=plastic" height="25px"> </a>
 </p> 
 
-<img style="width: 20%" align="center" src="../imgs/o_f5119c94.jpg" />
+<img src="../imgs/o_f5119c94.jpg" alt="o_f5119c94" style="zoom:25%;" />
 
 <img style="width: 50%" align="right" src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=isLinXu&show_icons=true&hide_border=true&count_private=true" />
 
@@ -32,10 +32,19 @@ Before joining Tencent, I also worked/interned with Keeko Robot AI team and Stra
 </p>
 </p>
 
+<!-- <div align="center"> -->
+
+<!--  <p align="left"> <img src="https://github-profile-trophy.vercel.app/?username=isLinXu&theme=dark" alt="isLinXu"> </p> -->
+
+<p align="left"> <img src="https://github-readme-streak-stats.herokuapp.com/?user=isLinXu&theme=dark" alt="isLinXu" > </p>
+
+[![isLinXu's Github Activity Graph](https://github-readme-activity-graph.cyclic.app/graph?username=isLinXu&custom_title=isLinXu's%20GitHub%20Activity%20Graph&bg_color=000000&color=0079fa&line=2100fa&point=0079fa&area=true&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 ---
 
-## Aboutme
+📫 How to reach me: 
+e-mail address->islinxu@163.com </br> 
+blos's address->https://islinxu.github.io/</br> 
 
 ## Summary
 
@@ -46,6 +55,9 @@ Before joining Tencent, I also worked/interned with Keeko Robot AI team and Stra
 
 ## Skills
 
+### General Tech Stacks
+
+### Programming languages
 ## Certificates
 ## Accomplishments
 ## Languages
