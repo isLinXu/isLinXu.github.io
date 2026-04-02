@@ -1,47 +1,55 @@
 # Overview
 
-![Xu Lin](../imgs/o_f5119c94.jpg)
+![Xu Lin](/imgs/xulin-portrait-2026.jpg)
 
-Xu Lin is an AI engineer and computer vision practitioner focused on turning research ideas into dependable systems. The work spans multimodal learning, model development, data pipelines, evaluation, and the engineering needed to make those pieces useful in real settings.
+Xu Lin is an AI researcher and engineer focused on multimodal large models, computer vision systems, and practical AI engineering. The work spans model research, evaluation, deployment, tooling, and open-source contribution.
 
-## Snapshot
+## Quick Resume
 
-- Current focus: multimodal AI systems, computer vision, model deployment, and practical ML workflows
-- Working style: research-minded, implementation-heavy, and strongly biased toward reproducible results
-- Core stack: Python, PyTorch, TensorFlow, PaddlePaddle, SQL, Apache Spark, and production-facing data tooling
-- Interest areas: computer vision, multimodal machine learning, data-centric AI, and open-source learning systems
+- Name: Xu Lin
+- Role: AI Researcher, AI Engineer, Open Source Contributor
+- Focus: MLLM, LLM, Agent systems, multimodal evaluation, practical deployment
+- Current organization: Tencent Youtu Lab
+- Email: [islinxu@163.com](mailto:islinxu@163.com)
+- GitHub: [github.com/isLinXu](https://github.com/isLinXu)
+- LinkedIn: [linkedin.com/in/xu-lin-3b78a5251](https://www.linkedin.com/in/xu-lin-3b78a5251/)
 
-## Experience
+## Profile
 
-Xu Lin is currently an AI Engineer at Tencent Youtu Lab. Before that, there was project and internship experience with robotics and applied AI teams, including work connected to Keeko Robot and Strait Intelligence Robot. Across these roles, the common thread has been building models and systems that move beyond notebooks into usable products and workflows.
+- Current focus: MLLM, LLM, Agent systems, multimodal evaluation, and deployment workflows
+- Public identity: AI Researcher, AI Engineer, Open Source Contributor
+- Working style: research-driven, implementation-heavy, and strongly oriented toward real-world usability
+- Core stack: Python, PyTorch, TensorFlow, PaddlePaddle, SQL, Apache Spark, and production-facing ML tooling
 
-## What This Site Covers
+## Current Direction
 
-- `Overview`: a concise introduction to background, interests, and current direction
-- `Skills`: technical capabilities across modeling, tooling, and engineering
-- `Experience`: role history and practical industry context
-- `Projects`: selected work, experiments, and open-source repositories
-- `Publications`: papers, technical output, and research traces
-- `Docs`: notes, references, and supporting material
+The recent public profile emphasizes multimodal large language models, efficient training and inference, evaluation quality, and agent-oriented engineering. This site reflects that transition more clearly than before.
 
-## Working Themes
+## Experience Snapshot
 
-### Research to Production
+- AI Engineer at Tencent Youtu Lab
+- Earlier work and internships connected to Keeko Robot AI and Strait Intelligence Robot AI
+- Long-running open-source and public documentation habit across GitHub, blogs, and technical notes
 
-The strongest projects usually sit at the intersection of curiosity and utility. That means building with enough rigor for research exploration, while keeping the implementation clear enough to scale, reuse, and ship.
+## Selected Strengths
 
-### Systems Thinking
+- Strong interest in multimodal large models and agent-oriented systems
+- Comfortable moving between research exploration and engineering implementation
+- Public work spans repositories, notes, blogs, and benchmark-oriented output
+- Sustained open-source participation and technical documentation habits
 
-Good ML work is rarely just model work. It includes datasets, data quality, evaluation, tooling, debugging, monitoring, and delivery. This portfolio reflects that broader view.
+## Selected Public Repositories
 
-### Continuous Learning
+- [paper-list](https://github.com/isLinXu/paper-list)
+- [YOLOv8_Efficient](https://github.com/isLinXu/YOLOv8_Efficient)
+- [vision-process-webui](https://github.com/isLinXu/vision-process-webui)
+- [model-metrics-plot](https://github.com/isLinXu/model-metrics-plot)
 
-The site is intentionally organized like a living workspace. It is not only a resume, but also a public record of what is being explored, learned, and refined over time.
-
-## Contact
+## Public Links
 
 - GitHub: [github.com/isLinXu](https://github.com/isLinXu)
 - LinkedIn: [linkedin.com/in/xu-lin-3b78a5251](https://www.linkedin.com/in/xu-lin-3b78a5251/)
-- Medium: [medium.com/@isLinXu](https://medium.com/@isLinXu)
 - Blog: [www.cnblogs.com/isLinXu](https://www.cnblogs.com/isLinXu/)
-- Email: [linxu.official@gmail.com](mailto:linxu.official@gmail.com)
+- Medium: [medium.com/@isLinXu](https://medium.com/@isLinXu)
+- Hugging Face: [huggingface.co/gatilin](https://huggingface.co/gatilin)
+- Email: [islinxu@163.com](mailto:islinxu@163.com)
