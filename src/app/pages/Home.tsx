@@ -25,7 +25,7 @@ interface Props {
   setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const avatarUrl = "/imgs/isLinXu.png";
+const avatarUrl = "https://avatars.githubusercontent.com/u/59380685?v=4";
 const portraitUrl = "/imgs/xulin-portrait-2026.jpg";
 
 const sectionCards = {
