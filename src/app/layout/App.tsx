@@ -84,29 +84,52 @@ export default function App() {
           h1: {
             fontFamily: '"Fraunces", serif',
             fontWeight: 700,
+            lineHeight: 1.02,
           },
           h2: {
             fontFamily: '"Fraunces", serif',
             fontWeight: 700,
+            lineHeight: 1.08,
           },
           h3: {
             fontFamily: '"Fraunces", serif',
             fontWeight: 700,
+            lineHeight: 1.12,
           },
           h4: {
             fontFamily: '"Fraunces", serif',
             fontWeight: 700,
+            lineHeight: 1.16,
           },
           h5: {
             fontFamily: '"Fraunces", serif',
             fontWeight: 700,
+            lineHeight: 1.2,
           },
           h6: {
             fontFamily: '"Fraunces", serif',
             fontWeight: 700,
+            lineHeight: 1.24,
+          },
+          body1: {
+            fontSize: "0.99rem",
+            lineHeight: 1.72,
+          },
+          body2: {
+            fontSize: "0.92rem",
+            lineHeight: 1.66,
+          },
+          subtitle1: {
+            fontSize: "1rem",
+            lineHeight: 1.55,
+          },
+          subtitle2: {
+            fontSize: "0.88rem",
+            lineHeight: 1.5,
           },
           button: {
             fontFamily: '"Manrope", "Helvetica Neue", sans-serif',
+            fontWeight: 700,
           },
         },
         components: {
@@ -297,7 +320,7 @@ export default function App() {
                       />
                     </Box>
                   </Grid>
-                  <Grid item sx={{ width: "auto", minWidth: { xs: 0, md: 360 } }}>
+                  <Grid item sx={{ width: "auto", minWidth: { xs: 0, md: 320 } }}>
                     <TopActions downloadHref="/resume-xulin-2026.pdf" />
                   </Grid>
                 </Grid>

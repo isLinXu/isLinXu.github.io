@@ -23,9 +23,9 @@ export default function TopActions({
   return (
     <Stack
       direction="row"
-      spacing={0.8}
+      spacing={0.7}
       sx={{
-        px: { xs: 0.6, md: 1 },
+        px: { xs: 0.4, md: 0.8 },
         alignItems: "center",
         justifyContent: "flex-end",
         height: 42,
@@ -51,9 +51,12 @@ export default function TopActions({
         sx={{
           textTransform: "none",
           borderRadius: 999,
-          px: { xs: 1, md: 1.25 },
+          px: { xs: 0.9, md: 1.1 },
+          minHeight: 30,
           minWidth: "fit-content",
           whiteSpace: "nowrap",
+          fontSize: "0.8rem",
+          fontWeight: 700,
           color: "text.primary",
           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
           backgroundColor: alpha(theme.palette.primary.main, 0.06),
@@ -71,9 +74,12 @@ export default function TopActions({
           sx={{
             textTransform: "none",
             borderRadius: 999,
-            px: { xs: 1, md: 1.25 },
+            px: { xs: 0.9, md: 1.1 },
+            minHeight: 30,
             minWidth: "fit-content",
             whiteSpace: "nowrap",
+            fontSize: "0.8rem",
+            fontWeight: 700,
             color: "text.primary",
             border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
           }}
@@ -88,9 +94,12 @@ export default function TopActions({
         sx={{
           textTransform: "none",
           borderRadius: 999,
-          px: { xs: 1, md: 1.25 },
+          px: { xs: 0.9, md: 1.1 },
+          minHeight: 30,
           minWidth: "fit-content",
           whiteSpace: "nowrap",
+          fontSize: "0.8rem",
+          fontWeight: 700,
           color: "text.primary",
           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
         }}

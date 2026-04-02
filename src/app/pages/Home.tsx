@@ -237,19 +237,19 @@ export default function Home({ setSelectedIndex }: Props) {
     <Box
       sx={{
         minHeight: "calc(100vh - 26px - 42px)",
-        px: { xs: 2, md: 4 },
-        py: { xs: 2.5, md: 3.5 },
+        px: { xs: 1.5, md: 3 },
+        py: { xs: 2, md: 2.75 },
       }}
     >
-      <Grid container spacing={{ xs: 2, md: 2.5 }}>
-        <Grid item xs={12} xl={8}>
+      <Grid container spacing={{ xs: 1.5, md: 2 }}>
+        <Grid item xs={12} xl={7}>
           <Paper
             elevation={0}
             sx={{
               position: "relative",
               overflow: "hidden",
-              borderRadius: 5,
-              p: { xs: 2.25, md: 3.25 },
+              borderRadius: 4,
+              p: { xs: 2, md: 2.6 },
               border: `1px solid ${alpha(theme.palette.divider, 0.7)}`,
               background: isDark
                 ? "linear-gradient(145deg, rgba(9,16,27,0.96) 0%, rgba(12,25,40,0.94) 55%, rgba(8,14,23,0.98) 100%)"
@@ -269,17 +269,17 @@ export default function Home({ setSelectedIndex }: Props) {
               }}
             />
 
-            <Stack spacing={2.5} sx={{ position: "relative", zIndex: 1 }}>
-              <Grid container spacing={{ xs: 2, md: 3 }} alignItems="center">
-                <Grid item xs={12} md={4}>
-                  <Stack spacing={1.2} alignItems={{ xs: "flex-start", md: "center" }}>
+            <Stack spacing={2.1} sx={{ position: "relative", zIndex: 1 }}>
+              <Grid container spacing={{ xs: 1.6, md: 2.4 }} alignItems="center">
+                <Grid item xs={12} md={3.5}>
+                  <Stack spacing={1} alignItems={{ xs: "flex-start", md: "center" }}>
                     <Box
                       component="img"
                       src={photoMode === "avatar" ? avatarUrl : portraitUrl}
                       alt="Xu Lin portrait"
                       sx={{
-                        width: { xs: 112, md: 168 },
-                        height: { xs: 112, md: 168 },
+                        width: { xs: 104, md: 144 },
+                        height: { xs: 104, md: 144 },
                         borderRadius: "50%",
                         objectFit: "cover",
                         border: `3px solid ${alpha(
@@ -299,6 +299,8 @@ export default function Home({ setSelectedIndex }: Props) {
                         sx={{
                           textTransform: "none",
                           borderRadius: 999,
+                          px: 1.15,
+                          fontSize: "0.82rem",
                           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
                           backgroundColor:
                             photoMode === "avatar"
@@ -315,6 +317,8 @@ export default function Home({ setSelectedIndex }: Props) {
                         sx={{
                           textTransform: "none",
                           borderRadius: 999,
+                          px: 1.15,
+                          fontSize: "0.82rem",
                           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
                           backgroundColor:
                             photoMode === "portrait"
@@ -328,8 +332,8 @@ export default function Home({ setSelectedIndex }: Props) {
                   </Stack>
                 </Grid>
 
-                <Grid item xs={12} md={8}>
-                  <Stack spacing={1.15}>
+                <Grid item xs={12} md={8.5}>
+                  <Stack spacing={0.95}>
                     <Chip
                       label={text.role}
                       sx={{
@@ -338,6 +342,11 @@ export default function Home({ setSelectedIndex }: Props) {
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
                         borderRadius: 999,
+                        height: 32,
+                        "& .MuiChip-label": {
+                          px: 1.5,
+                          fontSize: { xs: "0.68rem", md: "0.74rem" },
+                        },
                         backgroundColor: alpha(
                           isDark ? "#7fd1ff" : "#0f5cc0",
                           isDark ? 0.16 : 0.08
@@ -348,8 +357,8 @@ export default function Home({ setSelectedIndex }: Props) {
                     <Typography
                       variant="h1"
                       sx={{
-                        fontSize: { xs: "2.35rem", md: "4rem" },
-                        lineHeight: 0.98,
+                        fontSize: { xs: "2.1rem", md: "3.35rem", xl: "3.6rem" },
+                        lineHeight: 1,
                         letterSpacing: "-0.04em",
                       }}
                     >
@@ -359,9 +368,10 @@ export default function Home({ setSelectedIndex }: Props) {
                       variant="h5"
                       sx={{
                         color: "text.secondary",
-                        lineHeight: 1.45,
+                        lineHeight: 1.34,
                         fontWeight: 500,
-                        maxWidth: 680,
+                        fontSize: { xs: "1.18rem", md: "1.52rem" },
+                        maxWidth: 620,
                       }}
                     >
                       {text.title}
@@ -372,10 +382,10 @@ export default function Home({ setSelectedIndex }: Props) {
 
               <Typography
                 sx={{
-                  maxWidth: 820,
+                  maxWidth: 760,
                   color: "text.secondary",
-                  fontSize: { xs: "0.98rem", md: "1.03rem" },
-                  lineHeight: 1.9,
+                  fontSize: { xs: "0.95rem", md: "1rem" },
+                  lineHeight: 1.78,
                 }}
               >
                 {text.intro}
@@ -391,11 +401,12 @@ export default function Home({ setSelectedIndex }: Props) {
                   endIcon={<DescriptionRoundedIcon />}
                   onClick={() => navigate("/resume")}
                   sx={{
-                    px: 2.2,
-                    py: 1.1,
+                    px: 2,
+                    py: 0.95,
                     borderRadius: 999,
                     textTransform: "none",
                     fontWeight: 700,
+                    fontSize: "0.92rem",
                     backgroundColor: isDark ? "#8fd8ff" : "#0f5cc0",
                     color: isDark ? "#07111d" : "#ffffff",
                     "&:hover": {
@@ -413,11 +424,12 @@ export default function Home({ setSelectedIndex }: Props) {
                   target="_blank"
                   rel="noreferrer"
                   sx={{
-                    px: 2.2,
-                    py: 1.1,
+                    px: 2,
+                    py: 0.95,
                     borderRadius: 999,
                     textTransform: "none",
                     fontWeight: 700,
+                    fontSize: "0.92rem",
                     borderColor: alpha(theme.palette.text.primary, 0.2),
                     color: "text.primary",
                     textDecoration: "none",
@@ -440,11 +452,11 @@ export default function Home({ setSelectedIndex }: Props) {
                 }
               >
                 {text.stats.map((item) => (
-                  <Box key={item.label} sx={{ pr: 1.5 }}>
+                  <Box key={item.label} sx={{ pr: 1.1 }}>
                     <Typography
                       variant="h5"
                       sx={{
-                        fontSize: { xs: "1.1rem", md: "1.45rem" },
+                        fontSize: { xs: "1rem", md: "1.3rem" },
                         fontWeight: 700,
                       }}
                     >
@@ -457,6 +469,7 @@ export default function Home({ setSelectedIndex }: Props) {
                         textTransform: "uppercase",
                         letterSpacing: "0.08em",
                         fontFamily: '"IBM Plex Mono", monospace',
+                        fontSize: "0.74rem",
                       }}
                     >
                       {item.label}
@@ -469,11 +482,12 @@ export default function Home({ setSelectedIndex }: Props) {
                 <Typography
                   variant="body2"
                   sx={{
-                    mb: 1,
+                    mb: 0.8,
                     color: "text.secondary",
                     textTransform: "uppercase",
                     letterSpacing: "0.1em",
                     fontFamily: '"IBM Plex Mono", monospace',
+                    fontSize: "0.72rem",
                   }}
                 >
                   {text.connect}
@@ -518,8 +532,8 @@ export default function Home({ setSelectedIndex }: Props) {
           </Paper>
         </Grid>
 
-        <Grid item xs={12} xl={4}>
-          <Stack spacing={2} sx={{ height: "100%" }}>
+        <Grid item xs={12} xl={5}>
+          <Stack spacing={1.5} sx={{ height: "100%" }}>
             {[
               {
                 eyebrow: text.focusEyebrow,
@@ -536,8 +550,8 @@ export default function Home({ setSelectedIndex }: Props) {
                 key={card.title}
                 elevation={0}
                 sx={{
-                  borderRadius: 4,
-                  p: 2.25,
+                  borderRadius: 3.5,
+                  p: 1.8,
                   border: `1px solid ${alpha(theme.palette.divider, 0.6)}`,
                   backgroundColor: alpha(
                     isDark ? "#101826" : "#ffffff",
@@ -548,19 +562,29 @@ export default function Home({ setSelectedIndex }: Props) {
                 <Typography
                   variant="body2"
                   sx={{
-                    mb: 1,
+                    mb: 0.8,
                     color: "text.secondary",
                     textTransform: "uppercase",
                     letterSpacing: "0.1em",
                     fontFamily: '"IBM Plex Mono", monospace',
+                    fontSize: "0.72rem",
                   }}
                 >
                   {card.eyebrow}
                 </Typography>
-                <Typography variant="h4" sx={{ mb: 1.1, fontSize: "1.55rem" }}>
+                <Typography
+                  variant="h4"
+                  sx={{ mb: 0.8, fontSize: { xs: "1.24rem", md: "1.38rem" } }}
+                >
                   {card.title}
                 </Typography>
-                <Typography sx={{ color: "text.secondary", lineHeight: 1.8 }}>
+                <Typography
+                  sx={{
+                    color: "text.secondary",
+                    lineHeight: 1.65,
+                    fontSize: "0.95rem",
+                  }}
+                >
                   {card.body}
                 </Typography>
               </Paper>
@@ -569,8 +593,8 @@ export default function Home({ setSelectedIndex }: Props) {
             <Paper
               elevation={0}
               sx={{
-                borderRadius: 4,
-                p: 2.25,
+                borderRadius: 3.5,
+                p: 1.8,
                 border: `1px solid ${alpha(theme.palette.divider, 0.6)}`,
                 backgroundColor: alpha(
                   isDark ? "#0c1420" : "#ffffff",
@@ -581,24 +605,25 @@ export default function Home({ setSelectedIndex }: Props) {
               <Typography
                 variant="body2"
                 sx={{
-                  mb: 1.25,
+                  mb: 1,
                   color: "text.secondary",
                   textTransform: "uppercase",
                   letterSpacing: "0.1em",
                   fontFamily: '"IBM Plex Mono", monospace',
+                  fontSize: "0.72rem",
                 }}
               >
                 {text.startHere}
               </Typography>
-              <Stack spacing={1.15}>
+              <Stack spacing={0.95}>
                 {sectionCards[locale].map((card, index) => (
                   <Box
                     key={card.title}
                     onClick={() => navigate(card.route)}
                     sx={{
                       cursor: "pointer",
-                      borderRadius: 3,
-                      p: 1.7,
+                      borderRadius: 2.5,
+                      p: 1.35,
                       border: `1px solid ${alpha(theme.palette.divider, 0.45)}`,
                       backgroundColor: alpha(
                         isDark ? "#ffffff" : "#0f5cc0",
@@ -628,13 +653,17 @@ export default function Home({ setSelectedIndex }: Props) {
                       <Box>
                         <Typography
                           variant="h6"
-                          sx={{ fontSize: "1rem", mb: 0.35 }}
+                          sx={{ fontSize: "0.98rem", mb: 0.25 }}
                         >
                           {`${String(index + 1).padStart(2, "0")} ${card.title}`}
                         </Typography>
                         <Typography
                           variant="body2"
-                          sx={{ color: "text.secondary", lineHeight: 1.7 }}
+                          sx={{
+                            color: "text.secondary",
+                            lineHeight: 1.55,
+                            fontSize: "0.9rem",
+                          }}
                         >
                           {card.description}
                         </Typography>
@@ -654,8 +683,8 @@ export default function Home({ setSelectedIndex }: Props) {
           <Paper
             elevation={0}
             sx={{
-              borderRadius: 5,
-              p: { xs: 2.1, md: 2.6 },
+              borderRadius: 4,
+              p: { xs: 1.9, md: 2.3 },
               border: `1px solid ${alpha(theme.palette.divider, 0.65)}`,
               backgroundColor: alpha(
                 isDark ? "#0b1522" : "#ffffff",
@@ -673,18 +702,19 @@ export default function Home({ setSelectedIndex }: Props) {
                 <Typography
                   variant="body2"
                   sx={{
-                    mb: 0.7,
+                    mb: 0.55,
                     color: "text.secondary",
                     textTransform: "uppercase",
                     letterSpacing: "0.1em",
                     fontFamily: '"IBM Plex Mono", monospace',
+                    fontSize: "0.72rem",
                   }}
                 >
                   {text.featuredEyebrow}
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontSize: { xs: "1.7rem", md: "2.2rem" } }}
+                  sx={{ fontSize: { xs: "1.5rem", md: "1.9rem" } }}
                 >
                   {text.featuredTitle}
                 </Typography>
@@ -700,6 +730,7 @@ export default function Home({ setSelectedIndex }: Props) {
                   alignSelf: { xs: "flex-start", md: "center" },
                   textTransform: "none",
                   fontWeight: 700,
+                  fontSize: "0.9rem",
                   color: "text.primary",
                   textDecoration: "none",
                 }}
@@ -708,7 +739,7 @@ export default function Home({ setSelectedIndex }: Props) {
               </Button>
             </Stack>
 
-            <Grid container spacing={1.5}>
+            <Grid container spacing={1.25}>
               {featuredRepos[locale].map((repo) => (
                 <Grid item xs={12} md={6} xl={4} key={repo.title}>
                   <Paper
@@ -721,8 +752,8 @@ export default function Home({ setSelectedIndex }: Props) {
                     sx={{
                       display: "block",
                       height: "100%",
-                      p: 2,
-                      borderRadius: 3.5,
+                      p: 1.7,
+                      borderRadius: 3,
                       border: `1px solid ${alpha(theme.palette.divider, 0.6)}`,
                       backgroundColor: alpha(
                         isDark ? "#ffffff" : "#0f315f",
@@ -740,7 +771,7 @@ export default function Home({ setSelectedIndex }: Props) {
                       },
                     }}
                   >
-                    <Stack spacing={1.1}>
+                    <Stack spacing={0.9}>
                       <Chip
                         label={repo.tag}
                         size="small"
@@ -751,12 +782,16 @@ export default function Home({ setSelectedIndex }: Props) {
                           letterSpacing: "0.06em",
                         }}
                       />
-                      <Typography variant="h6" sx={{ fontSize: "1.05rem" }}>
+                      <Typography variant="h6" sx={{ fontSize: "1rem" }}>
                         {repo.title}
                       </Typography>
                       <Typography
                         variant="body2"
-                        sx={{ color: "text.secondary", lineHeight: 1.75 }}
+                        sx={{
+                          color: "text.secondary",
+                          lineHeight: 1.62,
+                          fontSize: "0.9rem",
+                        }}
                       >
                         {repo.body}
                       </Typography>

@@ -63,12 +63,12 @@ function MarkdownH1(props: { children: ReactNode }) {
       <Typography
         variant="h1"
         sx={{
-          fontSize: "2em",
+          fontSize: { xs: "2rem", md: "2.35rem" },
           display: "block",
-          marginBlockStart: "0.67em",
-          marginBlockEnd: "0.3em",
+          marginBlockStart: "0.4em",
+          marginBlockEnd: "0.22em",
           fontWeight: "bold",
-          lineHeight: 1.25,
+          lineHeight: 1.12,
         }}
       >
         {props.children}
@@ -84,12 +84,12 @@ function MarkdownH2(props: { children: ReactNode }) {
       <Typography
         variant="h2"
         sx={{
-          fontSize: "1.5em",
+          fontSize: { xs: "1.45rem", md: "1.72rem" },
           display: "block",
-          marginBlockStart: "0.83em",
-          marginBlockEnd: "0.3em",
+          marginBlockStart: "0.75em",
+          marginBlockEnd: "0.24em",
           fontWeight: "bold",
-          lineHeight: 1.25,
+          lineHeight: 1.16,
         }}
       >
         {props.children}
@@ -159,27 +159,35 @@ export default function MDContainer({ name }: Props) {
     <Container
         maxWidth="lg"
         sx={{
-          py: { xs: 3, md: 4 },
-          px: { xs: 2, md: 3 },
+          py: { xs: 2.5, md: 3.25 },
+          px: { xs: 1.5, md: 2.5 },
         "& p": {
           color: "text.secondary",
-          lineHeight: 1.9,
-          fontSize: "1rem",
+          lineHeight: 1.78,
+          fontSize: { xs: "0.96rem", md: "1rem" },
           },
           "& ul, & ol": {
             color: "text.secondary",
-            lineHeight: 1.9,
+            lineHeight: 1.76,
+            fontSize: { xs: "0.95rem", md: "0.99rem" },
+            paddingLeft: "1.35rem",
           },
           "& li": {
-            mb: 0.7,
+            mb: 0.5,
+          },
+          "& h3": {
+            fontSize: { xs: "1.16rem", md: "1.28rem" },
+            lineHeight: 1.22,
+            marginTop: "1.05rem",
+            marginBottom: "0.4rem",
           },
           "& img": {
             display: "block",
             maxWidth: "100%",
             width: "auto",
             height: "auto",
-            margin: "1.2rem auto",
-            maxHeight: "520px",
+            margin: "1rem auto",
+            maxHeight: "460px",
             borderRadius: 3,
             border: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
             boxShadow:
@@ -189,7 +197,7 @@ export default function MDContainer({ name }: Props) {
           },
           "& blockquote": {
             margin: 0,
-            padding: "0.9rem 1rem",
+            padding: "0.8rem 0.95rem",
             borderLeft: `4px solid ${theme.palette.primary.main}`,
             backgroundColor: alpha(theme.palette.primary.main, 0.06),
             borderRadius: 2,
@@ -198,7 +206,7 @@ export default function MDContainer({ name }: Props) {
         "& hr": {
           border: 0,
           borderTop: `1px solid ${theme.palette.divider}`,
-          margin: "2rem 0",
+          margin: "1.5rem 0",
         },
         "@media print": {
           maxWidth: "none",
