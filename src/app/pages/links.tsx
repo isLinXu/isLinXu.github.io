@@ -5,6 +5,7 @@ import {
   FaLinkedin,
   FaEnvelope,
 } from "react-icons/fa";
+import { VscAccount } from "react-icons/vsc";
 
 export const links = [
   {
@@ -36,5 +37,11 @@ export const links = [
     title: "Find me on Blog",
     href: "https://www.cnblogs.com/isLinXu/",
     icon: <FaBlog />,
+  },
+  {
+    index: 5,
+    title: "Find me on Hugging Face",
+    href: "https://huggingface.co/gatilin",
+    icon: <VscAccount />,
   },
 ];

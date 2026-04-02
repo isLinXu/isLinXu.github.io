@@ -1,63 +1,47 @@
-# 📖 Overview
+# Overview
 
+![Xu Lin](../imgs/o_f5119c94.jpg)
 
+Xu Lin is an AI engineer and computer vision practitioner focused on turning research ideas into dependable systems. The work spans multimodal learning, model development, data pipelines, evaluation, and the engineering needed to make those pieces useful in real settings.
 
-<p align="center">
-<a href="https://github.com/isLinXu">
-	<img src="https://readme-typing-svg.demolab.com?font=Georgia&size=18&duration=2000&pause=100&multiline=true&width=500&height=80&lines=Lin Xu;Researcher+%7C+AI+Engineer;AI+%7C+Computer+Vision+%7C+Bots" alt="Typing SVG" />
-</a>
+## Snapshot
 
-<p> 
-<a href="https://github.com/isLinXu"> <img src="https://komarev.com/ghpvc/?username=isLinXu&color=blue" height="25px" alt="github follow" /> </a>
-<a href="https://github.com/isLinXu?tab=followers"> <img src="https://img.shields.io/github/followers/isLinXu?label=Followers&style=plastic" height="25px" alt="github follow" /> </a>
-<a href="https://islinxu.github.io/"> <img src="https://img.shields.io/badge/homepage-3875B7.svg?labelColor=21438A&style=plastic" height="25px" alt="Lin Xu">
-<a href="https://"><img src="https://img.shields.io/badge/scholar-4385FE.svg?&style=plastic&logo=google-scholar&logoColor=white" alt="Google Scholar" height="25px"> </a>
-<a href="mailto:linxu.official@gmail.com"> <img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=plastic&logo=gmail&logoColor=white" height="25px" alt="Email">
-<a href="https://https://github.com/isLinXu"><img src="https://img.shields.io/badge/linkedin-006CAC.svg?&style=plastic&logo=linkedin&logoColor=white" height="25px" alt="LinkedIn"> </a>
-<a href="https:"><img src="https://img.shields.io/badge/知乎-0079FF.svg?style=plastic&logo=zhihu&logoColor=white" height="25px" alt="知乎"></a>
-<a href="https://www.linkedin.com/in/xu-lin-3b78a5251/"> <img src="https://img.shields.io/badge/-CV-black?style=plastic" height="25px"> </a>
-</p> 
-
-<img src="../imgs/o_f5119c94.jpg" alt="o_f5119c94" style="zoom:25%;" />
-
-<img style="width: 50%" align="right" src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=isLinXu&show_icons=true&hide_border=true&count_private=true" />
-
-
-<p align="left"> 
-    💬 About me: I am Lin Xu, a AI Engineer at Tencent Youtu Lab.</br> 
-Before joining Tencent, I also worked/interned with Keeko Robot AI team and Strait Intelligence Robot AI team. </br> 
-🌱 currently learning OpenCV,Pytorch and Tensorflo,PaddlePaddle and MindSpore.etc </br> 
-🌱 Also interested in Computer Vision and Deep Learning networks.</br> 
-🔭 And working on MultiModal Machine Learning (MMML) .</br> 
-</p>
-</p>
-
-<!-- <div align="center"> -->
-
-<!--  <p align="left"> <img src="https://github-profile-trophy.vercel.app/?username=isLinXu&theme=dark" alt="isLinXu"> </p> -->
-
-<p align="left"> <img src="https://github-readme-streak-stats.herokuapp.com/?user=isLinXu&theme=dark" alt="isLinXu" > </p>
-
-[![isLinXu's Github Activity Graph](https://github-readme-activity-graph.cyclic.app/graph?username=isLinXu&custom_title=isLinXu's%20GitHub%20Activity%20Graph&bg_color=000000&color=0079fa&line=2100fa&point=0079fa&area=true&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
-
----
-
-📫 How to reach me: 
-e-mail address->islinxu@163.com </br> 
-blos's address->https://islinxu.github.io/</br> 
-
-## Summary
-
+- Current focus: multimodal AI systems, computer vision, model deployment, and practical ML workflows
+- Working style: research-minded, implementation-heavy, and strongly biased toward reproducible results
+- Core stack: Python, PyTorch, TensorFlow, PaddlePaddle, SQL, Apache Spark, and production-facing data tooling
+- Interest areas: computer vision, multimodal machine learning, data-centric AI, and open-source learning systems
 
 ## Experience
 
-## Education
+Xu Lin is currently an AI Engineer at Tencent Youtu Lab. Before that, there was project and internship experience with robotics and applied AI teams, including work connected to Keeko Robot and Strait Intelligence Robot. Across these roles, the common thread has been building models and systems that move beyond notebooks into usable products and workflows.
 
-## Skills
+## What This Site Covers
 
-### General Tech Stacks
+- `Overview`: a concise introduction to background, interests, and current direction
+- `Skills`: technical capabilities across modeling, tooling, and engineering
+- `Experience`: role history and practical industry context
+- `Projects`: selected work, experiments, and open-source repositories
+- `Publications`: papers, technical output, and research traces
+- `Docs`: notes, references, and supporting material
 
-### Programming languages
-## Certificates
-## Accomplishments
-## Languages
+## Working Themes
+
+### Research to Production
+
+The strongest projects usually sit at the intersection of curiosity and utility. That means building with enough rigor for research exploration, while keeping the implementation clear enough to scale, reuse, and ship.
+
+### Systems Thinking
+
+Good ML work is rarely just model work. It includes datasets, data quality, evaluation, tooling, debugging, monitoring, and delivery. This portfolio reflects that broader view.
+
+### Continuous Learning
+
+The site is intentionally organized like a living workspace. It is not only a resume, but also a public record of what is being explored, learned, and refined over time.
+
+## Contact
+
+- GitHub: [github.com/isLinXu](https://github.com/isLinXu)
+- LinkedIn: [linkedin.com/in/xu-lin-3b78a5251](https://www.linkedin.com/in/xu-lin-3b78a5251/)
+- Medium: [medium.com/@isLinXu](https://medium.com/@isLinXu)
+- Blog: [www.cnblogs.com/isLinXu](https://www.cnblogs.com/isLinXu/)
+- Email: [linxu.official@gmail.com](mailto:linxu.official@gmail.com)

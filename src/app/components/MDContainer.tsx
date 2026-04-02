@@ -13,15 +13,17 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
 import { ReactNode, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useLocation } from "react-router-dom";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
+import { useLocale } from "../i18n/LocaleContext";
 
 interface Props {
-  path: string;
+  name: string;
 }
 
 function MarkdownLink(props: any) {
@@ -135,14 +137,17 @@ function MarkdownH2(props: { children: ReactNode }) {
 //   return <>{result}</>;
 // }
 
-export default function MDContainer({ path }: Props) {
+export default function MDContainer({ name }: Props) {
   const [content, setContent] = useState("");
   const { pathname } = useLocation();
+  const theme = useTheme();
+  const { locale } = useLocale();
+
   useEffect(() => {
-    fetch(path)
+    fetch(`./pages/${locale}/${name}`)
       .then((res) => res.text())
       .then((text) => setContent(text));
-  }, [path]);
+  }, [locale, name]);
 
   useEffect(() => {
     let title = pathname.substring(1, pathname.length);
@@ -151,13 +156,102 @@ export default function MDContainer({ path }: Props) {
   }, [pathname]);
 
   return (
-    <Container>
+    <Container
+        maxWidth="lg"
+        sx={{
+          py: { xs: 3, md: 4 },
+          px: { xs: 2, md: 3 },
+        "& p": {
+          color: "text.secondary",
+          lineHeight: 1.9,
+          fontSize: "1rem",
+          },
+          "& ul, & ol": {
+            color: "text.secondary",
+            lineHeight: 1.9,
+          },
+          "& li": {
+            mb: 0.7,
+          },
+          "& img": {
+            display: "block",
+            maxWidth: "100%",
+            width: "auto",
+            height: "auto",
+            margin: "1.2rem auto",
+            maxHeight: "520px",
+            borderRadius: 3,
+            border: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
+            boxShadow:
+              theme.palette.mode === "dark"
+                ? "0 18px 48px rgba(0, 0, 0, 0.28)"
+                : "0 18px 48px rgba(40, 66, 110, 0.12)",
+          },
+          "& blockquote": {
+            margin: 0,
+            padding: "0.9rem 1rem",
+            borderLeft: `4px solid ${theme.palette.primary.main}`,
+            backgroundColor: alpha(theme.palette.primary.main, 0.06),
+            borderRadius: 2,
+            color: "text.secondary",
+          },
+        "& hr": {
+          border: 0,
+          borderTop: `1px solid ${theme.palette.divider}`,
+          margin: "2rem 0",
+        },
+        "@media print": {
+          maxWidth: "none",
+          py: 0,
+          px: 0,
+          fontSize: "11pt",
+          "& h1": {
+            fontSize: "24pt",
+            marginTop: 0,
+            color: "#000000",
+          },
+          "& h2": {
+            fontSize: "15pt",
+            color: "#000000",
+            breakAfter: "avoid",
+          },
+          "& h3": {
+            fontSize: "12pt",
+            color: "#000000",
+            breakAfter: "avoid",
+          },
+          "& p, & li": {
+            color: "#000000",
+            fontSize: "10.5pt",
+            lineHeight: 1.6,
+          },
+          "& ul, & ol": {
+            marginTop: "0.4rem",
+            marginBottom: "0.6rem",
+          },
+          "& table": {
+            breakInside: "avoid",
+          },
+          "& a": {
+            color: "#000000",
+            textDecoration: "none",
+          },
+          "& hr, & .MuiDivider-root": {
+            borderColor: "#cfcfcf",
+          },
+          "& img": {
+            boxShadow: "none",
+            borderColor: "#d9d9d9",
+            maxHeight: "220px",
+          },
+        },
+      }}
+      >
       <ReactMarkdown
         children={content}
         components={{
           code: MarkdownCode,
           a: MarkdownLink,
-          // p: MarkdownParagraph,
           table: MarkdownTable,
           thead: TableHead,
           tbody: TableBody,
@@ -167,7 +261,6 @@ export default function MDContainer({ path }: Props) {
           tfoot: TableFooter,
           h1: MarkdownH1,
           h2: MarkdownH2,
-          // br: MarkdownBr,
         }}
         remarkPlugins={[remarkGfm, remarkBreaks]}
         rehypePlugins={[rehypeRaw]}

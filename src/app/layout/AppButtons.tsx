@@ -1,9 +1,9 @@
-import { Button, Box, Paper } from "@mui/material";
-import React from "react";
-import { VscMarkdown, VscChromeClose } from "react-icons/vsc";
-import { useNavigate } from "react-router-dom";
+import { alpha, Box, Button, Container, Paper } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { Container } from "@mui/system";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { VscChromeClose, VscMarkdown } from "react-icons/vsc";
+import { useLocale } from "../i18n/LocaleContext";
 
 interface Props {
   pages: {
@@ -19,78 +19,50 @@ interface Props {
   setVisiblePageIndexs: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
+function pageLabel(name: string, locale: "en" | "zh") {
+  const labels: Record<string, { en: string; zh: string }> = {
+    "overview.md": { en: "Overview", zh: "概览" },
+    "resume.md": { en: "Resume", zh: "简历" },
+    "skills.md": { en: "Skills", zh: "技能" },
+    "experience.md": { en: "Experience", zh: "经历" },
+    "education.md": { en: "Education", zh: "教育" },
+    "projects.md": { en: "Projects", zh: "项目" },
+    "certificates.md": { en: "Certificates", zh: "证书" },
+    "accomplishments.md": { en: "Highlights", zh: "亮点" },
+    "docs.md": { en: "Docs", zh: "文档" },
+    "publication.md": { en: "Publication", zh: "论文" },
+    "course.md": { en: "Course", zh: "课程" },
+  };
+
+  return labels[name]?.[locale] ?? name.replace(".md", "");
+}
+
 export default function AppButtons({
   pages,
   selectedIndex,
   setSelectedIndex,
-  currentComponent,
   setCurrentComponent,
   visiblePageIndexs,
   setVisiblePageIndexs,
 }: Props) {
   const navigate = useNavigate();
   const theme = useTheme();
-  // const [selectedIndex, setSelectedIndex] = useState(-1);
-  function renderButtonBgColor(index: number) {
-    if (theme.palette.mode === "dark") {
-      return selectedIndex === index ? "#1e1e1e" : "#2d2d2d";
-    } else {
-      return selectedIndex === index ? "#ffffff" : "#ececec";
-    }
-  }
-
-  function renderButtonColor(index: number) {
-    if (theme.palette.mode === "dark") {
-      return selectedIndex === index ? "white" : "#817d7a";
-    } else {
-      return selectedIndex === index ? "#524a5f" : "#716f74";
-    }
-  }
-
-  function renderCloseButtonBgColor(index: number) {
-    if (theme.palette.mode === "dark") {
-      return selectedIndex === index ? "#1e1e1e" : "#2d2d2d";
-    } else {
-      return selectedIndex === index ? "#ffffff" : "#ececec";
-    }
-  }
-
-  function renderCloseButtonColor(index: number) {
-    if (theme.palette.mode === "dark") {
-      return selectedIndex === index ? "#white" : "#2d2d2d";
-    } else {
-      return selectedIndex === index ? "#72736d" : "#ececec";
-    }
-  }
-
-  function renderCloseButtonHoverBgColor(index: number) {
-    if (theme.palette.mode === "dark") {
-      return selectedIndex === index ? "#333c43" : "#333c43";
-    } else {
-      return selectedIndex === index ? "#e6e4e5" : "#dadada";
-    }
-  }
-
-  function renderCloseButtonHoverColor(index: number) {
-    if (theme.palette.mode === "dark") {
-      return selectedIndex !== index ? "#817d7a" : "#white";
-    } else {
-      return selectedIndex === index ? "#44434b" : "#92938e";
-    }
-  }
+  const isDark = theme.palette.mode === "dark";
+  const { locale } = useLocale();
 
   function renderPageButton(index: number, name: string, route: string) {
+    const active = selectedIndex === index;
+
     return (
       <Box
         key={index}
         sx={{
-          display: "inline-block",
-          borderRight: 1,
-          borderColor: theme.palette.mode === "dark" ? "#252525" : "#f3f3f3",
+          display: "inline-flex",
+          alignItems: "stretch",
+          borderRight: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
         }}
       >
         <Button
-          key={index}
           disableRipple
           disableElevation
           disableFocusRipple
@@ -100,44 +72,71 @@ export default function AppButtons({
             navigate(route);
           }}
           sx={{
+            minHeight: 42,
             borderRadius: 0,
-            px: 2,
+            px: 1.6,
+            gap: 0.9,
             textTransform: "none",
-            backgroundColor: renderButtonBgColor(index),
-            color: renderButtonColor(index),
+            justifyContent: "flex-start",
+            backgroundColor: active
+              ? alpha(theme.palette.background.paper, 0.96)
+              : alpha(isDark ? "#d9e8ff" : "#0f315f", isDark ? 0.04 : 0.03),
+            color: active ? "text.primary" : "text.secondary",
+            borderTop: active
+              ? `2px solid ${theme.palette.primary.main}`
+              : "2px solid transparent",
             "&.MuiButtonBase-root:hover": {
-              bgcolor: renderButtonBgColor(index),
+              bgcolor: active
+                ? alpha(theme.palette.background.paper, 0.98)
+                : alpha(isDark ? "#d9e8ff" : "#0f315f", isDark ? 0.08 : 0.06),
             },
-            transition: "none",
-            pb: 0.2,
           }}
         >
           <Box
-            sx={{ color: "#6997d5", width: 20, height: 20, mr: 0.4, ml: -1 }}
+            sx={{
+              color: active ? theme.palette.primary.main : "#6997d5",
+              width: 18,
+              height: 18,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
             <VscMarkdown />
           </Box>
-          {name}
+
+          <Box
+            component="span"
+            sx={{
+              maxWidth: 180,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {pageLabel(name, locale)}
+          </Box>
+
           <Box
             component={Paper}
+            elevation={0}
             sx={{
-              ml: 1,
-              mr: -1,
-              backgroundColor: renderCloseButtonBgColor(index),
-              color: renderCloseButtonColor(index),
-              "&.MuiPaper-root:hover": {
-                bgcolor: renderCloseButtonHoverBgColor(index),
-                color: renderCloseButtonHoverColor(index),
-              },
+              ml: 0.2,
               width: 20,
               height: 20,
-              transition: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 1.2,
+              backgroundColor: "transparent",
+              color: active ? "text.primary" : "text.secondary",
+              "&.MuiPaper-root:hover": {
+                bgcolor: alpha(theme.palette.text.primary, 0.1),
+              },
             }}
-            elevation={0}
-            onClick={(e: any) => {
+            onClick={(e: React.MouseEvent) => {
               e.stopPropagation();
               setVisiblePageIndexs(
-                visiblePageIndexs.filter((x) => x !== index)
+                visiblePageIndexs.filter((item) => item !== index)
               );
             }}
           >
@@ -157,27 +156,19 @@ export default function AppButtons({
         overflowX: "auto",
         overflowY: "hidden",
         whiteSpace: "nowrap",
-        backgroundColor: theme.palette.mode === "dark" ? "#252527" : "#f3f3f3",
+        backgroundColor: alpha(
+          isDark ? "#09111d" : "#ffffff",
+          isDark ? 0.96 : 0.72
+        ),
+        backdropFilter: "blur(16px)",
+        borderBottom: `1px solid ${theme.palette.divider}`,
         "&::-webkit-scrollbar": {
-          height: "3px",
-          // backgroundColor: 'red',
+          height: "4px",
         },
         "&::-webkit-scrollbar-thumb": {
-          backgroundColor:
-            theme.palette.mode === "dark" ? "#535353" : "#8c8c8c",
+          backgroundColor: alpha(theme.palette.text.secondary, 0.45),
+          borderRadius: 999,
         },
-        "&::-webkit-darkScrollbar-thumb": {
-          backgroundColor:
-            theme.palette.mode === "dark" ? "#ffffff" : "#8c8c8c",
-        },
-        // '&::-webkit-scrollbar:hover, & *::-webkit-scrollbar:hover': {
-        //   backgroundColor: '#ffffff',
-        // },
-        // '&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover':
-        //   {
-        //     backgroundColor:
-        //       theme.palette.mode === 'dark' ? '#ffffff' : '#8c8c8c',
-        //   },
       }}
     >
       {pages.map(({ index, name, route }) =>

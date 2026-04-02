@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Link, Paper, Tooltip } from "@mui/material";
+import { Box, Link, Paper, Tooltip, Typography } from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import { VscFiles, VscSettingsGear } from "react-icons/vsc";
@@ -20,11 +21,17 @@ export default function Sidebar({
   darkMode,
   handleThemeChange,
 }: Props) {
+  const theme = useTheme();
+  const iconColor = alpha(theme.palette.text.primary, 0.52);
+  const hoverColor = theme.palette.text.primary;
+
   return (
     <Box
       sx={{
-        height: `calc(100vh - 20px)`,
-        backgroundColor: darkMode ? "#333333" : "#2c2c2c",
+        height: "calc(100vh - 26px)",
+        backgroundColor: alpha(darkMode ? "#09111d" : "#fbfdff", 0.9),
+        borderRight: `1px solid ${theme.palette.divider}`,
+        backdropFilter: "blur(18px)",
       }}
       justifyContent="space-between"
       display="flex"
@@ -34,7 +41,7 @@ export default function Sidebar({
       elevation={0}
     >
       <Box
-        sx={{ flexGrow: 0 }}
+        sx={{ flexGrow: 0, pt: 1 }}
         display="flex"
         justifyContent="center"
         flexDirection="column"
@@ -42,10 +49,8 @@ export default function Sidebar({
         <Box
           sx={{
             borderLeft: expanded
-              ? "solid 0.12em white"
-              : darkMode
-              ? "solid 0.12em #333333"
-              : "solid 0.12em #2c2c2c",
+              ? `2px solid ${theme.palette.primary.main}`
+              : "2px solid transparent",
             cursor: "pointer",
             WebkitTapHighlightColor: "rgba(0,0,0,0)",
           }}
@@ -53,13 +58,11 @@ export default function Sidebar({
         >
           <Box
             sx={{
-              flexGrow: 0,
-              my: 1.5,
-              color: expanded ? "white" : "#858585",
-              fontSize: 24,
-              outline: "none",
+              my: 1.35,
+              color: expanded ? hoverColor : iconColor,
+              fontSize: 23,
               "&:hover": {
-                color: "white",
+                color: hoverColor,
               },
             }}
             display="flex"
@@ -68,22 +71,23 @@ export default function Sidebar({
             <VscFiles />
           </Box>
         </Box>
-        <Tooltip title="Source of this project" arrow placement="right">
+
+        <Tooltip title="Source code" arrow placement="right">
           <Link
             target="_blank"
-            href={"https://github.com/isLinXu/isLinXu.github.io"}
+            href="https://github.com/isLinXu/isLinXu.github.io"
             underline="none"
             color="inherit"
+            rel="noreferrer"
             sx={{ WebkitTapHighlightColor: "rgba(0,0,0,0)" }}
           >
             <Box
               sx={{
-                flexGrow: 0,
                 cursor: "pointer",
-                color: "#858585",
-                fontSize: 24,
+                color: iconColor,
+                fontSize: 23,
                 "&:hover": {
-                  color: "white",
+                  color: hoverColor,
                 },
               }}
               display="flex"
@@ -96,7 +100,7 @@ export default function Sidebar({
           </Link>
         </Tooltip>
 
-        <Divider sx={{ m: 0.5 }} />
+        <Divider sx={{ mx: 1, my: 1.2, borderColor: theme.palette.divider }} />
 
         {links.map((link) => (
           <Tooltip title={link.title} arrow placement="right" key={link.index}>
@@ -105,23 +109,24 @@ export default function Sidebar({
               href={link.href}
               underline="none"
               color="inherit"
+              rel="noreferrer"
               sx={{ WebkitTapHighlightColor: "rgba(0,0,0,0)" }}
             >
               <Box
                 sx={{
-                  flexGrow: 0,
-                  m: 0.5,
-                  color: "#858585",
-                  fontSize: 24,
+                  mx: 0.5,
+                  my: 0.2,
+                  color: iconColor,
+                  fontSize: 22,
                   "&:hover": {
-                    color: "white",
+                    color: hoverColor,
                   },
                   cursor: "pointer",
                 }}
                 display="flex"
                 justifyContent="center"
               >
-                <Box mt={0.7}>{link.icon}</Box>
+                <Box mt={0.6}>{link.icon}</Box>
               </Box>
             </Link>
           </Tooltip>
@@ -129,24 +134,23 @@ export default function Sidebar({
       </Box>
 
       <Box
-        sx={{ flexGrow: 0, pb: 0.5 }}
+        sx={{ flexGrow: 0, pb: 1 }}
         display="flex"
         justifyContent="center"
         flexDirection="column"
       >
         <Tooltip
-          title={darkMode ? "Turn on the light" : "Turn off the light"}
+          title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
           placement="right"
           arrow
         >
           <Box
             sx={{
-              flexGrow: 0,
-              fontSize: 24,
-              color: "#858585",
+              fontSize: 23,
+              color: iconColor,
               cursor: "pointer",
               "&:hover": {
-                color: "white",
+                color: hoverColor,
               },
               WebkitTapHighlightColor: "rgba(0,0,0,0)",
             }}
@@ -154,35 +158,37 @@ export default function Sidebar({
             justifyContent="center"
             onClick={handleThemeChange}
           >
-            {!darkMode ? (
-              <Box>
-                <DarkModeOutlinedIcon />
-              </Box>
-            ) : (
-              <Box>
-                <LightModeOutlinedIcon />
-              </Box>
-            )}
+            <Box>{!darkMode ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}</Box>
           </Box>
         </Tooltip>
-        <Box
-          sx={{
-            flexGrow: 0,
-            fontSize: 24,
-            color: "#858585",
-            cursor: "pointer",
-            "&:hover": {
-              color: "white",
-            },
-            WebkitTapHighlightColor: "rgba(0,0,0,0)",
-          }}
-          display="flex"
-          justifyContent="center"
-        >
-          <Box mt={0.7}>
-            <VscSettingsGear />
+
+        <Tooltip title="Personal workspace" placement="right" arrow>
+          <Box
+            sx={{
+              mt: 1.2,
+              color: iconColor,
+              cursor: "default",
+              textAlign: "center",
+            }}
+          >
+            <Box display="flex" justifyContent="center" sx={{ fontSize: 22 }}>
+              <VscSettingsGear />
+            </Box>
+            <Typography
+              variant="caption"
+              sx={{
+                display: "block",
+                mt: 0.2,
+                fontSize: "0.56rem",
+                letterSpacing: "0.12em",
+                fontFamily: '"IBM Plex Mono", monospace',
+                color: "text.secondary",
+              }}
+            >
+              LAB
+            </Typography>
           </Box>
-        </Box>
+        </Tooltip>
       </Box>
     </Box>
   );
