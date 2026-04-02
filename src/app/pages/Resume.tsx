@@ -369,7 +369,14 @@ export default function Resume() {
               },
             }}
           >
-            <Stack spacing={1.8}>
+            <Stack
+              spacing={1.8}
+              sx={{
+                "@media print": {
+                  rowGap: "0.6rem",
+                },
+              }}
+            >
               <Box
                 component="img"
                 src={profileImage}
@@ -424,7 +431,16 @@ export default function Resume() {
                 <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.tags}
                 </Typography>
-                <Stack direction="row" spacing={0.9} sx={{ flexWrap: "wrap" }}>
+                <Stack
+                  direction="row"
+                  spacing={0.9}
+                  sx={{
+                    flexWrap: "wrap",
+                    "@media print": {
+                      gap: "0.28rem",
+                    },
+                  }}
+                >
                   {data.tags.map((tag) => (
                     <Chip
                       key={tag}
@@ -439,10 +455,11 @@ export default function Resume() {
                           fontSize: "0.68rem",
                         },
                         "@media print": {
-                          height: 22,
+                          height: 18,
+                          borderRadius: "999px",
                           "& .MuiChip-label": {
-                            px: 0.8,
-                            fontSize: "0.55rem",
+                            px: 0.55,
+                            fontSize: "0.47rem",
                           },
                         },
                       }}
@@ -455,7 +472,15 @@ export default function Resume() {
                 <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.quick}
                 </Typography>
-                <Grid container spacing={1}>
+                <Grid
+                  container
+                  spacing={1}
+                  sx={{
+                    "@media print": {
+                      rowGap: "0.18rem",
+                    },
+                  }}
+                >
                   {data.facts.map((fact) => (
                     <Grid item xs={6} key={fact.label}>
                       <Paper
@@ -467,7 +492,8 @@ export default function Resume() {
                           backgroundColor: alpha(theme.palette.primary.main, 0.06),
                           "@media print": {
                             breakInside: "avoid",
-                            padding: "0.55rem",
+                            padding: "0.42rem",
+                            borderColor: "#e1e6ed",
                           },
                         }}
                       >
@@ -615,7 +641,14 @@ export default function Resume() {
               },
             }}
           >
-            <Stack spacing={2}>
+            <Stack
+              spacing={2}
+              sx={{
+                "@media print": {
+                  rowGap: "0.7rem",
+                },
+              }}
+            >
               <Box className="no-print" sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
                 <Button
                   component={Link}
@@ -644,7 +677,7 @@ export default function Resume() {
                   backgroundColor: alpha(theme.palette.primary.main, 0.045),
                   "@media print": {
                     p: 1.2,
-                    backgroundColor: "#fafafa",
+                    backgroundColor: "transparent",
                     breakInside: "avoid",
                     borderColor: "#d9dfe7",
                   },
@@ -668,7 +701,13 @@ export default function Resume() {
                 </Typography>
               </Paper>
 
-              <Divider />
+              <Divider
+                sx={{
+                  "@media print": {
+                    my: 0.2,
+                  },
+                }}
+              />
 
               <Box>
                 <Typography
@@ -684,7 +723,14 @@ export default function Resume() {
                 >
                   {data.labels.experience}
                 </Typography>
-                <Stack spacing={1.35}>
+                <Stack
+                  spacing={1.35}
+                  sx={{
+                    "@media print": {
+                      rowGap: "0.5rem",
+                    },
+                  }}
+                >
                   {data.experience.map((item, index) => (
                     <Box
                       key={item.role}
@@ -757,9 +803,24 @@ export default function Resume() {
                 </Stack>
               </Box>
 
-              <Divider />
+              <Divider
+                sx={{
+                  "@media print": {
+                    my: 0.2,
+                  },
+                }}
+              />
 
-              <Grid container spacing={1.7}>
+              <Grid
+                container
+                spacing={1.7}
+                sx={{
+                  "@media print": {
+                    columnGap: 0,
+                    rowGap: "0.25rem",
+                  },
+                }}
+              >
                 <Grid item xs={12} lg={7}>
                   <Typography
                     variant="h5"
@@ -774,7 +835,14 @@ export default function Resume() {
                   >
                     {data.labels.projects}
                   </Typography>
-                  <Stack spacing={0.9}>
+                  <Stack
+                    spacing={0.9}
+                    sx={{
+                      "@media print": {
+                        rowGap: "0.3rem",
+                      },
+                    }}
+                  >
                     {data.projects.map((item) => (
                       <Paper
                         key={item.name}
@@ -785,7 +853,9 @@ export default function Resume() {
                           border: `1px solid ${alpha(theme.palette.divider, 0.7)}`,
                           "@media print": {
                             breakInside: "avoid",
-                            padding: "0.7rem",
+                            padding: "0.5rem 0",
+                            border: 0,
+                            borderRadius: 0,
                           },
                         }}
                       >
@@ -833,7 +903,16 @@ export default function Resume() {
                   >
                     {data.labels.education}
                   </Typography>
-                  <Stack spacing={0.7} sx={{ mb: 1.4 }}>
+                  <Stack
+                    spacing={0.7}
+                    sx={{
+                      mb: 1.4,
+                      "@media print": {
+                        rowGap: "0.24rem",
+                        mb: 0.75,
+                      },
+                    }}
+                  >
                     {data.education.map((item) => (
                       <Typography
                         key={item}
@@ -865,7 +944,14 @@ export default function Resume() {
                   >
                     {data.labels.impact}
                   </Typography>
-                  <Stack spacing={0.7}>
+                  <Stack
+                    spacing={0.7}
+                    sx={{
+                      "@media print": {
+                        rowGap: "0.24rem",
+                      },
+                    }}
+                  >
                     {data.impact.map((item) => (
                       <Typography
                         key={item}
