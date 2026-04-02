@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Chip,
-  Divider,
   Grid,
   IconButton,
   Link,
@@ -269,7 +268,7 @@ export default function Home({ setSelectedIndex }: Props) {
               }}
             />
 
-            <Stack spacing={2.1} sx={{ position: "relative", zIndex: 1 }}>
+            <Stack spacing={2} sx={{ position: "relative", zIndex: 1 }}>
               <Grid container spacing={{ xs: 1.6, md: 2.4 }} alignItems="center">
                 <Grid item xs={12} md={3.5}>
                   <Stack spacing={1} alignItems={{ xs: "flex-start", md: "center" }}>
@@ -357,7 +356,7 @@ export default function Home({ setSelectedIndex }: Props) {
                     <Typography
                       variant="h1"
                       sx={{
-                        fontSize: { xs: "2.1rem", md: "3.35rem", xl: "3.6rem" },
+                        fontSize: { xs: "2.05rem", md: "3.05rem", xl: "3.3rem" },
                         lineHeight: 1,
                         letterSpacing: "-0.04em",
                       }}
@@ -368,10 +367,10 @@ export default function Home({ setSelectedIndex }: Props) {
                       variant="h5"
                       sx={{
                         color: "text.secondary",
-                        lineHeight: 1.34,
+                        lineHeight: 1.3,
                         fontWeight: 500,
-                        fontSize: { xs: "1.18rem", md: "1.52rem" },
-                        maxWidth: 620,
+                        fontSize: { xs: "1.08rem", md: "1.36rem" },
+                        maxWidth: 560,
                       }}
                     >
                       {text.title}
@@ -382,10 +381,10 @@ export default function Home({ setSelectedIndex }: Props) {
 
               <Typography
                 sx={{
-                  maxWidth: 760,
+                  maxWidth: 700,
                   color: "text.secondary",
-                  fontSize: { xs: "0.95rem", md: "1rem" },
-                  lineHeight: 1.78,
+                  fontSize: { xs: "0.94rem", md: "0.98rem" },
+                  lineHeight: 1.72,
                 }}
               >
                 {text.intro}
@@ -439,44 +438,49 @@ export default function Home({ setSelectedIndex }: Props) {
                 </Button>
               </Stack>
 
-              <Stack
-                direction="row"
-                spacing={1}
-                sx={{ flexWrap: "wrap" }}
-                divider={
-                  <Divider
-                    orientation="vertical"
-                    flexItem
-                    sx={{ borderColor: alpha(theme.palette.divider, 0.35) }}
-                  />
-                }
-              >
+              <Grid container spacing={1}>
                 {text.stats.map((item) => (
-                  <Box key={item.label} sx={{ pr: 1.1 }}>
-                    <Typography
-                      variant="h5"
+                  <Grid item xs={4} key={item.label}>
+                    <Paper
+                      elevation={0}
                       sx={{
-                        fontSize: { xs: "1rem", md: "1.3rem" },
-                        fontWeight: 700,
+                        height: "100%",
+                        p: { xs: 1.05, md: 1.2 },
+                        borderRadius: 3,
+                        border: `1px solid ${alpha(theme.palette.divider, 0.45)}`,
+                        backgroundColor: alpha(
+                          isDark ? "#ffffff" : theme.palette.primary.main,
+                          isDark ? 0.03 : 0.035
+                        ),
                       }}
                     >
-                      {item.value}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "text.secondary",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.08em",
-                        fontFamily: '"IBM Plex Mono", monospace',
-                        fontSize: "0.74rem",
-                      }}
-                    >
-                      {item.label}
-                    </Typography>
-                  </Box>
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          fontSize: { xs: "0.98rem", md: "1.22rem" },
+                          fontWeight: 700,
+                          mb: 0.25,
+                        }}
+                      >
+                        {item.value}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.08em",
+                          fontFamily: '"IBM Plex Mono", monospace',
+                          fontSize: { xs: "0.62rem", md: "0.7rem" },
+                          lineHeight: 1.45,
+                        }}
+                      >
+                        {item.label}
+                      </Typography>
+                    </Paper>
+                  </Grid>
                 ))}
-              </Stack>
+              </Grid>
 
               <Box>
                 <Typography

@@ -294,18 +294,28 @@ export default function Resume() {
   const { pathname } = useLocation();
   const data = content[locale];
   const isDark = theme.palette.mode === "dark";
+  const sectionLabelSx = {
+    mb: 0.9,
+    color: "text.secondary",
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
+    fontFamily: '"IBM Plex Mono", monospace',
+    fontSize: "0.72rem",
+  } as const;
 
   useEffect(() => {
     document.title = `${locale === "en" ? "Resume" : "简历"} | ${process.env.REACT_APP_NAME!}`;
   }, [locale, pathname]);
 
   return (
-    <Box sx={{ px: { xs: 2, md: 3 }, py: { xs: 2.5, md: 3 } }}>
+    <Box sx={{ px: { xs: 1.5, md: 2.5 }, py: { xs: 2, md: 2.5 } }}>
       <Paper
         elevation={0}
         sx={{
           overflow: "hidden",
-          borderRadius: 5,
+          maxWidth: 1280,
+          mx: "auto",
+          borderRadius: 4,
           border: `1px solid ${alpha(theme.palette.divider, 0.7)}`,
           backgroundColor: alpha(
             isDark ? "#0b1522" : "#ffffff",
@@ -325,17 +335,18 @@ export default function Resume() {
             xs={12}
             md={4}
             sx={{
-              p: { xs: 2.5, md: 3 },
+              p: { xs: 2.15, md: 2.55 },
               background: isDark
                 ? "linear-gradient(180deg, rgba(12,22,35,0.98) 0%, rgba(8,15,24,0.98) 100%)"
                 : "linear-gradient(180deg, rgba(241,246,255,0.96) 0%, rgba(248,250,255,0.96) 100%)",
               borderRight: { md: `1px solid ${theme.palette.divider}` },
               "@media print": {
                 background: "#f7f7f7",
+                p: 2.1,
               },
             }}
           >
-            <Stack spacing={2.2}>
+            <Stack spacing={1.8}>
               <Box
                 component="img"
                 src={profileImage}
@@ -350,36 +361,32 @@ export default function Resume() {
                     ? "0 16px 36px rgba(0,0,0,0.3)"
                     : "0 16px 36px rgba(31,63,110,0.14)",
                   "@media print": {
-                    width: 108,
-                    height: 108,
+                    width: 92,
+                    height: 92,
                     boxShadow: "none",
                   },
                 }}
               />
 
               <Box>
-                <Typography variant="h2" sx={{ fontSize: { xs: "2rem", md: "2.45rem" } }}>
+                <Typography variant="h2" sx={{ fontSize: { xs: "1.8rem", md: "2.18rem" } }}>
                   {data.name}
                 </Typography>
                 <Typography
                   variant="body1"
-                  sx={{ mt: 0.8, color: "text.secondary", lineHeight: 1.7 }}
+                  sx={{
+                    mt: 0.6,
+                    color: "text.secondary",
+                    lineHeight: 1.58,
+                    fontSize: { xs: "0.96rem", md: "1rem" },
+                  }}
                 >
                   {data.title}
                 </Typography>
               </Box>
 
               <Box>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 1,
-                    color: "text.secondary",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontFamily: '"IBM Plex Mono", monospace',
-                  }}
-                >
+                <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.tags}
                 </Typography>
                 <Stack direction="row" spacing={0.9} sx={{ flexWrap: "wrap" }}>
@@ -391,6 +398,11 @@ export default function Resume() {
                       sx={{
                         fontFamily: '"IBM Plex Mono", monospace',
                         letterSpacing: "0.04em",
+                        height: 28,
+                        "& .MuiChip-label": {
+                          px: 1.1,
+                          fontSize: "0.68rem",
+                        },
                       }}
                     />
                   ))}
@@ -398,16 +410,7 @@ export default function Resume() {
               </Box>
 
               <Box>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 1,
-                    color: "text.secondary",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontFamily: '"IBM Plex Mono", monospace',
-                  }}
-                >
+                <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.quick}
                 </Typography>
                 <Grid container spacing={1}>
@@ -416,13 +419,16 @@ export default function Resume() {
                       <Paper
                         elevation={0}
                         sx={{
-                          p: 1.25,
-                          borderRadius: 3,
+                          p: 1.05,
+                          borderRadius: 2.5,
                           border: `1px solid ${alpha(theme.palette.divider, 0.7)}`,
                           backgroundColor: alpha(theme.palette.primary.main, 0.06),
+                          "@media print": {
+                            breakInside: "avoid",
+                          },
                         }}
                       >
-                        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+                        <Typography variant="h6" sx={{ fontSize: "0.95rem" }}>
                           {fact.value}
                         </Typography>
                         <Typography
@@ -433,6 +439,8 @@ export default function Resume() {
                             color: "text.secondary",
                             textTransform: "uppercase",
                             letterSpacing: "0.08em",
+                            lineHeight: 1.4,
+                            fontSize: "0.63rem",
                           }}
                         >
                           {fact.label}
@@ -444,21 +452,16 @@ export default function Resume() {
               </Box>
 
               <Box>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 1,
-                    color: "text.secondary",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontFamily: '"IBM Plex Mono", monospace',
-                  }}
-                >
+                <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.contact}
                 </Typography>
-                <Stack spacing={0.7}>
+                <Stack spacing={0.55}>
                   {data.contact.map((item) => (
-                    <Typography key={item} variant="body2" sx={{ color: "text.secondary" }}>
+                    <Typography
+                      key={item}
+                      variant="body2"
+                      sx={{ color: "text.secondary", lineHeight: 1.5 }}
+                    >
                       {item}
                     </Typography>
                   ))}
@@ -466,21 +469,16 @@ export default function Resume() {
               </Box>
 
               <Box>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 1,
-                    color: "text.secondary",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontFamily: '"IBM Plex Mono", monospace',
-                  }}
-                >
+                <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.strengths}
                 </Typography>
-                <Stack spacing={0.85}>
+                <Stack spacing={0.7}>
                   {data.strengths.map((item) => (
-                    <Typography key={item} variant="body2" sx={{ color: "text.secondary" }}>
+                    <Typography
+                      key={item}
+                      variant="body2"
+                      sx={{ color: "text.secondary", lineHeight: 1.56 }}
+                    >
                       • {item}
                     </Typography>
                   ))}
@@ -488,21 +486,16 @@ export default function Resume() {
               </Box>
 
               <Box>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 1,
-                    color: "text.secondary",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontFamily: '"IBM Plex Mono", monospace',
-                  }}
-                >
+                <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.stack}
                 </Typography>
-                <Stack spacing={0.85}>
+                <Stack spacing={0.7}>
                   {data.stack.map((item) => (
-                    <Typography key={item} variant="body2" sx={{ color: "text.secondary" }}>
+                    <Typography
+                      key={item}
+                      variant="body2"
+                      sx={{ color: "text.secondary", lineHeight: 1.56 }}
+                    >
                       • {item}
                     </Typography>
                   ))}
@@ -510,21 +503,16 @@ export default function Resume() {
               </Box>
 
               <Box>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 1,
-                    color: "text.secondary",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontFamily: '"IBM Plex Mono", monospace',
-                  }}
-                >
+                <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.certifications}
                 </Typography>
-                <Stack spacing={0.85}>
+                <Stack spacing={0.7}>
                   {data.certifications.map((item) => (
-                    <Typography key={item} variant="body2" sx={{ color: "text.secondary" }}>
+                    <Typography
+                      key={item}
+                      variant="body2"
+                      sx={{ color: "text.secondary", lineHeight: 1.56 }}
+                    >
                       • {item}
                     </Typography>
                   ))}
@@ -533,8 +521,8 @@ export default function Resume() {
             </Stack>
           </Grid>
 
-          <Grid item xs={12} md={8} sx={{ p: { xs: 2.5, md: 3 } }}>
-            <Stack spacing={2.4}>
+          <Grid item xs={12} md={8} sx={{ p: { xs: 2.15, md: 2.55 } }}>
+            <Stack spacing={2}>
               <Box className="no-print" sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
                 <Button
                   component={Link}
@@ -557,29 +545,27 @@ export default function Resume() {
               <Paper
                 elevation={0}
                 sx={{
-                  p: 2.1,
-                  borderRadius: 4,
+                  p: 1.8,
+                  borderRadius: 3.5,
                   border: `1px solid ${alpha(theme.palette.divider, 0.75)}`,
                   backgroundColor: alpha(theme.palette.primary.main, 0.045),
                   "@media print": {
-                    p: 1.5,
+                    p: 1.2,
                     backgroundColor: "#fafafa",
+                    breakInside: "avoid",
                   },
                 }}
               >
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 0.8,
-                    color: "text.secondary",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontFamily: '"IBM Plex Mono", monospace',
-                  }}
-                >
+                <Typography variant="body2" sx={sectionLabelSx}>
                   {data.labels.hero}
                 </Typography>
-                <Typography sx={{ color: "text.secondary", lineHeight: 1.8 }}>
+                <Typography
+                  sx={{
+                    color: "text.secondary",
+                    lineHeight: 1.66,
+                    fontSize: { xs: "0.96rem", md: "1rem" },
+                  }}
+                >
                   {data.summary}
                 </Typography>
               </Paper>
@@ -587,31 +573,41 @@ export default function Resume() {
               <Divider />
 
               <Box>
-                <Typography variant="h4" sx={{ mb: 1.2, fontSize: "1.6rem" }}>
+                <Typography variant="h4" sx={{ mb: 1, fontSize: { xs: "1.35rem", md: "1.5rem" } }}>
                   {data.labels.experience}
                 </Typography>
-                <Stack spacing={1.65}>
+                <Stack spacing={1.35}>
                   {data.experience.map((item, index) => (
-                    <Box key={item.role}>
+                    <Box
+                      key={item.role}
+                      sx={{
+                        "@media print": {
+                          breakInside: "avoid",
+                        },
+                      }}
+                    >
                       <Stack
                         direction={{ xs: "column", sm: "row" }}
                         justifyContent="space-between"
                         spacing={0.5}
-                        sx={{ mb: 0.65 }}
+                        sx={{ mb: 0.5 }}
                       >
-                        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+                        <Typography variant="h6" sx={{ fontSize: "0.98rem" }}>
                           {item.role}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                        <Typography
+                          variant="body2"
+                          sx={{ color: "text.secondary", fontSize: "0.84rem" }}
+                        >
                           {item.time}
                         </Typography>
                       </Stack>
-                      <Stack spacing={0.55}>
+                      <Stack spacing={0.42}>
                         {item.bullets.map((bullet) => (
                           <Typography
                             key={bullet}
                             variant="body2"
-                            sx={{ color: "text.secondary", lineHeight: 1.75 }}
+                            sx={{ color: "text.secondary", lineHeight: 1.6 }}
                           >
                             • {bullet}
                           </Typography>
@@ -627,28 +623,31 @@ export default function Resume() {
 
               <Divider />
 
-              <Grid container spacing={2}>
+              <Grid container spacing={1.7}>
                 <Grid item xs={12} lg={7}>
-                  <Typography variant="h5" sx={{ mb: 1.1, fontSize: "1.2rem" }}>
+                  <Typography variant="h5" sx={{ mb: 0.95, fontSize: "1.08rem" }}>
                     {data.labels.projects}
                   </Typography>
-                  <Stack spacing={1.15}>
+                  <Stack spacing={0.9}>
                     {data.projects.map((item) => (
                       <Paper
                         key={item.name}
                         elevation={0}
                         sx={{
-                          p: 1.4,
-                          borderRadius: 3,
+                          p: 1.15,
+                          borderRadius: 2.5,
                           border: `1px solid ${alpha(theme.palette.divider, 0.7)}`,
+                          "@media print": {
+                            breakInside: "avoid",
+                          },
                         }}
                       >
-                        <Typography variant="subtitle2" sx={{ mb: 0.45 }}>
+                        <Typography variant="subtitle2" sx={{ mb: 0.35, fontSize: "0.9rem" }}>
                           {item.name}
                         </Typography>
                         <Typography
                           variant="body2"
-                          sx={{ color: "text.secondary", lineHeight: 1.72 }}
+                          sx={{ color: "text.secondary", lineHeight: 1.58 }}
                         >
                           {item.body}
                         </Typography>
@@ -658,30 +657,30 @@ export default function Resume() {
                 </Grid>
 
                 <Grid item xs={12} lg={5}>
-                  <Typography variant="h5" sx={{ mb: 1.1, fontSize: "1.2rem" }}>
+                  <Typography variant="h5" sx={{ mb: 0.95, fontSize: "1.08rem" }}>
                     {data.labels.education}
                   </Typography>
-                  <Stack spacing={0.9} sx={{ mb: 1.8 }}>
+                  <Stack spacing={0.7} sx={{ mb: 1.4 }}>
                     {data.education.map((item) => (
                       <Typography
                         key={item}
                         variant="body2"
-                        sx={{ color: "text.secondary", lineHeight: 1.75 }}
+                        sx={{ color: "text.secondary", lineHeight: 1.58 }}
                       >
                         • {item}
                       </Typography>
                     ))}
                   </Stack>
 
-                  <Typography variant="h5" sx={{ mb: 1.1, fontSize: "1.2rem" }}>
+                  <Typography variant="h5" sx={{ mb: 0.95, fontSize: "1.08rem" }}>
                     {data.labels.impact}
                   </Typography>
-                  <Stack spacing={0.9}>
+                  <Stack spacing={0.7}>
                     {data.impact.map((item) => (
                       <Typography
                         key={item}
                         variant="body2"
-                        sx={{ color: "text.secondary", lineHeight: 1.75 }}
+                        sx={{ color: "text.secondary", lineHeight: 1.58 }}
                       >
                         • {item}
                       </Typography>
