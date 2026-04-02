@@ -1,7 +1,8 @@
-import { alpha, Box, Button, Stack } from "@mui/material";
+import { alpha, Button, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import PictureAsPdfRoundedIcon from "@mui/icons-material/PictureAsPdfRounded";
 import TranslateRoundedIcon from "@mui/icons-material/TranslateRounded";
+import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
 import { useLocale } from "../i18n/LocaleContext";
 
 interface Props {
@@ -22,18 +23,25 @@ export default function TopActions({
   return (
     <Stack
       direction="row"
-      spacing={1}
+      spacing={0.8}
       sx={{
-        px: 1.2,
+        px: { xs: 0.6, md: 1 },
         alignItems: "center",
         justifyContent: "flex-end",
         height: 42,
+        width: "100%",
+        flexWrap: "nowrap",
+        overflowX: "auto",
+        overflowY: "hidden",
         borderBottom: `1px solid ${theme.palette.divider}`,
         backgroundColor: alpha(
           isDark ? "#09111d" : "#ffffff",
           isDark ? 0.96 : 0.72
         ),
         backdropFilter: "blur(16px)",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
       }}
     >
       <Button
@@ -43,53 +51,52 @@ export default function TopActions({
         sx={{
           textTransform: "none",
           borderRadius: 999,
-          px: 1.4,
+          px: { xs: 1, md: 1.25 },
+          minWidth: "fit-content",
+          whiteSpace: "nowrap",
           color: "text.primary",
           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
           backgroundColor: alpha(theme.palette.primary.main, 0.06),
         }}
       >
-        {locale === "en" ? "中文" : "English"}
+        {locale === "en" ? "中文 / EN" : "EN / 中文"}
       </Button>
-
-      <Box
-        sx={{
-          display: { xs: "none", md: "block" },
-        }}
-      >
-        {downloadHref && (
-          <Button
-            size="small"
-            component="a"
-            href={downloadHref}
-            download
-            sx={{
-              mr: 1,
-              textTransform: "none",
-              borderRadius: 999,
-              px: 1.4,
-              color: "text.primary",
-              border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
-            }}
-          >
-            {downloadLabel ?? (locale === "en" ? "Download PDF" : "下载 PDF")}
-          </Button>
-        )}
+      {downloadHref && (
         <Button
           size="small"
-          startIcon={<PictureAsPdfRoundedIcon />}
-          onClick={() => window.print()}
+          component="a"
+          href={downloadHref}
+          download
+          startIcon={<DownloadRoundedIcon />}
           sx={{
             textTransform: "none",
             borderRadius: 999,
-            px: 1.4,
+            px: { xs: 1, md: 1.25 },
+            minWidth: "fit-content",
+            whiteSpace: "nowrap",
             color: "text.primary",
             border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
           }}
         >
-          {printLabel ?? (locale === "en" ? "Export PDF" : "导出 PDF")}
+          {downloadLabel ?? (locale === "en" ? "Download PDF" : "下载 PDF")}
         </Button>
-      </Box>
+      )}
+      <Button
+        size="small"
+        startIcon={<PictureAsPdfRoundedIcon />}
+        onClick={() => window.print()}
+        sx={{
+          textTransform: "none",
+          borderRadius: 999,
+          px: { xs: 1, md: 1.25 },
+          minWidth: "fit-content",
+          whiteSpace: "nowrap",
+          color: "text.primary",
+          border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
+        }}
+      >
+        {printLabel ?? (locale === "en" ? "Export PDF" : "导出 PDF")}
+      </Button>
     </Stack>
   );
 }

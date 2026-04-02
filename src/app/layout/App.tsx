@@ -297,7 +297,7 @@ export default function App() {
                       />
                     </Box>
                   </Grid>
-                  <Grid item sx={{ width: { xs: 128, md: 236 } }}>
+                  <Grid item sx={{ width: "auto", minWidth: { xs: 0, md: 360 } }}>
                     <TopActions downloadHref="/resume-xulin-2026.pdf" />
                   </Grid>
                 </Grid>

@@ -26,7 +26,7 @@ interface Props {
   setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const avatarUrl = "https://avatars.githubusercontent.com/u/59380685?v=4";
+const avatarUrl = "/imgs/isLinXu.png";
 const portraitUrl = "/imgs/xulin-portrait-2026.jpg";
 
 const sectionCards = {
@@ -222,7 +222,7 @@ export default function Home({ setSelectedIndex }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const { locale } = useLocale();
-  const [photoMode, setPhotoMode] = useState<"avatar" | "portrait">("portrait");
+  const [photoMode, setPhotoMode] = useState<"avatar" | "portrait">("avatar");
   const text = copy[locale];
 
   useEffect(() => {
