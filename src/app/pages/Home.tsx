@@ -240,7 +240,7 @@ export default function Home({ setSelectedIndex }: Props) {
         py: { xs: 2, md: 2.75 },
       }}
     >
-      <Grid container spacing={{ xs: 1.5, md: 2 }}>
+      <Grid container spacing={{ xs: 1.2, md: 2 }}>
         <Grid item xs={12} xl={7}>
           <Paper
             elevation={0}
@@ -268,17 +268,17 @@ export default function Home({ setSelectedIndex }: Props) {
               }}
             />
 
-            <Stack spacing={2} sx={{ position: "relative", zIndex: 1 }}>
-              <Grid container spacing={{ xs: 1.6, md: 2.4 }} alignItems="center">
-                <Grid item xs={12} md={3.5}>
-                  <Stack spacing={1} alignItems={{ xs: "flex-start", md: "center" }}>
+            <Stack spacing={{ xs: 1.5, md: 2 }} sx={{ position: "relative", zIndex: 1 }}>
+              <Grid container spacing={{ xs: 1.25, md: 2.4 }} alignItems="center">
+                <Grid item xs={4} md={3.5}>
+                  <Stack spacing={0.8} alignItems={{ xs: "flex-start", md: "center" }}>
                     <Box
                       component="img"
                       src={photoMode === "avatar" ? avatarUrl : portraitUrl}
                       alt="Xu Lin portrait"
                       sx={{
-                        width: { xs: 104, md: 144 },
-                        height: { xs: 104, md: 144 },
+                        width: { xs: 82, sm: 96, md: 144 },
+                        height: { xs: 82, sm: 96, md: 144 },
                         borderRadius: "50%",
                         objectFit: "cover",
                         border: `3px solid ${alpha(
@@ -290,7 +290,7 @@ export default function Home({ setSelectedIndex }: Props) {
                           : "0 18px 44px rgba(31,63,110,0.16)",
                       }}
                     />
-                    <Stack direction="row" spacing={0.8}>
+                    <Stack direction={{ xs: "column", sm: "row" }} spacing={0.6}>
                       <Button
                         size="small"
                         startIcon={<FaceRoundedIcon />}
@@ -298,8 +298,9 @@ export default function Home({ setSelectedIndex }: Props) {
                         sx={{
                           textTransform: "none",
                           borderRadius: 999,
-                          px: 1.15,
-                          fontSize: "0.82rem",
+                          px: { xs: 0.8, md: 1.15 },
+                          minWidth: 0,
+                          fontSize: { xs: "0.72rem", md: "0.82rem" },
                           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
                           backgroundColor:
                             photoMode === "avatar"
@@ -316,8 +317,9 @@ export default function Home({ setSelectedIndex }: Props) {
                         sx={{
                           textTransform: "none",
                           borderRadius: 999,
-                          px: 1.15,
-                          fontSize: "0.82rem",
+                          px: { xs: 0.8, md: 1.15 },
+                          minWidth: 0,
+                          fontSize: { xs: "0.72rem", md: "0.82rem" },
                           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
                           backgroundColor:
                             photoMode === "portrait"
@@ -331,8 +333,8 @@ export default function Home({ setSelectedIndex }: Props) {
                   </Stack>
                 </Grid>
 
-                <Grid item xs={12} md={8.5}>
-                  <Stack spacing={0.95}>
+                <Grid item xs={8} md={8.5}>
+                  <Stack spacing={{ xs: 0.55, md: 0.95 }}>
                     <Chip
                       label={text.role}
                       sx={{
@@ -341,10 +343,10 @@ export default function Home({ setSelectedIndex }: Props) {
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
                         borderRadius: 999,
-                        height: 32,
+                        height: { xs: 26, md: 32 },
                         "& .MuiChip-label": {
-                          px: 1.5,
-                          fontSize: { xs: "0.68rem", md: "0.74rem" },
+                          px: { xs: 1, md: 1.5 },
+                          fontSize: { xs: "0.54rem", sm: "0.62rem", md: "0.74rem" },
                         },
                         backgroundColor: alpha(
                           isDark ? "#7fd1ff" : "#0f5cc0",
@@ -356,7 +358,7 @@ export default function Home({ setSelectedIndex }: Props) {
                     <Typography
                       variant="h1"
                       sx={{
-                        fontSize: { xs: "2.05rem", md: "3.05rem", xl: "3.3rem" },
+                        fontSize: { xs: "1.72rem", sm: "1.92rem", md: "3.05rem", xl: "3.3rem" },
                         lineHeight: 1,
                         letterSpacing: "-0.04em",
                       }}
@@ -367,10 +369,10 @@ export default function Home({ setSelectedIndex }: Props) {
                       variant="h5"
                       sx={{
                         color: "text.secondary",
-                        lineHeight: 1.3,
+                        lineHeight: { xs: 1.24, md: 1.3 },
                         fontWeight: 500,
-                        fontSize: { xs: "1.08rem", md: "1.36rem" },
-                        maxWidth: 560,
+                        fontSize: { xs: "0.92rem", sm: "1rem", md: "1.36rem" },
+                        maxWidth: { xs: "none", md: 560 },
                       }}
                     >
                       {text.title}
@@ -381,10 +383,10 @@ export default function Home({ setSelectedIndex }: Props) {
 
               <Typography
                 sx={{
-                  maxWidth: 700,
+                  maxWidth: { xs: "none", md: 700 },
                   color: "text.secondary",
-                  fontSize: { xs: "0.94rem", md: "0.98rem" },
-                  lineHeight: 1.72,
+                  fontSize: { xs: "0.88rem", md: "0.98rem" },
+                  lineHeight: 1.66,
                 }}
               >
                 {text.intro}
@@ -402,10 +404,11 @@ export default function Home({ setSelectedIndex }: Props) {
                   sx={{
                     px: 2,
                     py: 0.95,
+                    width: { xs: "100%", sm: "auto" },
                     borderRadius: 999,
                     textTransform: "none",
                     fontWeight: 700,
-                    fontSize: "0.92rem",
+                    fontSize: { xs: "0.86rem", md: "0.92rem" },
                     backgroundColor: isDark ? "#8fd8ff" : "#0f5cc0",
                     color: isDark ? "#07111d" : "#ffffff",
                     "&:hover": {
@@ -425,10 +428,11 @@ export default function Home({ setSelectedIndex }: Props) {
                   sx={{
                     px: 2,
                     py: 0.95,
+                    width: { xs: "100%", sm: "auto" },
                     borderRadius: 999,
                     textTransform: "none",
                     fontWeight: 700,
-                    fontSize: "0.92rem",
+                    fontSize: { xs: "0.86rem", md: "0.92rem" },
                     borderColor: alpha(theme.palette.text.primary, 0.2),
                     color: "text.primary",
                     textDecoration: "none",
@@ -471,7 +475,7 @@ export default function Home({ setSelectedIndex }: Props) {
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
                           fontFamily: '"IBM Plex Mono", monospace',
-                          fontSize: { xs: "0.62rem", md: "0.7rem" },
+                          fontSize: { xs: "0.58rem", md: "0.7rem" },
                           lineHeight: 1.45,
                         }}
                       >
@@ -509,6 +513,8 @@ export default function Home({ setSelectedIndex }: Props) {
                         <IconButton
                           color="inherit"
                           sx={{
+                            width: { xs: 36, md: 42 },
+                            height: { xs: 36, md: 42 },
                             border: `1px solid ${alpha(
                               theme.palette.text.primary,
                               0.14
@@ -555,7 +561,7 @@ export default function Home({ setSelectedIndex }: Props) {
                 elevation={0}
                 sx={{
                   borderRadius: 3.5,
-                  p: 1.8,
+                  p: { xs: 1.4, md: 1.8 },
                   border: `1px solid ${alpha(theme.palette.divider, 0.6)}`,
                   backgroundColor: alpha(
                     isDark ? "#101826" : "#ffffff",
@@ -578,7 +584,7 @@ export default function Home({ setSelectedIndex }: Props) {
                 </Typography>
                 <Typography
                   variant="h4"
-                  sx={{ mb: 0.8, fontSize: { xs: "1.24rem", md: "1.38rem" } }}
+                  sx={{ mb: 0.8, fontSize: { xs: "1.12rem", md: "1.38rem" } }}
                 >
                   {card.title}
                 </Typography>
@@ -586,7 +592,7 @@ export default function Home({ setSelectedIndex }: Props) {
                   sx={{
                     color: "text.secondary",
                     lineHeight: 1.65,
-                    fontSize: "0.95rem",
+                    fontSize: { xs: "0.88rem", md: "0.95rem" },
                   }}
                 >
                   {card.body}
@@ -598,7 +604,7 @@ export default function Home({ setSelectedIndex }: Props) {
               elevation={0}
               sx={{
                 borderRadius: 3.5,
-                p: 1.8,
+                p: { xs: 1.4, md: 1.8 },
                 border: `1px solid ${alpha(theme.palette.divider, 0.6)}`,
                 backgroundColor: alpha(
                   isDark ? "#0c1420" : "#ffffff",
@@ -627,7 +633,7 @@ export default function Home({ setSelectedIndex }: Props) {
                     sx={{
                       cursor: "pointer",
                       borderRadius: 2.5,
-                      p: 1.35,
+                      p: { xs: 1.1, md: 1.35 },
                       border: `1px solid ${alpha(theme.palette.divider, 0.45)}`,
                       backgroundColor: alpha(
                         isDark ? "#ffffff" : "#0f5cc0",
@@ -657,7 +663,7 @@ export default function Home({ setSelectedIndex }: Props) {
                       <Box>
                         <Typography
                           variant="h6"
-                          sx={{ fontSize: "0.98rem", mb: 0.25 }}
+                          sx={{ fontSize: { xs: "0.92rem", md: "0.98rem" }, mb: 0.25 }}
                         >
                           {`${String(index + 1).padStart(2, "0")} ${card.title}`}
                         </Typography>
@@ -666,7 +672,7 @@ export default function Home({ setSelectedIndex }: Props) {
                           sx={{
                             color: "text.secondary",
                             lineHeight: 1.55,
-                            fontSize: "0.9rem",
+                            fontSize: { xs: "0.84rem", md: "0.9rem" },
                           }}
                         >
                           {card.description}

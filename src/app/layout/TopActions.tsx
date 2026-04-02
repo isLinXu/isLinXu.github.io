@@ -1,4 +1,4 @@
-import { alpha, Button, Stack } from "@mui/material";
+import { alpha, Button, Stack, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import PictureAsPdfRoundedIcon from "@mui/icons-material/PictureAsPdfRounded";
 import TranslateRoundedIcon from "@mui/icons-material/TranslateRounded";
@@ -19,6 +19,22 @@ export default function TopActions({
   const theme = useTheme();
   const { locale, setLocale } = useLocale();
   const isDark = theme.palette.mode === "dark";
+  const compact = useMediaQuery(theme.breakpoints.down("sm"));
+  const localeLabel = compact
+    ? locale === "en"
+      ? "中 / EN"
+      : "EN / 中"
+    : locale === "en"
+      ? "中文 / EN"
+      : "EN / 中文";
+  const downloadText = downloadLabel
+    ?? (locale === "en"
+      ? compact ? "Download" : "Download PDF"
+      : compact ? "下载" : "下载 PDF");
+  const exportText = printLabel
+    ?? (locale === "en"
+      ? compact ? "Export" : "Export PDF"
+      : compact ? "导出" : "导出 PDF");
 
   return (
     <Stack
@@ -51,18 +67,18 @@ export default function TopActions({
         sx={{
           textTransform: "none",
           borderRadius: 999,
-          px: { xs: 0.9, md: 1.1 },
+          px: { xs: 0.75, md: 1.1 },
           minHeight: 30,
           minWidth: "fit-content",
           whiteSpace: "nowrap",
-          fontSize: "0.8rem",
+          fontSize: { xs: "0.74rem", md: "0.8rem" },
           fontWeight: 700,
           color: "text.primary",
           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
           backgroundColor: alpha(theme.palette.primary.main, 0.06),
         }}
       >
-        {locale === "en" ? "中文 / EN" : "EN / 中文"}
+        {localeLabel}
       </Button>
       {downloadHref && (
         <Button
@@ -74,17 +90,17 @@ export default function TopActions({
           sx={{
             textTransform: "none",
             borderRadius: 999,
-            px: { xs: 0.9, md: 1.1 },
+            px: { xs: 0.75, md: 1.1 },
             minHeight: 30,
             minWidth: "fit-content",
             whiteSpace: "nowrap",
-            fontSize: "0.8rem",
+            fontSize: { xs: "0.74rem", md: "0.8rem" },
             fontWeight: 700,
             color: "text.primary",
             border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
           }}
         >
-          {downloadLabel ?? (locale === "en" ? "Download PDF" : "下载 PDF")}
+          {downloadText}
         </Button>
       )}
       <Button
@@ -94,17 +110,17 @@ export default function TopActions({
         sx={{
           textTransform: "none",
           borderRadius: 999,
-          px: { xs: 0.9, md: 1.1 },
+          px: { xs: 0.75, md: 1.1 },
           minHeight: 30,
           minWidth: "fit-content",
           whiteSpace: "nowrap",
-          fontSize: "0.8rem",
+          fontSize: { xs: "0.74rem", md: "0.8rem" },
           fontWeight: 700,
           color: "text.primary",
           border: `1px solid ${alpha(theme.palette.text.primary, 0.14)}`,
         }}
       >
-        {printLabel ?? (locale === "en" ? "Export PDF" : "导出 PDF")}
+        {exportText}
       </Button>
     </Stack>
   );

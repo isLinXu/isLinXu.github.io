@@ -301,6 +301,10 @@ export default function Resume() {
     letterSpacing: "0.08em",
     fontFamily: '"IBM Plex Mono", monospace',
     fontSize: "0.72rem",
+    "@media print": {
+      fontSize: "0.6rem",
+      marginBottom: "0.35rem",
+    },
   } as const;
 
   useEffect(() => {
@@ -308,7 +312,16 @@ export default function Resume() {
   }, [locale, pathname]);
 
   return (
-    <Box sx={{ px: { xs: 1.5, md: 2.5 }, py: { xs: 2, md: 2.5 } }}>
+    <Box
+      sx={{
+        px: { xs: 1.5, md: 2.5 },
+        py: { xs: 2, md: 2.5 },
+        "@media print": {
+          px: 0,
+          py: 0,
+        },
+      }}
+    >
       <Paper
         elevation={0}
         sx={{
@@ -326,10 +339,18 @@ export default function Resume() {
             borderRadius: 0,
             boxShadow: "none",
             backgroundColor: "#ffffff",
+            maxWidth: "none",
           },
         }}
       >
-        <Grid container>
+        <Grid
+          container
+          sx={{
+            "@media print": {
+              minHeight: "260mm",
+            },
+          }}
+        >
           <Grid
             item
             xs={12}
@@ -342,7 +363,9 @@ export default function Resume() {
               borderRight: { md: `1px solid ${theme.palette.divider}` },
               "@media print": {
                 background: "#f7f7f7",
-                p: 2.1,
+                p: 1.55,
+                width: "35%",
+                borderRight: "1px solid #d9dfe7",
               },
             }}
           >
@@ -361,15 +384,23 @@ export default function Resume() {
                     ? "0 16px 36px rgba(0,0,0,0.3)"
                     : "0 16px 36px rgba(31,63,110,0.14)",
                   "@media print": {
-                    width: 92,
-                    height: 92,
+                    width: 80,
+                    height: 80,
                     boxShadow: "none",
                   },
                 }}
               />
 
               <Box>
-                <Typography variant="h2" sx={{ fontSize: { xs: "1.8rem", md: "2.18rem" } }}>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontSize: { xs: "1.8rem", md: "2.18rem" },
+                    "@media print": {
+                      fontSize: "1.35rem",
+                    },
+                  }}
+                >
                   {data.name}
                 </Typography>
                 <Typography
@@ -379,6 +410,10 @@ export default function Resume() {
                     color: "text.secondary",
                     lineHeight: 1.58,
                     fontSize: { xs: "0.96rem", md: "1rem" },
+                    "@media print": {
+                      fontSize: "0.78rem",
+                      lineHeight: 1.42,
+                    },
                   }}
                 >
                   {data.title}
@@ -403,6 +438,13 @@ export default function Resume() {
                           px: 1.1,
                           fontSize: "0.68rem",
                         },
+                        "@media print": {
+                          height: 22,
+                          "& .MuiChip-label": {
+                            px: 0.8,
+                            fontSize: "0.55rem",
+                          },
+                        },
                       }}
                     />
                   ))}
@@ -425,10 +467,19 @@ export default function Resume() {
                           backgroundColor: alpha(theme.palette.primary.main, 0.06),
                           "@media print": {
                             breakInside: "avoid",
+                            padding: "0.55rem",
                           },
                         }}
                       >
-                        <Typography variant="h6" sx={{ fontSize: "0.95rem" }}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontSize: "0.95rem",
+                            "@media print": {
+                              fontSize: "0.76rem",
+                            },
+                          }}
+                        >
                           {fact.value}
                         </Typography>
                         <Typography
@@ -441,6 +492,9 @@ export default function Resume() {
                             letterSpacing: "0.08em",
                             lineHeight: 1.4,
                             fontSize: "0.63rem",
+                            "@media print": {
+                              fontSize: "0.5rem",
+                            },
                           }}
                         >
                           {fact.label}
@@ -460,7 +514,14 @@ export default function Resume() {
                     <Typography
                       key={item}
                       variant="body2"
-                      sx={{ color: "text.secondary", lineHeight: 1.5 }}
+                      sx={{
+                        color: "text.secondary",
+                        lineHeight: 1.5,
+                        "@media print": {
+                          fontSize: "0.66rem",
+                          lineHeight: 1.35,
+                        },
+                      }}
                     >
                       {item}
                     </Typography>
@@ -477,7 +538,14 @@ export default function Resume() {
                     <Typography
                       key={item}
                       variant="body2"
-                      sx={{ color: "text.secondary", lineHeight: 1.56 }}
+                      sx={{
+                        color: "text.secondary",
+                        lineHeight: 1.56,
+                        "@media print": {
+                          fontSize: "0.64rem",
+                          lineHeight: 1.34,
+                        },
+                      }}
                     >
                       • {item}
                     </Typography>
@@ -494,7 +562,14 @@ export default function Resume() {
                     <Typography
                       key={item}
                       variant="body2"
-                      sx={{ color: "text.secondary", lineHeight: 1.56 }}
+                      sx={{
+                        color: "text.secondary",
+                        lineHeight: 1.56,
+                        "@media print": {
+                          fontSize: "0.64rem",
+                          lineHeight: 1.34,
+                        },
+                      }}
                     >
                       • {item}
                     </Typography>
@@ -511,7 +586,14 @@ export default function Resume() {
                     <Typography
                       key={item}
                       variant="body2"
-                      sx={{ color: "text.secondary", lineHeight: 1.56 }}
+                      sx={{
+                        color: "text.secondary",
+                        lineHeight: 1.56,
+                        "@media print": {
+                          fontSize: "0.64rem",
+                          lineHeight: 1.34,
+                        },
+                      }}
                     >
                       • {item}
                     </Typography>
@@ -521,7 +603,18 @@ export default function Resume() {
             </Stack>
           </Grid>
 
-          <Grid item xs={12} md={8} sx={{ p: { xs: 2.15, md: 2.55 } }}>
+          <Grid
+            item
+            xs={12}
+            md={8}
+            sx={{
+              p: { xs: 2.15, md: 2.55 },
+              "@media print": {
+                width: "65%",
+                padding: "1.55rem",
+              },
+            }}
+          >
             <Stack spacing={2}>
               <Box className="no-print" sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
                 <Button
@@ -553,6 +646,7 @@ export default function Resume() {
                     p: 1.2,
                     backgroundColor: "#fafafa",
                     breakInside: "avoid",
+                    borderColor: "#d9dfe7",
                   },
                 }}
               >
@@ -564,6 +658,10 @@ export default function Resume() {
                     color: "text.secondary",
                     lineHeight: 1.66,
                     fontSize: { xs: "0.96rem", md: "1rem" },
+                    "@media print": {
+                      fontSize: "0.75rem",
+                      lineHeight: 1.45,
+                    },
                   }}
                 >
                   {data.summary}
@@ -573,7 +671,17 @@ export default function Resume() {
               <Divider />
 
               <Box>
-                <Typography variant="h4" sx={{ mb: 1, fontSize: { xs: "1.35rem", md: "1.5rem" } }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    mb: 1,
+                    fontSize: { xs: "1.35rem", md: "1.5rem" },
+                    "@media print": {
+                      fontSize: "1rem",
+                      marginBottom: "0.45rem",
+                    },
+                  }}
+                >
                   {data.labels.experience}
                 </Typography>
                 <Stack spacing={1.35}>
@@ -592,12 +700,26 @@ export default function Resume() {
                         spacing={0.5}
                         sx={{ mb: 0.5 }}
                       >
-                        <Typography variant="h6" sx={{ fontSize: "0.98rem" }}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontSize: "0.98rem",
+                            "@media print": {
+                              fontSize: "0.78rem",
+                            },
+                          }}
+                        >
                           {item.role}
                         </Typography>
                         <Typography
                           variant="body2"
-                          sx={{ color: "text.secondary", fontSize: "0.84rem" }}
+                          sx={{
+                            color: "text.secondary",
+                            fontSize: "0.84rem",
+                            "@media print": {
+                              fontSize: "0.62rem",
+                            },
+                          }}
                         >
                           {item.time}
                         </Typography>
@@ -607,14 +729,28 @@ export default function Resume() {
                           <Typography
                             key={bullet}
                             variant="body2"
-                            sx={{ color: "text.secondary", lineHeight: 1.6 }}
+                            sx={{
+                              color: "text.secondary",
+                              lineHeight: 1.6,
+                              "@media print": {
+                                fontSize: "0.68rem",
+                                lineHeight: 1.38,
+                              },
+                            }}
                           >
                             • {bullet}
                           </Typography>
                         ))}
                       </Stack>
                       {index !== data.experience.length - 1 && (
-                        <Divider sx={{ mt: 1.4 }} />
+                        <Divider
+                          sx={{
+                            mt: 1.4,
+                            "@media print": {
+                              mt: 0.7,
+                            },
+                          }}
+                        />
                       )}
                     </Box>
                   ))}
@@ -625,7 +761,17 @@ export default function Resume() {
 
               <Grid container spacing={1.7}>
                 <Grid item xs={12} lg={7}>
-                  <Typography variant="h5" sx={{ mb: 0.95, fontSize: "1.08rem" }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      mb: 0.95,
+                      fontSize: "1.08rem",
+                      "@media print": {
+                        fontSize: "0.88rem",
+                        marginBottom: "0.45rem",
+                      },
+                    }}
+                  >
                     {data.labels.projects}
                   </Typography>
                   <Stack spacing={0.9}>
@@ -639,15 +785,32 @@ export default function Resume() {
                           border: `1px solid ${alpha(theme.palette.divider, 0.7)}`,
                           "@media print": {
                             breakInside: "avoid",
+                            padding: "0.7rem",
                           },
                         }}
                       >
-                        <Typography variant="subtitle2" sx={{ mb: 0.35, fontSize: "0.9rem" }}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{
+                            mb: 0.35,
+                            fontSize: "0.9rem",
+                            "@media print": {
+                              fontSize: "0.72rem",
+                            },
+                          }}
+                        >
                           {item.name}
                         </Typography>
                         <Typography
                           variant="body2"
-                          sx={{ color: "text.secondary", lineHeight: 1.58 }}
+                          sx={{
+                            color: "text.secondary",
+                            lineHeight: 1.58,
+                            "@media print": {
+                              fontSize: "0.67rem",
+                              lineHeight: 1.36,
+                            },
+                          }}
                         >
                           {item.body}
                         </Typography>
@@ -657,7 +820,17 @@ export default function Resume() {
                 </Grid>
 
                 <Grid item xs={12} lg={5}>
-                  <Typography variant="h5" sx={{ mb: 0.95, fontSize: "1.08rem" }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      mb: 0.95,
+                      fontSize: "1.08rem",
+                      "@media print": {
+                        fontSize: "0.88rem",
+                        marginBottom: "0.45rem",
+                      },
+                    }}
+                  >
                     {data.labels.education}
                   </Typography>
                   <Stack spacing={0.7} sx={{ mb: 1.4 }}>
@@ -665,14 +838,31 @@ export default function Resume() {
                       <Typography
                         key={item}
                         variant="body2"
-                        sx={{ color: "text.secondary", lineHeight: 1.58 }}
+                        sx={{
+                          color: "text.secondary",
+                          lineHeight: 1.58,
+                          "@media print": {
+                            fontSize: "0.67rem",
+                            lineHeight: 1.36,
+                          },
+                        }}
                       >
                         • {item}
                       </Typography>
                     ))}
                   </Stack>
 
-                  <Typography variant="h5" sx={{ mb: 0.95, fontSize: "1.08rem" }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      mb: 0.95,
+                      fontSize: "1.08rem",
+                      "@media print": {
+                        fontSize: "0.88rem",
+                        marginBottom: "0.45rem",
+                      },
+                    }}
+                  >
                     {data.labels.impact}
                   </Typography>
                   <Stack spacing={0.7}>
@@ -680,7 +870,14 @@ export default function Resume() {
                       <Typography
                         key={item}
                         variant="body2"
-                        sx={{ color: "text.secondary", lineHeight: 1.58 }}
+                        sx={{
+                          color: "text.secondary",
+                          lineHeight: 1.58,
+                          "@media print": {
+                            fontSize: "0.67rem",
+                            lineHeight: 1.36,
+                          },
+                        }}
                       >
                         • {item}
                       </Typography>
