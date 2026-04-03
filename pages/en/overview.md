@@ -1,6 +1,6 @@
 # Overview
 
-![Xu Lin](/imgs/o_f5119c94.jpg)
+![Xu Lin](https://avatars.githubusercontent.com/u/59380685?v=4)
 
 Xu Lin is an AI researcher and engineer focused on multimodal large models, computer vision systems, and practical AI engineering. The work spans model research, evaluation, deployment, tooling, and open-source contribution.
 
@@ -10,7 +10,7 @@ Xu Lin is an AI researcher and engineer focused on multimodal large models, comp
 - Role: AI Researcher, AI Engineer, Open Source Contributor
 - Focus: MLLM, LLM, Agent systems, multimodal evaluation, practical deployment
 - Current organization: Tencent Youtu Lab
-- Email: [linxu.official@gmail.com](mailto:linxu.official@gmail.com)
+- Email: [islinxu@163.com](mailto:islinxu@163.com)
 - GitHub: [github.com/isLinXu](https://github.com/isLinXu)
 - LinkedIn: [linkedin.com/in/xu-lin-3b78a5251](https://www.linkedin.com/in/xu-lin-3b78a5251/)
 
@@ -52,7 +52,7 @@ The recent public profile emphasizes multimodal large language models, efficient
 - Blog: [www.cnblogs.com/isLinXu](https://www.cnblogs.com/isLinXu/)
 - Medium: [medium.com/@isLinXu](https://medium.com/@isLinXu)
 - Hugging Face: [huggingface.co/gatilin](https://huggingface.co/gatilin)
-- Email: [linxu.official@gmail.com](mailto:linxu.official@gmail.com)
+- Email: [islinxu@163.com](mailto:islinxu@163.com)
 
 ## Resume Notes
 

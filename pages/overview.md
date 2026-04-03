@@ -1,6 +1,6 @@
 # Overview
 
-![Xu Lin](/imgs/xulin-portrait-2026.jpg)
+![Xu Lin](https://avatars.githubusercontent.com/u/59380685?v=4)
 
 Xu Lin is an AI researcher and engineer focused on multimodal large models, computer vision systems, and practical AI engineering. The work spans model research, evaluation, deployment, tooling, and open-source contribution.
 
