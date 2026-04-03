@@ -2,58 +2,57 @@
 
 ![Xu Lin](https://avatars.githubusercontent.com/u/59380685?v=4)
 
-Xu Lin is an AI researcher and engineer focused on multimodal large models, computer vision systems, and practical AI engineering. The work spans model research, evaluation, deployment, tooling, and open-source contribution.
+Xu Lin is an AI engineer and researcher whose public work mainly sits at the intersection of multimodal models, computer vision, evaluation, and applied engineering.
 
-## Quick Resume
+## Basic Profile
 
 - Name: Xu Lin
-- Role: AI Researcher, AI Engineer, Open Source Contributor
-- Focus: MLLM, LLM, Agent systems, multimodal evaluation, practical deployment
+- Current base: Shenzhen
 - Current organization: Tencent Youtu Lab
+- Main areas visible in public work: multimodal models, evaluation, computer vision, agent-related engineering
 - Email: [islinxu@163.com](mailto:islinxu@163.com)
 - GitHub: [github.com/isLinXu](https://github.com/isLinXu)
-- LinkedIn: [linkedin.com/in/xu-lin-3b78a5251](https://www.linkedin.com/in/xu-lin-3b78a5251/)
 
-## Profile
+## What This Site Represents
 
-- Current focus: MLLM, LLM, Agent systems, multimodal evaluation, and deployment workflows
-- Public identity: AI Researcher, AI Engineer, Open Source Contributor
-- Working style: research-driven, implementation-heavy, and strongly oriented toward real-world usability
-- Core stack: Python, PyTorch, TensorFlow, PaddlePaddle, SQL, Apache Spark, and production-facing ML tooling
+This site is not meant to claim every possible capability. It mainly collects the work that is easiest to verify publicly:
+
+- repositories and open-source contribution
+- paper and benchmark related output
+- technical notes and curation work
+- a web resume version based on recent materials
 
 ## Current Direction
 
-The recent public profile emphasizes multimodal large language models, efficient training and inference, evaluation quality, and agent-oriented engineering. This site reflects that transition more clearly than before.
+Recent public repositories and profile material point to several recurring directions:
 
-## Experience Snapshot
+- multimodal large-model related work
+- evaluation and benchmark-oriented thinking
+- practical computer vision engineering
+- agent-oriented tools and workflows
 
-- AI Engineer at Tencent Youtu Lab
-- Earlier work and internships connected to Keeko Robot AI and Strait Intelligence Robot AI
-- Long-running open-source and public documentation habit across GitHub, blogs, and technical notes
+## Working Style
 
-## Selected Strengths
+- comfortable moving between research reading, implementation, and tooling
+- values evaluation and reproducibility over vague claims
+- tends to turn ongoing learning into public repositories, notes, or curation projects
 
-- Strong interest in multimodal large models and agent-oriented systems
-- Comfortable moving between research exploration and engineering implementation
-- Public work spans repositories, notes, blogs, and benchmark-oriented output
-- Sustained open-source participation and technical documentation habits
-
-## Selected Public Repositories
+## Representative Public Work
 
 - [paper-list](https://github.com/isLinXu/paper-list)
 - [YOLOv8_Efficient](https://github.com/isLinXu/YOLOv8_Efficient)
-- [vision-process-webui](https://github.com/isLinXu/vision-process-webui)
-- [model-metrics-plot](https://github.com/isLinXu/model-metrics-plot)
+- [crablet](https://github.com/isLinXu/crablet)
+- [claude-code-book](https://github.com/isLinXu/claude-code-book)
+- [LlamaFactory](https://github.com/isLinXu/LlamaFactory)
+- MME related benchmark work
 
 ## Public Links
 
 - GitHub: [github.com/isLinXu](https://github.com/isLinXu)
 - LinkedIn: [linkedin.com/in/xu-lin-3b78a5251](https://www.linkedin.com/in/xu-lin-3b78a5251/)
 - Blog: [www.cnblogs.com/isLinXu](https://www.cnblogs.com/isLinXu/)
-- Medium: [medium.com/@isLinXu](https://medium.com/@isLinXu)
 - Hugging Face: [huggingface.co/gatilin](https://huggingface.co/gatilin)
-- Email: [islinxu@163.com](mailto:islinxu@163.com)
 
-## Resume Notes
+## Note
 
-This page is designed to work as a concise web resume. You can use the top-right `Export PDF` button to print this page as a PDF version.
+The purpose of this page is to give a concise and verifiable summary. More detailed project and achievement information is split across the `Projects`, `Highlights`, and `Publications` pages.

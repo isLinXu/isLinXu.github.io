@@ -1,6 +1,6 @@
 # Highlights
 
-This page concentrates the most representative outcomes across research, engineering, open-source contribution, and public knowledge curation.
+This page collects representative outcomes across research, engineering, open-source contribution, and public knowledge curation.
 
 ## Research and Evaluation Highlights
 
@@ -27,11 +27,11 @@ This page concentrates the most representative outcomes across research, enginee
 
 ## Why These Highlights Matter
 
-Together, these highlights show a profile that is not limited to a single paper, repository, or benchmark. The strongest signal is the ability to connect:
+Taken together, these highlights show a profile that is not limited to a single paper, repository, or benchmark. A recurring signal is the ability to connect:
 
 - research with evaluation
 - evaluation with deployment
 - deployment with reusable engineering
 - engineering with public documentation and open curation
 
-That combination is the clearest representation of the portfolio.
+That combination is one of the clearest patterns in the portfolio.

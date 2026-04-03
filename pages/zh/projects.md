@@ -1,6 +1,6 @@
 # 项目
 
-这一页基于 2026 年 4 月 3 日 GitHub 公开仓库页同步更新。这一版比之前更完整，不只包含自有核心仓库，也把能够代表你当前技术方向和公开贡献的协作型仓库一起纳入。
+这一页基于 2026 年 4 月 3 日 GitHub 公开仓库页同步更新。这里既包含自有仓库，也包含和当前公开方向密切相关的协作型仓库。
 
 ## 核心代表仓库
 
@@ -14,7 +14,7 @@
 
 ## 贡献与协作方向
 
-下面这些仓库即使带有 fork 或协作属性，也依然具有代表性，因为它们能反映你当前公开的技术重心和工程参与方向。
+下面这些仓库即使带有 fork 或协作属性，也保留在这里，因为它们能帮助解释你当前公开的技术重心和工程参与方向。
 
 - [YOLO-Master](https://github.com/isLinXu/YOLO-Master)：和 YOLO-Master 方向相关的目标检测代表仓库，也是你当前检测研究叙事的重要组成部分
 - [LlamaFactory](https://github.com/isLinXu/LlamaFactory)：和大模型、微调、LLM/VLM 工程高度相关的代表性贡献方向
@@ -27,7 +27,7 @@
 
 ## 公共知识与学习型仓库
 
-- [paper-list](https://github.com/isLinXu/paper-list)：当前公开主页中最强的论文整理项目之一，把收集、筛选和发布流程连接在一起
+- [paper-list](https://github.com/isLinXu/paper-list)：一个公开可见的论文整理项目，把收集、筛选和发布流程连接在一起
 - [awesome-road-map](https://github.com/isLinXu/awesome-road-map)：结构化学习路线与公开知识整理
 - awesome 系列整理工作：围绕学习路线、Agent 资源、专题合集与阅读材料的长期公开整理习惯
 - [awesome-foundation-agents](https://github.com/isLinXu/awesome-foundation-agents)：和 foundation agents 方向相关的 awesome 资源整理
