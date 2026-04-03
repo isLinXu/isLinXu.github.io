@@ -2,16 +2,9 @@
 
 ## Formal Education
 
-- `2024 - present` Renmin University of China
-- `2015 - 2019` Fuzhou Technology and Business University
+- `2024 - present` Renmin University of China, part-time graduate study
+- `2015 - 2019` Fujian Agriculture and Forestry University, Electronic Information Engineering
 
-## Ongoing Learning
+## Continuing Learning
 
-Education in this portfolio extends well beyond degree programs. A large share of the project archive is effectively a public learning record, including:
-
-- framework exercises
-- technical reading notes
-- course summaries
-- implementation-first experiments
-
-That combination of formal study and self-directed practice is a major part of how the portfolio has been built.
+Formal education is only part of the story here. A large part of the public archive also functions as a visible record of continued self-directed learning through repositories, notes, and curation work.

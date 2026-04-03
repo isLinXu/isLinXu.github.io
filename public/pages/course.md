@@ -1,22 +1,14 @@
 # Course
 
-This section is reserved for course-related learning material, structured study tracks, and teaching-oriented notes.
-
-## Current Status
-
-Course content is distributed across the broader documentation repositories rather than concentrated in a single page today.
+Course-related material in this portfolio is mostly distributed across repository-based notes rather than concentrated in a single standalone page.
 
 ## Related Repositories
 
 - [awesome-course-notes](https://github.com/isLinXu/awesome-course-notes)
 - [MIT-CS-Course](https://github.com/isLinXu/MIT-CS-Course)
 - [Berkeley-CS-course](https://github.com/isLinXu/Berkeley-CS-course)
+- [Stanford-CS-Course](https://github.com/isLinXu/Stanford-CS-Course)
 
-## Direction
+## Note
 
-Over time, this page can evolve into a clearer learning map that connects:
-
-- core AI theory
-- computer vision fundamentals
-- multimodal systems
-- engineering and deployment practice
+This page is best read as an entry point to structured learning material, not as a complete list of every course or every note.
