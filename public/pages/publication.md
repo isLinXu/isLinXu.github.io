@@ -1,6 +1,6 @@
 # Publications
 
-This section captures paper-related work and research output connected to multimodal AI and evaluation.
+This section captures paper-related work that can be linked clearly to the public profile.
 
 ## Selected Publication
 
@@ -11,7 +11,7 @@ This section captures paper-related work and research output connected to multim
 
 ![MME benchmark](../imgs/public/mme.png)
 
-This work focuses on benchmarking and evaluation for multimodal large language models. It reflects an important theme across the portfolio: strong systems need strong evaluation. Building models is only part of the story; measuring behavior clearly is what makes improvement possible.
+This work focuses on benchmarking and evaluation for multimodal large language models. It matters here because evaluation is one of the most consistent themes across the public repositories, resume material, and project descriptions.
 
 ## Research Interests
 
