@@ -22,9 +22,9 @@ const profileImage = "/imgs/xulin-portrait-2026.jpg";
 const content = {
   en: {
     name: "Xu Lin",
-    title: "AI Algorithm Engineer | Large Models and Multimodal Systems Specialist",
+    title: "AI Algorithm Engineer | Multimodal and Large-Model Systems",
     summary:
-      "More than six years of AI algorithm engineering experience focused on large model training, multimodal systems, and visual perception. Core contributor to LLaMA-Factory and co-author of the MME Benchmark, with hands-on coverage across algorithm innovation, evaluation systems, data engineering, and commercial delivery.",
+      "More than six years of AI algorithm engineering experience focused on large-model training, multimodal systems, and visual perception. Public work includes contribution to LlamaFactory, co-authorship on the MME benchmark, and hands-on delivery across evaluation, data engineering, and applied AI projects.",
     download: "Download original PDF",
     export: "Print this resume",
     labels: {
@@ -122,7 +122,7 @@ const content = {
     projects: [
       {
         name: "YOLO-Master",
-        body: "First-author CVPR 2026 submission. Designed an MOE architecture on top of YOLO-style detection, reaching 42.3% COCO mAP with limited parameter growth and faster inference.",
+        body: "A detection research direction built around a YOLO-style MOE architecture, with current public material highlighting 42.3% COCO mAP and efficiency-oriented design goals.",
       },
       {
         name: "Commercial Multimodal Delivery",
@@ -142,7 +142,7 @@ const content = {
       "Fujian Agriculture and Forestry University, Electronic Information Engineering (2015 - 2019)",
     ],
     impact: [
-      "Core contributor to LLaMA-Factory",
+      "Public contributor to LLaMA-Factory",
       "Co-author of MME Benchmark",
       "Public technical influence through GitHub, blogs, and open repositories",
     ],
@@ -155,9 +155,9 @@ const content = {
   },
   zh: {
     name: "林旭",
-    title: "AI 算法工程师｜大模型与多模态技术专家",
+    title: "AI 算法工程师｜多模态与大模型系统方向",
     summary:
-      "拥有 6 年以上 AI 算法研发经验，专注于大模型训练、多模态系统与视觉感知。作为 LLaMA-Factory 核心贡献者与 MME Benchmark 共同作者，长期覆盖算法创新、评测体系、数据工程与商业落地。",
+      "拥有 6 年以上 AI 算法研发经验，主要围绕大模型训练、多模态系统与视觉感知展开。公开工作包括对 LlamaFactory 的贡献、MME Benchmark 的共同作者身份，以及评测、数据工程和应用交付相关实践。",
     download: "下载原始 PDF",
     export: "打印当前简历",
     labels: {
@@ -255,7 +255,7 @@ const content = {
     projects: [
       {
         name: "YOLO-Master",
-        body: "CVPR 2026 第一作者投稿。基于 YOLO 系列设计 MOE 架构，在较小参数增量下取得 42.3% COCO mAP 和更快推理速度。",
+        body: "围绕 YOLO 系列展开的一条检测研究方向。当前公开材料主要体现为 MOE 架构尝试、42.3% COCO mAP，以及对效率设计的持续关注。",
       },
       {
         name: "多模态商业交付",
@@ -275,7 +275,7 @@ const content = {
       "福建农林大学，电子信息工程（2015 - 2019）",
     ],
     impact: [
-      "LLaMA-Factory 核心贡献者",
+      "LLaMA-Factory 公开贡献者",
       "MME Benchmark 共同作者",
       "通过 GitHub、博客与公开仓库持续输出技术影响力",
     ],

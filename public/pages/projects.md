@@ -1,6 +1,6 @@
 # Projects
 
-This page is synced to the public repository list on GitHub as of April 3, 2026. It is intentionally more complete than before and includes both core self-owned repositories and representative contribution-oriented repositories that matter to the profile.
+This page is synced to the public repository list on GitHub as of April 3, 2026. It includes both self-owned repositories and contribution-oriented repositories that are relevant to the current public profile.
 
 ## Core Representative Repositories
 
@@ -14,7 +14,7 @@ This page is synced to the public repository list on GitHub as of April 3, 2026.
 
 ## Contribution and Collaboration Direction
 
-These repositories are also representative even when they are fork-based or contribution-oriented, because they reflect the current technical direction and public engineering footprint.
+These repositories are included because they help explain the current technical direction, even when the work is contribution-oriented or fork-based.
 
 - [YOLO-Master](https://github.com/isLinXu/YOLO-Master): a representative detection repository tied to the YOLO-Master line and your current detection research narrative
 - [LlamaFactory](https://github.com/isLinXu/LlamaFactory): a representative large-model and fine-tuning contribution direction closely tied to public LLM and VLM work
@@ -27,7 +27,7 @@ These repositories are also representative even when they are fork-based or cont
 
 ## Public Knowledge and Learning Repositories
 
-- [paper-list](https://github.com/isLinXu/paper-list): the strongest paper curation project in the current public profile, combining collection, filtering, and publishing workflow
+- [paper-list](https://github.com/isLinXu/paper-list): a visible paper curation project that combines collection, filtering, and publishing workflow
 - [awesome-road-map](https://github.com/isLinXu/awesome-road-map): a structured public roadmap and learning archive
 - awesome-style curation work: public project organization habits around reading lists, roadmaps, agent resources, and themed collections
 - [awesome-foundation-agents](https://github.com/isLinXu/awesome-foundation-agents): an agent-oriented awesome collection aligned with current foundation agent interests

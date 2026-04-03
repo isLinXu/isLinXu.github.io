@@ -1,14 +1,16 @@
 # Skills
 
-## Focus Areas
+This page summarizes the capabilities most consistently reflected in public repositories, resume material, and technical output.
 
-- Multimodal large language models
-- Computer vision systems
-- Model evaluation and benchmarking
-- Practical AI engineering and deployment
-- Agent-oriented workflows and tooling
+## Main Technical Areas
 
-## Engineering Stack
+- multimodal model related workflows
+- computer vision model training and evaluation
+- benchmark and evaluation design
+- data preparation and large-scale data processing
+- agent-related tools and engineering experiments
+
+## Engineering Stack Seen Repeatedly
 
 - Python
 - PyTorch
@@ -17,10 +19,15 @@
 - OpenCV
 - SQL
 - Apache Spark
+- C++ and JNI in project-specific contexts
 
-## Working Strengths
+## Practical Strengths
 
-- Turning research ideas into reusable engineering structure
-- Connecting modeling, data, evaluation, and deployment
-- Building tools around workflows instead of isolated demos
-- Learning in public through repositories, notes, and technical writing
+- turning vague research goals into structured engineering tasks
+- connecting data, modeling, evaluation, and deployment
+- building reusable tools around workflows rather than isolated demos
+- using repositories and notes as part of long-term technical accumulation
+
+## Boundaries
+
+This page is intentionally selective. It highlights recurring and evidenced capabilities, not every framework or concept that may have been touched at some point.
