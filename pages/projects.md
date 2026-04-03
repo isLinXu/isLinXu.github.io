@@ -18,6 +18,7 @@ These repositories are also representative even when they are fork-based or cont
 
 - [YOLO-Master](https://github.com/isLinXu/YOLO-Master): a representative detection repository tied to the YOLO-Master line and your current detection research narrative
 - [LlamaFactory](https://github.com/isLinXu/LlamaFactory): a representative large-model and fine-tuning contribution direction closely tied to public LLM and VLM work
+- MME related work: representative benchmark and evaluation work connected to multimodal model assessment, and an important part of the public research profile
 - [claude-code](https://github.com/isLinXu/claude-code): a practical build-and-run branch around Claude Code related engineering
 - [claude-code-src](https://github.com/isLinXu/claude-code-src): source-oriented work connected to Claude Code style agentic coding workflows
 - [ms-agent](https://github.com/isLinXu/ms-agent): lightweight agent execution framework exposure aligned with current agent systems interests
@@ -26,7 +27,11 @@ These repositories are also representative even when they are fork-based or cont
 
 ## Public Knowledge and Learning Repositories
 
+- [paper-list](https://github.com/isLinXu/paper-list): the strongest paper curation project in the current public profile, combining collection, filtering, and publishing workflow
 - [awesome-road-map](https://github.com/isLinXu/awesome-road-map): a structured public roadmap and learning archive
+- awesome-style curation work: public project organization habits around reading lists, roadmaps, agent resources, and themed collections
+- [awesome-foundation-agents](https://github.com/isLinXu/awesome-foundation-agents): an agent-oriented awesome collection aligned with current foundation agent interests
+- [VALSE-WorkShop](https://github.com/isLinXu/VALSE-WorkShop): a long-running workshop and resource aggregation project around VALSE related materials
 - [paper-read-notes](https://github.com/isLinXu/paper-read-notes): long-running research reading notes and public technical summary material
 - [Stanford-CS-Course](https://github.com/isLinXu/Stanford-CS-Course): a curated archive of Stanford computer science course resources
 - [prompt-engineering-note](https://github.com/isLinXu/prompt-engineering-note): an earlier prompt engineering note collection with strong public reach
@@ -39,6 +44,8 @@ Taken together, the visible repositories now show several clear themes:
 - practical engineering, coding agents, and developer tooling
 - model evaluation, skills, and automation experiments
 - computer vision and YOLO related applied research
+- MME style benchmark and evaluation work
+- awesome-style public curation and paper collection systems
 - public paper curation, knowledge organization, and open learning archives
 
 ## Source

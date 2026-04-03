@@ -18,6 +18,7 @@
 
 - [YOLO-Master](https://github.com/isLinXu/YOLO-Master)：和 YOLO-Master 方向相关的目标检测代表仓库，也是你当前检测研究叙事的重要组成部分
 - [LlamaFactory](https://github.com/isLinXu/LlamaFactory)：和大模型、微调、LLM/VLM 工程高度相关的代表性贡献方向
+- MME 相关工作：和多模态模型评测、Benchmark 构建密切相关，也是你公开研究身份中的关键组成部分
 - [claude-code](https://github.com/isLinXu/claude-code)：围绕 Claude Code 的实用构建与可运行工程版本
 - [claude-code-src](https://github.com/isLinXu/claude-code-src)：面向源码与工作流理解的 Claude Code 相关仓库
 - [ms-agent](https://github.com/isLinXu/ms-agent)：与轻量 Agent 执行框架相关的公开参与方向
@@ -26,7 +27,11 @@
 
 ## 公共知识与学习型仓库
 
+- [paper-list](https://github.com/isLinXu/paper-list)：当前公开主页中最强的论文整理项目之一，把收集、筛选和发布流程连接在一起
 - [awesome-road-map](https://github.com/isLinXu/awesome-road-map)：结构化学习路线与公开知识整理
+- awesome 系列整理工作：围绕学习路线、Agent 资源、专题合集与阅读材料的长期公开整理习惯
+- [awesome-foundation-agents](https://github.com/isLinXu/awesome-foundation-agents)：和 foundation agents 方向相关的 awesome 资源整理
+- [VALSE-WorkShop](https://github.com/isLinXu/VALSE-WorkShop)：围绕 VALSE 相关资料和工作坊内容的长期聚合项目
 - [paper-read-notes](https://github.com/isLinXu/paper-read-notes)：长期维护的论文阅读笔记与公开技术总结
 - [Stanford-CS-Course](https://github.com/isLinXu/Stanford-CS-Course)：Stanford 计算机课程资源整理仓库
 - [prompt-engineering-note](https://github.com/isLinXu/prompt-engineering-note)：较早期但影响力较强的 Prompt Engineering 笔记整理
@@ -39,6 +44,8 @@
 - 实用工程、编码代理与开发者工具
 - 模型评测、技能体系与自动化实验
 - 计算机视觉与 YOLO 相关应用研究
+- MME 类 Benchmark 与评测工作
+- awesome 风格的公开知识整理与 paper-list 类系统
 - 论文整理、知识组织与公开学习档案
 
 ## 来源
