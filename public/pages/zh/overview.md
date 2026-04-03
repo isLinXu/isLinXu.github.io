@@ -1,6 +1,6 @@
 # 概览
 
-![Xu Lin](/imgs/o_f5119c94.jpg)
+![Xu Lin](https://avatars.githubusercontent.com/u/59380685?v=4)
 
 Xu Lin 是一名聚焦多模态大模型、计算机视觉系统与实用型 AI 工程的研究者和工程师。当前工作覆盖模型研究、评测、部署、工具链建设以及开源贡献。
 
@@ -10,7 +10,7 @@ Xu Lin 是一名聚焦多模态大模型、计算机视觉系统与实用型 AI 
 - 身份：AI Researcher、AI Engineer、Open Source Contributor
 - 方向：MLLM、LLM、Agent 系统、多模态评测、实际部署
 - 当前组织：Tencent Youtu Lab
-- Email: [linxu.official@gmail.com](mailto:linxu.official@gmail.com)
+- Email: [islinxu@163.com](mailto:islinxu@163.com)
 - GitHub: [github.com/isLinXu](https://github.com/isLinXu)
 - LinkedIn: [linkedin.com/in/xu-lin-3b78a5251](https://www.linkedin.com/in/xu-lin-3b78a5251/)
 
@@ -52,7 +52,7 @@ Xu Lin 是一名聚焦多模态大模型、计算机视觉系统与实用型 AI 
 - 博客: [www.cnblogs.com/isLinXu](https://www.cnblogs.com/isLinXu/)
 - Medium: [medium.com/@isLinXu](https://medium.com/@isLinXu)
 - Hugging Face: [huggingface.co/gatilin](https://huggingface.co/gatilin)
-- Email: [linxu.official@gmail.com](mailto:linxu.official@gmail.com)
+- Email: [islinxu@163.com](mailto:islinxu@163.com)
 
 ## 简历说明
 
