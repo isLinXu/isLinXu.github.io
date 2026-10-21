@@ -2,6 +2,7 @@ import {
   Chip,
   Container,
   Divider,
+  LinearProgress,
   Link,
   Paper,
   Table,
@@ -14,24 +15,34 @@ import {
   Typography,
 } from "@mui/material";
 import { alpha, useTheme } from "@mui/material/styles";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { useLocation } from "react-router-dom";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import { useLocale } from "../i18n/LocaleContext";
+import { pageLabel } from "../i18n/pageLabels";
+import useDocumentMeta from "../hooks/useDocumentMeta";
 
 interface Props {
   name: string;
 }
 
-function MarkdownLink(props: any) {
+type LoadStatus = "loading" | "ready" | "error";
+
+function MarkdownLink({ href, children }: { href?: string; children?: ReactNode }) {
   return (
-    <Link href={props.href} target="_blank" underline="hover">
-      {props.children}
+    <Link href={href} target="_blank" rel="noreferrer" underline="hover">
+      {children}
     </Link>
   );
+}
+
+function MarkdownImage({ node, ...props }: any) {
+  // react-markdown passes its AST node down; it must not reach the DOM.
+  void node;
+
+  return <img {...props} alt={props.alt ?? ""} loading="lazy" decoding="async" />;
 }
 
 function MarkdownTable(props: { children: ReactNode }) {
@@ -44,17 +55,32 @@ function MarkdownTable(props: { children: ReactNode }) {
   );
 }
 
-function MarkdownTableCell(props: { children: ReactNode }) {
-  return (
-    <TableCell>
-      {props.children}
-      {/* <Typography>{props.children}</Typography> */}
-    </TableCell>
-  );
+function MarkdownTableCell(props: {
+  children?: ReactNode;
+  align?: "left" | "center" | "right";
+}) {
+  return <TableCell align={props.align}>{props.children}</TableCell>;
 }
 
-function MarkdownCode(props: { children: ReactNode }) {
-  return <Chip size="small" label={props.children?.toString()} />;
+function MarkdownCode(props: { inline?: boolean; children?: ReactNode }) {
+  if (props.inline) {
+    return (
+      <Chip
+        size="small"
+        label={props.children?.toString()}
+        sx={{
+          fontFamily: '"IBM Plex Mono", monospace',
+          height: 22,
+          "& .MuiChip-label": {
+            px: 0.8,
+            fontSize: "0.78rem",
+          },
+        }}
+      />
+    );
+  }
+
+  return <code>{props.children}</code>;
 }
 
 function MarkdownH1(props: { children: ReactNode }) {
@@ -99,110 +125,148 @@ function MarkdownH2(props: { children: ReactNode }) {
   );
 }
 
-// function MarkdownParagraph(props: { children: ReactNode }) {
-//   if (!props.children) return <Typography>{props.children}</Typography>;
+function buildDescription(markdown: string) {
+  const text = markdown
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/[#>*_`~|]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
-//   const element: any = props.children;
-//   let result = [];
-
-//   let anyInlineElement = false;
-//   for (let e of element) {
-//     if (e.type) {
-//       anyInlineElement = true;
-//     }
-//   }
-
-//   if (anyInlineElement) {
-//     for (let e of element) {
-//       if (e.type) {
-//         result.push({ ...e });
-//       } else {
-//         result.push(
-//           <Typography key={e} display="inline">
-//             {e}
-//           </Typography>
-//         );
-//       }
-//     }
-//   } else {
-//     for (let e of element) {
-//       if (e.type) {
-//         result.push({ ...e });
-//       } else {
-//         result.push(<Typography key={e}>{e}</Typography>);
-//       }
-//     }
-//   }
-
-//   return <>{result}</>;
-// }
+  return text.length > 20 ? text.slice(0, 160) : undefined;
+}
 
 export default function MDContainer({ name }: Props) {
   const [content, setContent] = useState("");
-  const { pathname } = useLocation();
+  const [status, setStatus] = useState<LoadStatus>("loading");
   const theme = useTheme();
   const { locale } = useLocale();
 
   useEffect(() => {
-    fetch(`./pages/${locale}/${name}`)
-      .then((res) => res.text())
-      .then((text) => setContent(text));
+    const controller = new AbortController();
+
+    setStatus("loading");
+    setContent("");
+
+    fetch(`./pages/${locale}/${name}`, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load ${name}: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((text) => {
+        setContent(text);
+        setStatus("ready");
+      })
+      .catch((error: unknown) => {
+        if (error instanceof Error && error.name === "AbortError") {
+          return;
+        }
+        setStatus("error");
+      });
+
+    return () => controller.abort();
   }, [locale, name]);
 
-  useEffect(() => {
-    let title = pathname.substring(1, pathname.length);
-    title = title[0].toUpperCase() + title.substring(1);
-    document.title = `${process.env.REACT_APP_NAME!} | ${title}`;
-  }, [pathname]);
+  const label = pageLabel(name, locale);
+  const description = useMemo(() => buildDescription(content), [content]);
+
+  useDocumentMeta(
+    `${label} | ${process.env.REACT_APP_NAME ?? "Xu Lin"}`,
+    description
+  );
+
+  if (status === "loading") {
+    return (
+      <Container maxWidth="lg" sx={{ py: { xs: 3, md: 4 } }}>
+        <LinearProgress
+          aria-label={locale === "en" ? "Loading page" : "页面加载中"}
+        />
+      </Container>
+    );
+  }
+
+  if (status === "error") {
+    return (
+      <Container maxWidth="lg" sx={{ py: { xs: 3, md: 4 } }}>
+        <Typography variant="h5" gutterBottom>
+          {locale === "en" ? "Page unavailable" : "页面加载失败"}
+        </Typography>
+        <Typography color="text.secondary">
+          {locale === "en"
+            ? "The content could not be loaded. Please refresh and try again."
+            : "内容加载失败，请刷新后重试。"}
+        </Typography>
+      </Container>
+    );
+  }
 
   return (
     <Container
-        maxWidth="lg"
-        sx={{
-          py: { xs: 2.5, md: 3.25 },
-          px: { xs: 1.5, md: 2.5 },
+      maxWidth="lg"
+      sx={{
+        py: { xs: 2.5, md: 3.25 },
+        px: { xs: 1.5, md: 2.5 },
         "& p": {
           color: "text.secondary",
           lineHeight: 1.78,
           fontSize: { xs: "0.96rem", md: "1rem" },
+        },
+        "& ul, & ol": {
+          color: "text.secondary",
+          lineHeight: 1.76,
+          fontSize: { xs: "0.95rem", md: "0.99rem" },
+          paddingLeft: "1.35rem",
+        },
+        "& li": {
+          mb: 0.5,
+        },
+        "& h3": {
+          fontSize: { xs: "1.16rem", md: "1.28rem" },
+          lineHeight: 1.22,
+          marginTop: "1.05rem",
+          marginBottom: "0.4rem",
+        },
+        "& img": {
+          display: "block",
+          maxWidth: "100%",
+          width: "auto",
+          height: "auto",
+          margin: "1rem auto",
+          maxHeight: "460px",
+          borderRadius: 3,
+          border: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
+          boxShadow:
+            theme.palette.mode === "dark"
+              ? "0 18px 48px rgba(0, 0, 0, 0.28)"
+              : "0 18px 48px rgba(40, 66, 110, 0.12)",
+        },
+        "& pre": {
+          margin: "1rem 0",
+          padding: "1rem 1.1rem",
+          borderRadius: 2,
+          overflowX: "auto",
+          backgroundColor: alpha(
+            theme.palette.text.primary,
+            theme.palette.mode === "dark" ? 0.06 : 0.04
+          ),
+          border: `1px solid ${alpha(theme.palette.divider, 0.8)}`,
+          "& code": {
+            fontFamily: '"IBM Plex Mono", monospace',
+            fontSize: "0.82rem",
+            lineHeight: 1.6,
+            color: "text.primary",
           },
-          "& ul, & ol": {
-            color: "text.secondary",
-            lineHeight: 1.76,
-            fontSize: { xs: "0.95rem", md: "0.99rem" },
-            paddingLeft: "1.35rem",
-          },
-          "& li": {
-            mb: 0.5,
-          },
-          "& h3": {
-            fontSize: { xs: "1.16rem", md: "1.28rem" },
-            lineHeight: 1.22,
-            marginTop: "1.05rem",
-            marginBottom: "0.4rem",
-          },
-          "& img": {
-            display: "block",
-            maxWidth: "100%",
-            width: "auto",
-            height: "auto",
-            margin: "1rem auto",
-            maxHeight: "460px",
-            borderRadius: 3,
-            border: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
-            boxShadow:
-              theme.palette.mode === "dark"
-                ? "0 18px 48px rgba(0, 0, 0, 0.28)"
-                : "0 18px 48px rgba(40, 66, 110, 0.12)",
-          },
-          "& blockquote": {
-            margin: 0,
-            padding: "0.8rem 0.95rem",
-            borderLeft: `4px solid ${theme.palette.primary.main}`,
-            backgroundColor: alpha(theme.palette.primary.main, 0.06),
-            borderRadius: 2,
-            color: "text.secondary",
-          },
+        },
+        "& blockquote": {
+          margin: 0,
+          padding: "0.8rem 0.95rem",
+          borderLeft: `4px solid ${theme.palette.primary.main}`,
+          backgroundColor: alpha(theme.palette.primary.main, 0.06),
+          borderRadius: 2,
+          color: "text.secondary",
+        },
         "& hr": {
           border: 0,
           borderTop: `1px solid ${theme.palette.divider}`,
@@ -252,13 +316,17 @@ export default function MDContainer({ name }: Props) {
             borderColor: "#d9d9d9",
             maxHeight: "220px",
           },
+          "& pre": {
+            backgroundColor: "#f7f7f7",
+            borderColor: "#d9d9d9",
+          },
         },
       }}
-      >
+    >
       <ReactMarkdown
-        children={content}
         components={{
           code: MarkdownCode,
+          img: MarkdownImage,
           a: MarkdownLink,
           table: MarkdownTable,
           thead: TableHead,
@@ -272,7 +340,9 @@ export default function MDContainer({ name }: Props) {
         }}
         remarkPlugins={[remarkGfm, remarkBreaks]}
         rehypePlugins={[rehypeRaw]}
-      />
+      >
+        {content}
+      </ReactMarkdown>
     </Container>
   );
 }

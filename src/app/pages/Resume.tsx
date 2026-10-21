@@ -13,11 +13,23 @@ import {
 import { useTheme } from "@mui/material/styles";
 import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { useLocale } from "../i18n/LocaleContext";
+import useDocumentMeta from "../hooks/useDocumentMeta";
 
 const profileImage = "/imgs/xulin-portrait-2026.jpg";
+
+function contactHref(item: string) {
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(item)) {
+    return `mailto:${item}`;
+  }
+  if (/^\+?[\d\s-]{7,}$/.test(item)) {
+    return `tel:${item.replace(/[\s-]/g, "")}`;
+  }
+  if (item.startsWith("github.com/")) {
+    return `https://${item}`;
+  }
+  return undefined;
+}
 
 const content = {
   en: {
@@ -291,9 +303,13 @@ const content = {
 export default function Resume() {
   const theme = useTheme();
   const { locale } = useLocale();
-  const { pathname } = useLocation();
   const data = content[locale];
   const isDark = theme.palette.mode === "dark";
+
+  useDocumentMeta(
+    `${locale === "en" ? "Resume" : "简历"} | ${process.env.REACT_APP_NAME ?? "Xu Lin"}`,
+    data.summary.slice(0, 160)
+  );
   const sectionLabelSx = {
     mb: 0.9,
     color: "text.secondary",
@@ -306,10 +322,6 @@ export default function Resume() {
       marginBottom: "0.35rem",
     },
   } as const;
-
-  useEffect(() => {
-    document.title = `${locale === "en" ? "Resume" : "简历"} | ${process.env.REACT_APP_NAME!}`;
-  }, [locale, pathname]);
 
   return (
     <Box
@@ -536,22 +548,39 @@ export default function Resume() {
                   {data.labels.contact}
                 </Typography>
                 <Stack spacing={0.55}>
-                  {data.contact.map((item) => (
-                    <Typography
-                      key={item}
-                      variant="body2"
-                      sx={{
-                        color: "text.secondary",
-                        lineHeight: 1.5,
-                        "@media print": {
-                          fontSize: "0.66rem",
-                          lineHeight: 1.35,
-                        },
-                      }}
-                    >
-                      {item}
-                    </Typography>
-                  ))}
+                  {data.contact.map((item) => {
+                    const href = contactHref(item);
+                    const external = href?.startsWith("http");
+
+                    return (
+                      <Typography
+                        key={item}
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          lineHeight: 1.5,
+                          "@media print": {
+                            fontSize: "0.66rem",
+                            lineHeight: 1.35,
+                          },
+                        }}
+                      >
+                        {href ? (
+                          <Link
+                            href={href}
+                            underline="hover"
+                            color="inherit"
+                            target={external ? "_blank" : undefined}
+                            rel={external ? "noreferrer" : undefined}
+                          >
+                            {item}
+                          </Link>
+                        ) : (
+                          item
+                        )}
+                      </Typography>
+                    );
+                  })}
                 </Stack>
               </Box>
 

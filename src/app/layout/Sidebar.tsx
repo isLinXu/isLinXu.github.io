@@ -24,6 +24,23 @@ export default function Sidebar({
   const theme = useTheme();
   const iconColor = alpha(theme.palette.text.primary, 0.52);
   const hoverColor = theme.palette.text.primary;
+  const focusSx = {
+    "&:focus-visible": {
+      outline: `2px solid ${theme.palette.primary.main}`,
+      outlineOffset: 2,
+      borderRadius: 1,
+    },
+  };
+
+  function handleKeyDown(
+    event: React.KeyboardEvent,
+    action: () => void
+  ) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      action();
+    }
+  }
 
   return (
     <Box
@@ -47,12 +64,20 @@ export default function Sidebar({
         flexDirection="column"
       >
         <Box
+          role="button"
+          tabIndex={0}
+          aria-label={expanded ? "Collapse explorer" : "Expand explorer"}
+          aria-expanded={expanded}
+          onKeyDown={(event) =>
+            handleKeyDown(event, () => setExpanded(!expanded))
+          }
           sx={{
             borderLeft: expanded
               ? `2px solid ${theme.palette.primary.main}`
               : "2px solid transparent",
             cursor: "pointer",
             WebkitTapHighlightColor: "rgba(0,0,0,0)",
+            ...focusSx,
           }}
           onClick={() => setExpanded(!expanded)}
         >
@@ -79,7 +104,8 @@ export default function Sidebar({
             underline="none"
             color="inherit"
             rel="noreferrer"
-            sx={{ WebkitTapHighlightColor: "rgba(0,0,0,0)" }}
+            aria-label="Source code on GitHub"
+            sx={{ WebkitTapHighlightColor: "rgba(0,0,0,0)", ...focusSx }}
           >
             <Box
               sx={{
@@ -110,7 +136,8 @@ export default function Sidebar({
               underline="none"
               color="inherit"
               rel="noreferrer"
-              sx={{ WebkitTapHighlightColor: "rgba(0,0,0,0)" }}
+              aria-label={link.title}
+              sx={{ WebkitTapHighlightColor: "rgba(0,0,0,0)", ...focusSx }}
             >
               <Box
                 sx={{
@@ -145,6 +172,12 @@ export default function Sidebar({
           arrow
         >
           <Box
+            role="button"
+            tabIndex={0}
+            aria-label={
+              darkMode ? "Switch to light mode" : "Switch to dark mode"
+            }
+            onKeyDown={(event) => handleKeyDown(event, handleThemeChange)}
             sx={{
               fontSize: 23,
               color: iconColor,
@@ -153,6 +186,7 @@ export default function Sidebar({
                 color: hoverColor,
               },
               WebkitTapHighlightColor: "rgba(0,0,0,0)",
+              ...focusSx,
             }}
             display="flex"
             justifyContent="center"

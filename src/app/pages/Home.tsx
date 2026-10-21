@@ -13,13 +13,14 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import PortraitRoundedIcon from "@mui/icons-material/PortraitRounded";
 import FaceRoundedIcon from "@mui/icons-material/FaceRounded";
 import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import { links } from "./links";
 import { useLocale } from "../i18n/LocaleContext";
+import useDocumentMeta from "../hooks/useDocumentMeta";
 
 interface Props {
   setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -216,7 +217,6 @@ const copy = {
 } as const;
 
 export default function Home({ setSelectedIndex }: Props) {
-  const { pathname } = useLocation();
   const navigate = useNavigate();
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
@@ -224,13 +224,16 @@ export default function Home({ setSelectedIndex }: Props) {
   const [photoMode, setPhotoMode] = useState<"avatar" | "portrait">("avatar");
   const text = copy[locale];
 
+  useDocumentMeta(
+    `${process.env.REACT_APP_NAME ?? "Xu Lin"} | AI Engineer`,
+    locale === "en"
+      ? "Xu Lin — AI engineer working on multimodal models, evaluation workflows, and applied computer vision."
+      : "林旭 — AI 算法工程师，专注多模态模型、评测工作流与计算机视觉应用。"
+  );
+
   useEffect(() => {
     setSelectedIndex(-1);
   }, [setSelectedIndex]);
-
-  useEffect(() => {
-    document.title = process.env.REACT_APP_NAME!;
-  }, [pathname]);
 
   return (
     <Box
@@ -503,37 +506,34 @@ export default function Home({ setSelectedIndex }: Props) {
                 <Stack direction="row" spacing={0.5} sx={{ flexWrap: "wrap" }}>
                   {links.map((link) => (
                     <Tooltip key={link.index} title={link.title} arrow>
-                      <Link
-                        target="_blank"
+                      <IconButton
+                        component="a"
                         href={link.href}
-                        underline="none"
-                        color="inherit"
+                        target="_blank"
                         rel="noreferrer"
-                      >
-                        <IconButton
-                          color="inherit"
-                          sx={{
-                            width: { xs: 36, md: 42 },
-                            height: { xs: 36, md: 42 },
-                            border: `1px solid ${alpha(
-                              theme.palette.text.primary,
-                              0.14
-                            )}`,
+                        aria-label={link.title}
+                        color="inherit"
+                        sx={{
+                          width: { xs: 36, md: 42 },
+                          height: { xs: 36, md: 42 },
+                          border: `1px solid ${alpha(
+                            theme.palette.text.primary,
+                            0.14
+                          )}`,
+                          backgroundColor: alpha(
+                            isDark ? "#ffffff" : "#0c2340",
+                            isDark ? 0.04 : 0.03
+                          ),
+                          "&:hover": {
                             backgroundColor: alpha(
-                              isDark ? "#ffffff" : "#0c2340",
-                              isDark ? 0.04 : 0.03
+                              isDark ? "#8fd8ff" : "#0f5cc0",
+                              isDark ? 0.14 : 0.1
                             ),
-                            "&:hover": {
-                              backgroundColor: alpha(
-                                isDark ? "#8fd8ff" : "#0f5cc0",
-                                isDark ? 0.14 : 0.1
-                              ),
-                            },
-                          }}
-                        >
-                          {link.icon}
-                        </IconButton>
-                      </Link>
+                          },
+                        }}
+                      >
+                        {link.icon}
+                      </IconButton>
                     </Tooltip>
                   ))}
                 </Stack>

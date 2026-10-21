@@ -46,8 +46,14 @@ export default function App() {
   const [visiblePageIndexs, setVisiblePageIndexs] = useState(
     initVisiblePageIndexs(pages)
   );
-  const [darkMode, setDarkMode] = useState(false);
-  const [locale, setLocale] = useState<Locale>("en");
+  const [darkMode, setDarkMode] = useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme ? storedTheme === "dark" : true;
+  });
+  const [locale, setLocale] = useState<Locale>(() => {
+    const storedLocale = localStorage.getItem("locale");
+    return storedLocale === "zh" ? "zh" : "en";
+  });
   const [visiblePages, setVisiblePages] = useState(pages);
   const paletteMode = darkMode ? "dark" : "light";
 
@@ -181,20 +187,8 @@ export default function App() {
   }
 
   useEffect(() => {
-    const currentTheme = localStorage.getItem("theme");
-    if (!currentTheme) {
-      setDarkMode(true);
-    } else {
-      setDarkMode(currentTheme === "dark");
-    }
-    const currentLocale = localStorage.getItem("locale");
-    if (currentLocale === "zh" || currentLocale === "en") {
-      setLocale(currentLocale);
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("locale", locale);
+    document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
   }, [locale]);
 
   const deletedIndex = visiblePages.find(

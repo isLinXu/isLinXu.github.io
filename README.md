@@ -1,211 +1,106 @@
-<div id="top"></div>
+# isLinXu.github.io
 
-<!-- PROJECT SHIELDS -->
-[![gh-pages-shield]][gh-pages-url]
-[![website-shield]][website-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+Personal portfolio for **Xu Lin (林旭)** — AI algorithm engineer working on
+multimodal models, evaluation workflows, and applied computer vision.
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/noworneverev/react-vscode-portfolio">
-    <img src="./src/static/favicon.png" alt="Logo" width="80" >
-  </a>
+**Live site:** [https://islinxu.github.io](https://islinxu.github.io)
 
-<h3 align="center">react-vscode-portfolio</h3>
+The site is a VS Code-inspired single-page app: activity bar, collapsible explorer
+tree, closable editor tabs, and a status bar. The content pages are Markdown,
+available in English and Chinese, and there is a dedicated resume page designed
+for both web reading and PDF export.
 
-  <p align="center">
-    A vscode inspired portfolio project
-    <br />
-    <a href="https://github.com/noworneverev/react-vscode-portfolio/blob/main/README.md"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://noworneverev.github.io/">View Demo</a>
-    ·
-    <a href="https://github.com/noworneverev/react-vscode-portfolio/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/noworneverev/react-vscode-portfolio/issues">Request Feature</a>
-  </p>
-</div>
+## Stack
 
+| Layer | Choice |
+| --- | --- |
+| App | React 18, TypeScript 4.7, Create React App 5 |
+| UI | Material UI 5, Emotion, `@mui/lab` TreeView |
+| Content | Markdown rendered with `react-markdown` + GFM + raw HTML |
+| Routing | `react-router-dom` with `HashRouter` |
+| Analytics | `react-ga4` (measurement ID in `.env.production`) |
+| Hosting | GitHub Pages, deployed from the `gh-pages` branch |
 
+## Structure
 
-<!-- TABLE OF CONTENTS -->
-
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#features">Features</a></li>        
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://noworneverev.github.io/)
-
-The project is inspired by [Visual Studio Code](https://github.com/microsoft/vscode) and [caglarturali.github.io](https://github.com/caglarturali/caglarturali.github.io). The pages of the portfolio are powered by `markdown`, which make them easy to modify or add your own contents.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-### Built With
-
-* [React.js](https://reactjs.org/)
-* [Material UI](https://github.com/mui/material-ui)
-* [react-markdown](https://github.com/remarkjs/react-markdown)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- GETTING STARTED -->
-
-## Update
-
-```shell
-npm install
+```text
+src/
+  app/
+    components/MDContainer.tsx   Markdown page loader + renderer
+    hooks/                       page-view tracking, document metadata
+    i18n/                        locale context + shared page labels
+    layout/                      App shell, sidebar, tree, tabs, footer
+    pages/                       Home, Resume, route table, social links
+  index.tsx
+public/
+  pages/en/*.md                  English content
+  pages/zh/*.md                  Chinese content
+  imgs/                          images still referenced by pages
+  resume-xulin-2026.pdf          downloadable resume PDF
+archive/                         legacy pages/images kept for history only
 ```
 
-```shell
-npm start
+## Getting started
+
+Node 20 is recommended (`.nvmrc`); the committed Create React App toolchain does
+not build reliably on Node 26.
+
+```sh
+nvm use            # or install Node 20 manually
+npm ci
+npm start          # http://localhost:3000
 ```
 
-```shell
-npm run build
+Useful checks:
+
+```sh
+npm run typecheck  # tsc --noEmit
+npm run lint       # eslint src
+npm run build      # production build in build/
 ```
 
+## Editing content
 
+- **Markdown pages** live in `public/pages/en/` and `public/pages/zh/`. They are
+  fetched at runtime, so text changes only need a deploy — no rebuild of React
+  code is involved.
+- **Adding a page** requires two edits: register the route in
+  [`src/app/pages/pages.ts`](src/app/pages/pages.ts) and add its bilingual label
+  in [`src/app/i18n/pageLabels.ts`](src/app/i18n/pageLabels.ts).
+- **Resume page** content is typed into
+  [`src/app/pages/Resume.tsx`](src/app/pages/Resume.tsx); it requires a rebuild.
+  Refresh `public/resume-xulin-2026.pdf` whenever the resume changes.
+- **Social links** are configured in
+  [`src/app/pages/links.tsx`](src/app/pages/links.tsx).
+- **Home page copy and featured repositories** are in
+  [`src/app/pages/Home.tsx`](src/app/pages/Home.tsx).
 
-## Getting Started
+## Deployment
 
-### Installation
+Pushing to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml):
+install, type-check, lint, build, then publish `build/` to `gh-pages`.
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/noworneverev/react-vscode-portfolio.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-3. Enter your name in `.env.development`
-   ```js
-   REACT_APP_NAME=<your_name>
-   ```
-4. Add your markdown pages in `public/pages`
-5. Add your routes in `src/app/pages/page.ts`, make sure the names of pages are consistent with markdown files.
-    ```ts
-    export const pages = [
-      { index: 0, name: 'overview.md', route: '/overview' },
-      { index: 1, name: 'skills.md', route: '/skills' },
-      { index: 2, name: 'experience.md', route: '/experience' },
-      { index: 3, name: 'education.md', route: '/education' },
-      { index: 4, name: 'projects.md', route: '/projects' },  
-      { index: 5, name: 'certificates.md', route: '/certificates' },
-      { index: 6, name: 'accomplishments.md', route: '/accomplishments' },
-    ];
-    ```
-6. Add your social links in `src/app/pages/link.tsx`, which will appear in both sidebar and homepage.
-    ```ts
-    export const links = [
-      {
-        index: 0,
-        title: "Find me on Github",
-        href: "https://github.com/noworneverev",
-        icon: <FaGithub />,
-      },
-    ];
-    ```
-7. Runs the app in the development mode
-   ```sh
-   npm start
-   ```
-8. If you would like to deploy your own portfolio, don't forget to change Google Analytic measurement id in `.env.production`
-   ```
-   REACT_APP_NAME=<your_name>
-   REACT_APP_MEASUREMENT_ID=<your_measurement_id>
-   ```
+Manual deploy still works if GitHub Actions is unavailable:
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+```sh
+npm run deploy
+```
 
-<!-- USAGE EXAMPLES -->
-## Features
+GitHub Pages must be configured to serve the `gh-pages` branch at the repository
+root. The site uses `HashRouter`, so deep links look like
+`https://islinxu.github.io/#/projects` and survive a page refresh without a
+server-side rewrite.
 
-- Powered by markdown
-- Dark mode and light mode available
-- Closable tabs
-- Collapsible explorer
-- Responsive web design
-- Google Analytics supported
-- Auto-deploy to gh-pages with github actions ready
+## Notes
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+- Only `public/` and compiled assets are shipped. Files under `archive/` are not
+  part of the deployed site and are kept for history; see
+  [`archive/README.md`](archive/README.md).
+- The design started from
+  [`noworneverev/react-vscode-portfolio`](https://github.com/noworneverev/react-vscode-portfolio)
+  (MIT) and has since been substantially rewritten and restyled.
 
-<!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.md` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Yan-Ying Liao - [Personal Portfolio](https://noworneverev.github.io/) - n9102125@gmail.com
-
-Project Link: [https://github.com/noworneverev/react-vscode-portfolio](https://github.com/noworneverev/react-vscode-portfolio)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-* [caglarturali.github.io](https://github.com/caglarturali/caglarturali.github.io)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[forks-shield]: https://img.shields.io/github/forks/noworneverev/react-vscode-portfolio
-[forks-url]: https://github.com/noworneverev/react-vscode-portfolio/network/members
-[stars-shield]: https://img.shields.io/github/stars/noworneverev/react-vscode-portfolio
-[stars-url]: https://github.com/noworneverev/react-vscode-portfolio/stargazers
-[issues-shield]: https://img.shields.io/github/issues/noworneverev/react-vscode-portfolio
-[issues-url]: https://github.com/noworneverev/react-vscode-portfolio/issues
-[license-shield]: https://img.shields.io/github/license/noworneverev/react-vscode-portfolio
-[license-url]: https://github.com/noworneverev/react-vscode-portfolio/blob/master/LICENSE.md
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/yan-ying-liao/
-[product-screenshot]: ./src/static/screenshot.gif
-[gh-pages-shield]: https://img.shields.io/github/deployments/noworneverev/noworneverev.github.io/github-pages
-[gh-pages-url]: https://github.com/noworneverev/noworneverev.github.io/deployments
-[website-shield]:https://img.shields.io/website?url=https%3A%2F%2Fnoworneverev.github.io%2F
-[website-url]: https://noworneverev.github.io/
+See [`LICENSE`](LICENSE) (Apache-2.0) for the project code and
+[`LICENSE.md`](LICENSE.md) (MIT) for upstream-derived material.

@@ -1,9 +1,12 @@
-import { alpha, Box, Button, Container, Paper } from "@mui/material";
+import { alpha, Box, Button, Container, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { VscChromeClose, VscMarkdown } from "react-icons/vsc";
 import { useLocale } from "../i18n/LocaleContext";
+import { pageLabel } from "../i18n/pageLabels";
+
+const TAB_HEIGHT = 42;
 
 interface Props {
   pages: {
@@ -17,24 +20,6 @@ interface Props {
   setCurrentComponent: React.Dispatch<React.SetStateAction<string>>;
   visiblePageIndexs: number[];
   setVisiblePageIndexs: React.Dispatch<React.SetStateAction<number[]>>;
-}
-
-function pageLabel(name: string, locale: "en" | "zh") {
-  const labels: Record<string, { en: string; zh: string }> = {
-    "overview.md": { en: "Overview", zh: "概览" },
-    "resume.md": { en: "Resume", zh: "简历" },
-    "skills.md": { en: "Skills", zh: "技能" },
-    "experience.md": { en: "Experience", zh: "经历" },
-    "education.md": { en: "Education", zh: "教育" },
-    "projects.md": { en: "Projects", zh: "项目" },
-    "certificates.md": { en: "Certificates", zh: "证书" },
-    "accomplishments.md": { en: "Highlights", zh: "亮点" },
-    "docs.md": { en: "Docs", zh: "文档" },
-    "publication.md": { en: "Publication", zh: "论文" },
-    "course.md": { en: "Course", zh: "课程" },
-  };
-
-  return labels[name]?.[locale] ?? name.replace(".md", "");
 }
 
 export default function AppButtons({
@@ -52,43 +37,61 @@ export default function AppButtons({
 
   function renderPageButton(index: number, name: string, route: string) {
     const active = selectedIndex === index;
+    const label = pageLabel(name, locale);
+    const inactiveBackground = alpha(
+      isDark ? "#d9e8ff" : "#0f315f",
+      isDark ? 0.04 : 0.03
+    );
 
     return (
       <Box
         key={index}
         sx={{
           display: "inline-flex",
-          alignItems: "stretch",
+          alignItems: "center",
+          height: TAB_HEIGHT,
+          boxSizing: "border-box",
           borderRight: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
+          backgroundColor: active
+            ? alpha(theme.palette.background.paper, 0.96)
+            : inactiveBackground,
+          boxShadow: active
+            ? `inset 0 2px 0 ${theme.palette.primary.main}`
+            : "none",
+          transition: "background-color 120ms ease",
+          "&:hover": {
+            backgroundColor: active
+              ? alpha(theme.palette.background.paper, 0.98)
+              : alpha(
+                  isDark ? "#d9e8ff" : "#0f315f",
+                  isDark ? 0.08 : 0.06
+                ),
+          },
         }}
       >
         <Button
           disableRipple
           disableElevation
           disableFocusRipple
+          aria-current={active ? "page" : undefined}
           onClick={() => {
             setSelectedIndex(index);
             setCurrentComponent("button");
             navigate(route);
           }}
           sx={{
-            minHeight: 42,
+            minHeight: TAB_HEIGHT,
+            height: TAB_HEIGHT,
             borderRadius: 0,
-            px: 1.6,
+            pl: 1.6,
+            pr: 0.7,
             gap: 0.9,
             textTransform: "none",
             justifyContent: "flex-start",
-            backgroundColor: active
-              ? alpha(theme.palette.background.paper, 0.96)
-              : alpha(isDark ? "#d9e8ff" : "#0f315f", isDark ? 0.04 : 0.03),
+            backgroundColor: "transparent",
             color: active ? "text.primary" : "text.secondary",
-            borderTop: active
-              ? `2px solid ${theme.palette.primary.main}`
-              : "2px solid transparent",
             "&.MuiButtonBase-root:hover": {
-              bgcolor: active
-                ? alpha(theme.palette.background.paper, 0.98)
-                : alpha(isDark ? "#d9e8ff" : "#0f315f", isDark ? 0.08 : 0.06),
+              backgroundColor: "transparent",
             },
           }}
         >
@@ -113,42 +116,41 @@ export default function AppButtons({
               textOverflow: "ellipsis",
             }}
           >
-            {pageLabel(name, locale)}
-          </Box>
-
-          <Box
-            component={Paper}
-            elevation={0}
-            sx={{
-              ml: 0.2,
-              width: 20,
-              height: 20,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 1.2,
-              backgroundColor: "transparent",
-              color: active ? "text.primary" : "text.secondary",
-              "&.MuiPaper-root:hover": {
-                bgcolor: alpha(theme.palette.text.primary, 0.1),
-              },
-            }}
-            onClick={(e: React.MouseEvent) => {
-              e.stopPropagation();
-              setVisiblePageIndexs(
-                visiblePageIndexs.filter((item) => item !== index)
-              );
-            }}
-          >
-            <VscChromeClose />
+            {label}
           </Box>
         </Button>
+
+        <IconButton
+          size="small"
+          aria-label={
+            locale === "en" ? `Close ${label} tab` : `关闭“${label}”标签页`
+          }
+          onClick={() =>
+            setVisiblePageIndexs(
+              visiblePageIndexs.filter((item) => item !== index)
+            )
+          }
+          sx={{
+            mr: 0.5,
+            width: 22,
+            height: 22,
+            borderRadius: 1.2,
+            color: active ? "text.primary" : "text.secondary",
+            "&:hover": {
+              backgroundColor: alpha(theme.palette.text.primary, 0.1),
+            },
+          }}
+        >
+          <VscChromeClose size={14} />
+        </IconButton>
       </Box>
     );
   }
 
   return (
     <Container
+      component="nav"
+      aria-label="Open pages"
       maxWidth={false}
       disableGutters
       sx={{

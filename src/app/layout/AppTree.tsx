@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { VscMarkdown } from "react-icons/vsc";
 import { useLocale } from "../i18n/LocaleContext";
+import { pageLabel } from "../i18n/pageLabels";
 
 interface Page {
   index: number;
@@ -29,24 +30,6 @@ interface Props {
   setCurrentComponent: React.Dispatch<React.SetStateAction<string>>;
   visiblePageIndexs: number[];
   setVisiblePageIndexs: React.Dispatch<React.SetStateAction<number[]>>;
-}
-
-function pageLabel(name: string, locale: "en" | "zh") {
-  const labels: Record<string, { en: string; zh: string }> = {
-    "overview.md": { en: "Overview", zh: "概览" },
-    "resume.md": { en: "Resume", zh: "简历" },
-    "skills.md": { en: "Skills", zh: "技能" },
-    "experience.md": { en: "Experience", zh: "经历" },
-    "education.md": { en: "Education", zh: "教育" },
-    "projects.md": { en: "Projects", zh: "项目" },
-    "certificates.md": { en: "Certificates", zh: "证书" },
-    "accomplishments.md": { en: "Highlights", zh: "亮点" },
-    "docs.md": { en: "Docs", zh: "文档" },
-    "publication.md": { en: "Publication", zh: "论文" },
-    "course.md": { en: "Course", zh: "课程" },
-  };
-
-  return labels[name]?.[locale] ?? name.replace(".md", "");
 }
 
 export default function AppTree({

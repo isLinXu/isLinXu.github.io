@@ -2,10 +2,16 @@ import { Box, Link, Paper, Stack, Typography } from "@mui/material";
 import { alpha, useTheme } from "@mui/material/styles";
 import { VscBell, VscCheck, VscFeedback, VscRemote } from "react-icons/vsc";
 import { IoIosGitBranch } from "react-icons/io";
+import { useLocale } from "../i18n/LocaleContext";
 
 export default function Footer() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
+  const { locale } = useLocale();
+  const copy =
+    locale === "zh"
+      ? { live: "站点在线", collab: "欢迎合作" }
+      : { live: "portfolio live", collab: "open to collaboration" };
 
   return (
     <Box
@@ -80,7 +86,7 @@ export default function Footer() {
           >
             <VscCheck fontSize="0.82rem" />
             <Typography sx={{ ml: 0.5, fontSize: "0.66rem" }}>
-              portfolio live
+              {copy.live}
             </Typography>
           </Box>
         </Stack>
@@ -100,7 +106,7 @@ export default function Footer() {
           >
             <VscFeedback fontSize="0.8rem" />
             <Typography sx={{ ml: 0.45, fontSize: "0.66rem" }}>
-              open to collaboration
+              {copy.collab}
             </Typography>
           </Box>
           <Box
@@ -115,7 +121,7 @@ export default function Footer() {
               },
             }}
           >
-            <VscBell fontSize="0.8rem" />
+            <VscBell fontSize="0.8rem" aria-hidden />
           </Box>
         </Stack>
       </Stack>
