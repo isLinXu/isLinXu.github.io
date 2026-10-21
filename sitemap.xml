@@ -1,36 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The site uses hash routing (HashRouter), so every page below is technically a
+  fragment of the same document. These entries document the available routes for
+  crawlers that still read sitemap fragments; the canonical entry stays "/".
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://islinxu.github.io/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://islinxu.github.io/#/resume</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/overview</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/skills</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/experience</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/education</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/projects</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/certificates</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/accomplishments</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/docs</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/publication</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://islinxu.github.io/#/course</loc>
+    <lastmod>2026-10-21</lastmod>
   </url>
 </urlset>
