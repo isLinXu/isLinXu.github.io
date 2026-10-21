@@ -16,6 +16,10 @@ production build: `npm run build` publishes `build/`, which is generated from
 - `imgs/` — 54 images that no page, component, or metadata file referenced.
   Only five images remain in `public/imgs`: the portrait, the avatar, the MME
   figure, and two certificate images.
+- `src-static/` — unused assets from the original Create React App / upstream
+  project (`screenshot.gif`, `light.jpg`, `favicon.png`, `logo.svg`).
+- `repo-imgs/` — VS Code icons and favicon that used to sit at the repository
+  root and were never referenced by the site.
 
 ## Restoring a file
 

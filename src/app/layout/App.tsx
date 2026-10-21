@@ -191,6 +191,13 @@ export default function App() {
     document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
   }, [locale]);
 
+  useEffect(() => {
+    document.documentElement.style.backgroundColor = darkMode
+      ? "#07111d"
+      : "#f5f7fb";
+    document.documentElement.style.colorScheme = darkMode ? "dark" : "light";
+  }, [darkMode]);
+
   const deletedIndex = visiblePages.find(
     (page) => !visiblePageIndexs.includes(page.index)
   )?.index;

@@ -1,6 +1,6 @@
 # Projects
 
-This page is synced to the public repository list on GitHub as of April 3, 2026. It includes both self-owned repositories and contribution-oriented repositories that help explain the current public profile.
+This page mirrors the public repository list on GitHub. It includes both self-owned repositories and contribution-oriented repositories that help explain the current public profile.
 
 ## Core Representative Repositories
 

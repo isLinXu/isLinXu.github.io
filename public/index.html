@@ -26,6 +26,26 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
+    <script>
+      // Apply the stored locale and theme before React mounts, so the first
+      // paint does not flash the wrong language or a light background.
+      (function () {
+        try {
+          var locale = window.localStorage.getItem("locale");
+          if (locale === "zh") {
+            document.documentElement.lang = "zh-CN";
+          }
+          var theme = window.localStorage.getItem("theme");
+          if (theme !== "light") {
+            document.documentElement.style.backgroundColor = "#07111d";
+            document.documentElement.style.colorScheme = "dark";
+          }
+        } catch (error) {
+          // localStorage can be unavailable (private mode); keep the defaults.
+        }
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
