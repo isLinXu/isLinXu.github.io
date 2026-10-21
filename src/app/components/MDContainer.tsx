@@ -55,11 +55,15 @@ function MarkdownTable(props: { children: ReactNode }) {
   );
 }
 
-function MarkdownTableCell(props: {
-  children?: ReactNode;
-  align?: "left" | "center" | "right";
-}) {
-  return <TableCell align={props.align}>{props.children}</TableCell>;
+function MarkdownTableCell(props: { children?: ReactNode; align?: string }) {
+  const align =
+    props.align === "left" ||
+    props.align === "center" ||
+    props.align === "right"
+      ? props.align
+      : undefined;
+
+  return <TableCell align={align}>{props.children}</TableCell>;
 }
 
 function MarkdownCode(props: { inline?: boolean; children?: ReactNode }) {
@@ -148,7 +152,9 @@ export default function MDContainer({ name }: Props) {
     setStatus("loading");
     setContent("");
 
-    fetch(`./pages/${locale}/${name}`, { signal: controller.signal })
+    fetch(`${import.meta.env.BASE_URL}pages/${locale}/${name}`, {
+      signal: controller.signal,
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Failed to load ${name}: ${response.status}`);
@@ -173,7 +179,7 @@ export default function MDContainer({ name }: Props) {
   const description = useMemo(() => buildDescription(content), [content]);
 
   useDocumentMeta(
-    `${label} | ${process.env.REACT_APP_NAME ?? "Xu Lin"}`,
+    `${label} | ${import.meta.env.VITE_APP_NAME ?? "Xu Lin"}`,
     description
   );
 

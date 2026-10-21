@@ -307,7 +307,7 @@ export default function Resume() {
   const isDark = theme.palette.mode === "dark";
 
   useDocumentMeta(
-    `${locale === "en" ? "Resume" : "简历"} | ${process.env.REACT_APP_NAME ?? "Xu Lin"}`,
+    `${locale === "en" ? "Resume" : "简历"} | ${import.meta.env.VITE_APP_NAME ?? "Xu Lin"}`,
     data.summary.slice(0, 160)
   );
   const sectionLabelSx = {

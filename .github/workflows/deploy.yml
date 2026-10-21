@@ -2,7 +2,6 @@ name: Build and deploy
 
 on:
   push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -37,9 +36,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          CI: "false"
-          GENERATE_SOURCEMAP: "false"
 
       - name: Deploy to gh-pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

@@ -225,7 +225,7 @@ export default function Home({ setSelectedIndex }: Props) {
   const text = copy[locale];
 
   useDocumentMeta(
-    `${process.env.REACT_APP_NAME ?? "Xu Lin"} | AI Engineer`,
+    `${import.meta.env.VITE_APP_NAME ?? "Xu Lin"} | AI Engineer`,
     locale === "en"
       ? "Xu Lin — AI engineer working on multimodal models, evaluation workflows, and applied computer vision."
       : "林旭 — AI 算法工程师，专注多模态模型、评测工作流与计算机视觉应用。"
