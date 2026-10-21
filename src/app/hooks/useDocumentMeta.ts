@@ -41,8 +41,9 @@ export default function useDocumentMeta(title: string, description?: string) {
   useEffect(() => {
     document.title = title;
 
-    const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
-    const url = `${SITE_URL}${pathname}`;
+    const pathname = window.location.pathname.replace(/\/+$/, "");
+    const canonicalPath = pathname ? `${pathname}/` : "/";
+    const url = `${SITE_URL}${canonicalPath}`;
 
     upsertMeta('meta[property="og:url"]', "property", "og:url", url);
     upsertLink('link[rel="canonical"]', "canonical", url);

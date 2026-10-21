@@ -102,7 +102,8 @@ function markdownRoute(slug) {
 }
 
 function renderRoute(template, route) {
-  const url = `${SITE_URL}${route.path}`;
+  const path = route.path === "/" ? "/" : `${route.path}/`;
+  const url = `${SITE_URL}${path}`;
   const title = escapeHtml(route.title);
   const description = escapeHtml(route.description);
   const noscript = `<noscript><main><h1>${escapeHtml(
